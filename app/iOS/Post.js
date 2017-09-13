@@ -6,6 +6,8 @@ import styles from '../Theme/Theme';
 import uploadImage from '../Config/UploadImage';
 import ImagePicker from 'react-native-image-picker';
 import RNFetchBlob from 'react-native-fetch-blob';
+// Fetch Blob was added by a friend as a work around for Firebase not allowing image uploads from iOS devices?  I am not really why it is needed, but have researched encoding, MIME, polyfills, base64 which are used with the fetch Blob
+
 import ImageResizer from 'react-native-image-resizer'
 
 var Dimensions = require('Dimensions'); //built in to get the dimensions of the screen
