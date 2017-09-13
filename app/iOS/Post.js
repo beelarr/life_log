@@ -6,6 +6,8 @@ import RNFetchBlob from 'react-native-fetch-blob';
 import ImageResizer from 'react-native-image-resizer';
 import ImagePicker from 'react-native-image-picker';
 import uploadImage from '../Config/UploadImage';
+import gpKey from '../Values/Creds';
+
 import Dimensions from 'Dimensions';
 const deviceWidth = Dimensions.get('window').width;
 const Blob = RNFetchBlob.polyfill.Blob;
@@ -20,13 +22,38 @@ import {
 } from 'react-native';
 
 class Post extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            image: 'https://firebasestorage.googleapis.com/v0/b/foodhunt-694b6.appspot.com/o/placeholder.jpg?alt=media&token=6248199b-2d2b-4b24-99ef-17355f698a5a',
-            place: ''
+
+    state = {
+            image: 'https://firebasestorage.googleapis.com/v0/b/findr-3ffd0.appspot.com/o/placeholder.png?alt=media&token=778cf414-8fc7-4288-bd50-1580366ab56a',
+        place: {
+            name: '',
+            lat:'',
+            lng:'',
+            address: ''
+        },
+        lat: '',
+        long: '',
+        nearby: []
         };
+
+    componentDidMount() {
+        this.getPlaces();
     }
+
+    getPlaces() {
+        navigator.geolocation.getCurrentPosition(
+            position => {
+                const coordinates = position.coordinates.latitude + ', ' + position.coordinates.longitude
+                const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coordinates}&radius=500&type=restaurant&key=${gpKey}`
+                fetch(url, {method: "GET"})
+                    .then((response) => response.json())
+                    .then((responseData) => {
+                        this.setState({ nearby: responseData.results })
+                    })
+            }
+        )
+    }
+
 
     photo(){
         var state = this;

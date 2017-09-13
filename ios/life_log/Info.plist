@@ -38,9 +38,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>App will use photos</string>
 	<key>NSCameraUsageDescription</key>
+	<string>App will use photos</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>App will use location</string>
+	<key>NSPhotoLibraryUsageDescription</key>
 	<string>App will use photos</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
