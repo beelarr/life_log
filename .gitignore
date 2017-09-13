@@ -29,8 +29,8 @@ build/
 .gradle
 local.properties
 *.iml
-app/values
-app/config/Firebase.js
+app/Values
+app/Config/Firebase.js
 
 # node.js
 #
