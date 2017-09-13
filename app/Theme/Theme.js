@@ -11,7 +11,8 @@ var styles = StyleSheet.create({
         alignItems: 'center',
         height: null,
         width: null,
-        backgroundColor: 'rgba(0,0,0,0)'
+        backgroundColor: 'rgba(0,0,0,0)',
+        resizeMode: 'stretch',
     },
     center: {
         justifyContent: 'center',
