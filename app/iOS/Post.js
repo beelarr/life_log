@@ -2,20 +2,14 @@ import React, { Component } from 'react';
 import firebase from '../Config/Firebase';
 import Header from '../Components/Header';
 import styles from '../Theme/Theme';
-
-import uploadImage from '../Config/UploadImage';
-import ImagePicker from 'react-native-image-picker';
 import RNFetchBlob from 'react-native-fetch-blob';
-// Fetch Blob was added by a friend as a work around for Firebase not allowing image uploads from iOS devices?  I am not really why it is needed, but have researched encoding, MIME, polyfills, base64 which are used with the fetch Blob
-
-import ImageResizer from 'react-native-image-resizer'
-
-var Dimensions = require('Dimensions'); //built in to get the dimensions of the screen
-var deviceWidth = Dimensions.get('window').width;
-var deviceHeight = Dimensions.get('window').height;
-
+import ImageResizer from 'react-native-image-resizer';
+import ImagePicker from 'react-native-image-picker';
+import uploadImage from '../Config/UploadImage';
+import Dimensions from 'Dimensions';
+const deviceWidth = Dimensions.get('window').width;
 const Blob = RNFetchBlob.polyfill.Blob;
-const fetchit = RNFetchBlob;
+const fs = RNFetchBlob.fs;
 
 import {
     View,
@@ -25,39 +19,39 @@ import {
     Image
 } from 'react-native';
 
-
 class Post extends Component {
-    state = {
-        image: 'https://firebasestorage.googleapis.com/v0/b/findr-3ffd0.appspot.com/o/placeholder.png?alt=media&token=778cf414-8fc7-4288-bd50-1580366ab56a',
-        place: ""
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            image: 'https://firebasestorage.googleapis.com/v0/b/foodhunt-694b6.appspot.com/o/placeholder.jpg?alt=media&token=6248199b-2d2b-4b24-99ef-17355f698a5a',
+            place: ''
+        };
+    }
 
-    photo = () => {
-        var state = this
-        window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest
-        window.Blob = Blob
-        ImagePicker.showImagePicker({}, response => {
-            if (response.didCancel) {
+    photo(){
+        var state = this;
+        window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
+        window.Blob = Blob;
+        ImagePicker.showImagePicker({}, (response) => {
+            if (!response.didCancel) {
                 const source = {uri: response.uri.replace('file://', ''), isStatic: true};
-                ImageResizer.createResizedImage(source.uri, 500, 500, 'JPEG', 60)
-                    .then(resizedImageUri => {
-                        uploadImage(resizedImageUri)
-                            .then(url => state.setState({image: url}))
-                            .catch(error => console.log('error on resizer', error))
-                            .catch(error => console.log('error on set state resizer', error))
-                    });
+                ImageResizer.createResizedImage(source.uri, 500, 500, 'JPEG', 60).then((resizedImageUri) => {
+                    uploadImage(resizedImageUri) //creates Blob
+                        .then(url => state.setState({ image: url }))
+                        .catch(error => console.log(error))
+                }).catch((err) => {
+                    console.log(err)
+                });
             }
         });
     }
 
-
-
-    post = () => {
+    post(){
         firebase.database().ref('food').push({image: this.state.image, place: this.state.place});
         this.props.navigator.pop();
     }
 
-    back = () => {
+    back(){
         this.props.navigator.pop();
     }
 
@@ -84,3 +78,4 @@ class Post extends Component {
     }
 }
 
+export default Post;
