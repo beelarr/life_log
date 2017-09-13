@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
+import firebase from '../Config/Firebase'
 
 import {
     View,
     Text,
     TextInput,
-    Button
+    Button,
+    AlertIOS
 } from 'react-native';
 
 class Login extends Component {
@@ -14,9 +16,19 @@ class Login extends Component {
         };
 
 
-    submit() {
+    submit = () => {
+        var state = this;
+        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+            .then(() => {
+                AlertIOS.alert("Success")
+            },
+                (error) => {
+                    AlertIOS.alert(error.message)
+                });
         console.log('state of login', this.state);
     }
+
+
     render() {
         return (
             <View style={{flex:1, justifyContent: 'center'}}>
