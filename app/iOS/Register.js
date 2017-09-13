@@ -40,9 +40,10 @@ class Register extends Component {
     render() {
         return ( //there cant be multiple views in the outermost node
             <View style={{ flex: 1, justifyContent: 'center'}}>
-                <Text>Findr</Text>
+                <Text>Life Log</Text>
                 <TextInput
                     style={{height: 40}}
+                    autoCorrect="False"
                     placeholder="Email"
                     onChangeText={(email) => this.setState({email: email})}
                     value={this.state.email}/>

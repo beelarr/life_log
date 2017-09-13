@@ -7,6 +7,11 @@ const deviceWidth = Dimensions.get('window').width;
 var styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: null,
+        width: null,
+        backgroundColor: 'rgba(0,0,0,0)'
     },
     center: {
         justifyContent: 'center',

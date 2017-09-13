@@ -12,7 +12,7 @@ import {
     TextInput,
     AlertIOS,
     TouchableOpacity,
-    ImageBackground
+    Image
 } from 'react-native';
 
 class Login extends Component {
@@ -43,10 +43,8 @@ class Login extends Component {
 
     render() {
         return ( //there cant be multiple views in the outermost node
-            <View style={[styles.container, styles.center, styles.red]}>
-                {/*<ImageBackground style={styles.backgroundImage}*/}
-                       {/*source={{uri: 'https://68.media.tumblr.com/868bf6faa4024aed899aab0d095201d9/tumblr_o2pkc7YRI41tuwqfro1_500.jpg'}}>*/}
-                <Icon name="place" color="#fff" size={50}/>
+            <Image source={{uri: 'https://68.media.tumblr.com/868bf6faa4024aed899aab0d095201d9/tumblr_o2pkc7YRI41tuwqfro1_500.jpg'}} style={[styles.container]}>
+                <Icon name="bookmark" color="#fff" size={50}/>
                 <Text style={ styles.logo }>Life Log</Text>
                 <TextInput
                     style={ styles.textInput }
@@ -62,7 +60,7 @@ class Login extends Component {
                     value={this.state.password}/>
                 <View style={styles.line}/>
                 <TouchableOpacity style={styles.clearBtn} onPress={this.login.bind(this)}>
-                    <Text style={[styles.text, styles.whiteText] }>Submit</Text>
+                    <Text style={[styles.text, styles.whiteText]}>Submit</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={this.login.bind(this)}  //this is the entire component, binds the text input to the submit function
@@ -70,8 +68,7 @@ class Login extends Component {
                 <TouchableOpacity onPress={this.register.bind(this)}>
                     <Text style={styles.whiteText}>Register</Text>
                 </TouchableOpacity>
-                {/*</ImageBackground>*/}
-            </View>
+            </Image>
         );
     }
 }

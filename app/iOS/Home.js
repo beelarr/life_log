@@ -53,9 +53,9 @@ class Home extends Component {
     render () {
         return (
             <View style={styles.container}>
-                <Header title="Findr" left={this.left.bind(this)} leftText={'Post +'}/>
+                <Header title="Life Log" left={this.left.bind(this)} leftText={'Post +'}/>
                 <ScrollView>
-                    {/*nested render object of our food so that the entries are injected. Notice only one outside view*/}
+                    /*nested render object of our food so that the entries are injected. Notice only one outside view*/
                     {Object.keys(this.state.food).map((key) => {
                         return (
                             <TouchableOpacity key={key} /* Key is given to keep xcode from error*/

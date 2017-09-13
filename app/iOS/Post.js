@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import firebase from '../Config/Firebase';
 import Header from '../Components/Header';
 import styles from '../Theme/Theme';
@@ -12,7 +13,6 @@ const deviceHeight = Dimensions.get('window').height;
 const Blob = RNFetchBlob.polyfill.Blob;
 const fs = RNFetchBlob.fs;
 
-import React, { Component } from 'react';
 
 import {
     View,
@@ -65,7 +65,8 @@ class Post extends Component {
         ImagePicker.showImagePicker({}, (response) => {
             if (!response.didCancel) {
                 const source = {uri: response.uri.replace('file://', ''), isStatic: true}; //file:// is unique to iOS, will be different for Andriod
-                ImageResizer.createResizedImage(source.uri, 500, 500, 'JPEG', 60).then((resizedImageURI) => {
+                ImageResizer.createResizedImage(source.uri, 500, 500, 'JPEG', 60)
+                    .then((resizedImageURI) => {
                     uploadImage(resizedImageURI)//creates Blob
                         .then(url => state.setState({image: url})) //once our image is in firebase we setState to display it
                         .catch((error) => {
