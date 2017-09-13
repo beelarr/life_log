@@ -44,7 +44,7 @@ class Post extends Component {
         navigator.geolocation.getCurrentPosition(
             position => {
                 const coordinates = position.coordinates.latitude + ', ' + position.coordinates.longitude
-                const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coordinates}&radius=500&type=restaurant&key=${gpKey}`
+                const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coordinates}&radius=500&key=${gpKey}`
                 fetch(url, {method: "GET"})
                     .then((response) => response.json())
                     .then((responseData) => {
