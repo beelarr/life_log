@@ -67,6 +67,14 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>Cabin-Bold.ttf</string>
+		<string>Cabin-BoldItalic.ttf</string>
+		<string>Cabin-Italic.ttf</string>
+		<string>Cabin-Medium.ttf</string>
+		<string>Cabin-MediumItalic.ttf</string>
+		<string>Cabin-Regular.ttf</string>
+		<string>Cabin-SemiBold.ttf</string>
+		<string>Cabin-SemiBoldItalic.ttf</string>
 	</array>
 </dict>
 </plist>

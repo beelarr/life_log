@@ -3,7 +3,7 @@ import firebase from '../Config/Firebase';
 import register from './Register';
 import home from './Home';
 import styles from '../Theme/Theme'
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 
 import {
@@ -43,9 +43,11 @@ class Login extends Component {
 
     render() {
         return ( //there cant be multiple views in the outermost node
-            <Image source={{uri: 'https://68.media.tumblr.com/868bf6faa4024aed899aab0d095201d9/tumblr_o2pkc7YRI41tuwqfro1_500.jpg'}} style={[styles.container]}>
-                <Icon name="bookmark" color="#fff" size={50}/>
-                <Text style={ styles.logo }>Life Log</Text>
+            <Image source={{uri: 'https://68.media.tumblr.com/964e6c463cdfb8bfa41711979181f413/tumblr_ow8yyywXPV1wb9q31o1_500.jpg'}} style={[styles.container]}>
+                <Icon name="bookmark-o" color="#fff" size={50} style={{textShadowColor: 'black',
+                    textShadowOffset: {width: 2, height: 2},
+                    textShadowRadius: 5}}/>
+                <Text style={ [styles.logo, styles.customFont] }>Life Log</Text>
                 <TextInput
                     style={ styles.textInput }
                     placeholder="Email"

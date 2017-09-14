@@ -37,15 +37,19 @@ var styles = StyleSheet.create({
     },
     clearBtn: {
         borderWidth: 1,
-        borderColor: '#fff',
+        borderColor: '#000',
         padding: 10,
         margin: 10,
         borderRadius: 3,
         width: 150,
+
     },
     text: {
         textAlign: 'center',
-        fontFamily: 'GillSans-Light'
+        fontFamily: 'GillSans-Light',
+        textShadowColor: 'black',
+        textShadowOffset: {width: 2, height: 2},
+        textShadowRadius: 5
     },
     textInput: {
         height: 50,
@@ -53,20 +57,25 @@ var styles = StyleSheet.create({
         fontFamily: 'GillSans-Light',
         backgroundColor: '#fff',
         margin: 15,
-        width: 200
+        width: 200,
+        borderColor: '#000',
+        borderWidth: .5
+
     },
     line: {
-        borderColor: '#dbdbdb',
+        borderColor: '#D4B3AF',
         borderWidth: .5,
         height: 1,
         alignSelf: 'stretch',
     },
     logo:{
         textAlign: 'center',
-        fontSize: 22,
-        fontFamily: "GillSans",
+        fontSize: 38,
         color: '#fff',
-        fontWeight: '500'
+        fontWeight: '500',
+        textShadowColor: 'black',
+        textShadowOffset: {width: 1, height: 1},
+        textShadowRadius: 1
     },
     header: {
         alignItems: 'center',
@@ -105,7 +114,10 @@ var styles = StyleSheet.create({
         color: '#fff',
         textAlign: 'center',
         fontFamily: "GillSans",
-        fontSize: 20
+        fontSize: 20,
+        textShadowColor: 'black',
+        textShadowOffset: {width: 2, height: 2},
+        textShadowRadius: 5
     },
     placeTitle: {
         textAlign: 'center',
@@ -115,10 +127,10 @@ var styles = StyleSheet.create({
     red: {
         backgroundColor: '#128486',
     },
-    backgroundImage: {
-        flex: 1,
-        resizeMode: 'cover', // or 'stretch'
-    }
+    customFont: {
+        fontFamily: "Cabin",
+        fontWeight: 'bold'
+    },
 
 });
 
