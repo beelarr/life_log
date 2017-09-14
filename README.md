@@ -1,8 +1,9 @@
 Files you will need to create
 
-    CONFIG
-        --Firebase.js
+    app       
+        --Config
+            --Firebase.js
     
-    app
+   
         --Values
             --Creds.js (contains google places api key)
