@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../Config/Firebase';
 import Header from '../Components/Header';
-import login from "./Login"
 import styles from '../Theme/Theme';
 import Dimensions from 'Dimensions'; //Gets devices window dimensions
 import uploadImage from '../Config/UploadImage';
@@ -9,6 +8,8 @@ import ImagePicker from 'react-native-image-picker'; //allows access of camera
 import RNFetchBlob from 'react-native-fetch-blob'; //work-around that enables firebase to accept photos
 import ImageResizer from 'react-native-image-resizer'; //auto resizer that helps app performance and look consistency ex. line 40
 import gpKey from '../Values/Creds';
+
+
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 const Blob = RNFetchBlob.polyfill.Blob;
@@ -104,7 +105,7 @@ class Post extends Component {
         this.props.navigator.pop();
     };
 
-    render () {
+    render () { // 2nd return This return Updates the place for our post*/
         return (
             <View>
                 <Header title="Post" left={this.back.bind(this)} leftText={'Back'}/>
@@ -120,7 +121,7 @@ class Post extends Component {
                                 lat: this.state.nearby[key].geometry.location.lat,
                                 lng: this.state.nearby[key].geometry.location.lng,
                                 name: this.state.nearby[key].name
-                            };          // This return Updates the place for our post*/
+                            };
                             return (
 
                                 <TouchableOpacity key={key} style={{padding: 10}} onPress={(place) => this.setState({place:placeObj})}>

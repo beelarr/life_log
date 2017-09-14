@@ -1,6 +1,5 @@
 import React, { Component } from 'react';   // importing from node_modules
 import firebase from '../Config/Firebase';
-import register from './Register';
 import home from './Home';
 import styles from '../Theme/Theme'
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -35,7 +34,7 @@ class Login extends Component {
                 state.props.navigator.push({ component: home });
         },  (error) => {
             // An error happened
-            AlertIOS.alert(error.message)  //TODO Grab the Users UID and attach it to the post. Create a logout function.
+            AlertIOS.alert(error.message)
         });
     };
 

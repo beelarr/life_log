@@ -1,6 +1,5 @@
 import React, { Component } from 'react';   // importing from node_modules
 import firebase from '../Config/Firebase';
-import login from './Login.js';
 import home from './Home.js';
 import styles from '../Theme/Theme';
 import Icon from 'react-native-vector-icons/FontAwesome'

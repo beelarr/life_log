@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
 import MapView from 'react-native-maps';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 import styles from '../Theme/Theme';
-var Dimensions = require('Dimensions'); //Gets devices window dimensions
-var deviceWidth = Dimensions.get('window').width;
-var deviceHeight = Dimensions.get('window').height;
 
 import {
     Text,

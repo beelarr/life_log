@@ -3,7 +3,6 @@ import firebase from '../Config/Firebase';
 import Header from '../Components/Header';
 import styles from '../Theme/Theme';
 import post from './Post';
-import map from './Map';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import Dimensions from 'Dimensions';
@@ -21,25 +20,37 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            uid: "",
             food: [],
         }
     }
 
     componentDidMount = () => {  //react native instance of what to do when someone is on a page
         this.getPosts()
-    }
-
-    getPosts()  {
-        firebase.database().ref('food').on('value', (foodEntry) => {  //once allows the db to be on once when someone comes to the page - on keeps it current
-            var items = [];
-            foodEntry.forEach((child) => { //child = image and value in FB
-                var item = child.val();
-                items.push(item);
-            });
-            items = items.reverse(); //showing newest items
-            this.setState({ food: items });
-        });
     };
+
+    getPosts() {
+
+        console.log('the state in post', this.state);
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                let userId = user.uid;
+                console.log('userId', userId);
+                this.setState({uid: userId});
+                firebase.database().ref('/food').orderByChild('uid').equalTo(userId).on('value', (userPost) => {
+                    var items = [];
+                    userPost.forEach((child) => { //child = image and value in FB
+                        var item = child.val();
+                        items.push(item);
+                    });
+                    items = items.reverse(); //showing newest items
+                    this.setState({ food: items });
+                })
+
+            }
+        })
+    };
+
 
     left() { this.props.navigator.push({ component: post })};
     //pushing post component which takes us to the post view/page
