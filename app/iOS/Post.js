@@ -8,6 +8,8 @@ import ImagePicker from 'react-native-image-picker'; //allows access of camera
 import RNFetchBlob from 'react-native-fetch-blob'; //work-around that enables firebase to accept photos
 import ImageResizer from 'react-native-image-resizer'; //auto resizer that helps app performance and look consistency ex. line 40
 import gpKey from '../Values/Creds';
+
+
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 const Blob = RNFetchBlob.polyfill.Blob;
@@ -36,7 +38,8 @@ class Post extends Component {
             },
             lat: '',
             long: '',
-            nearby: []
+            nearby: [],
+            uid: ''
         };
     }
 
@@ -79,15 +82,30 @@ class Post extends Component {
     };
 
     post = () => {
-        firebase.database().ref('food').push({image: this.state.image, place: this.state.place});
+        console.log('the state in post', this.state);
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                let userId = user.uid;
+                console.log('userId', userId);
+                this.setState({ uid: userId });
+                firebase.database().ref('food').push({image: this.state.image, place: this.state.place, uid: this.state.uid });
+
+            }
+
+        });
+
+
         this.props.navigator.pop();
+
     };
+
+
 
     back = () => {
         this.props.navigator.pop();
     };
 
-    render () {
+    render () { // 2nd return This return Updates the place for our post*/
         return (
             <View>
                 <Header title="Post" left={this.back.bind(this)} leftText={'Back'}/>
@@ -103,10 +121,10 @@ class Post extends Component {
                                 lat: this.state.nearby[key].geometry.location.lat,
                                 lng: this.state.nearby[key].geometry.location.lng,
                                 name: this.state.nearby[key].name
-                            };          // This return Updates the place for our post*/
+                            };
                             return (
 
-                                <TouchableOpacity style={{padding: 10}} onPress={(place) => this.setState({place:placeObj})}>
+                                <TouchableOpacity key={key} style={{padding: 10}} onPress={(place) => this.setState({place:placeObj})}>
                                     <Text style={styles.textPost}>{this.state.nearby[key].name}</Text>
                                     <Text style={styles.textPost}>{this.state.nearby[key].vicinity}</Text>
                                     <Text style={styles.textPost}>⭐{this.state.nearby[key].rating}</Text>
@@ -115,7 +133,7 @@ class Post extends Component {
                         })}
                     </ScrollView>
                     <TouchableOpacity style={styles.btn} onPress={this.post.bind(this)}>
-                        <Text style={styles.text}>Post</Text>
+                        <Text style={styles.textPost}>Post</Text>
                     </TouchableOpacity>
                 </View>
             </View>

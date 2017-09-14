@@ -1,14 +1,16 @@
 import React, { Component } from 'react';   // importing from node_modules
 import firebase from '../Config/Firebase';
-import login from './Login.js';
-import home from './Home.js'
+import home from './Home.js';
+import styles from '../Theme/Theme';
+import Icon from 'react-native-vector-icons/FontAwesome'
+
 
 
 import {
     View,
     Text,
     TextInput,
-    Button,
+    ImageBackground,
     AlertIOS,
     TouchableOpacity
 } from 'react-native';
@@ -18,13 +20,16 @@ class Register extends Component {
         super(props); // setting the properties
         this.state = { //defining the initial state of the props
             email: "",
-            password: ""
+            password: "",
+            uid: ""
         };
     }
 
     register = () => {
         var state = this;
-        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(function () {
+        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+            .then((data) => {
+            this.setState({uid: data.uid});
             //Register successful
             state.props.navigator.push({ component:home }); // If I used 'this' here it would be referring to Firebase. By capturing it before it refers to Register.
         },  (error) => {
@@ -34,32 +39,44 @@ class Register extends Component {
     }
 
     login = () => {
-        this.props.navigator.push({component: login});
+        this.props.navigator.pop();
     }
 
     render() {
-        return ( //there cant be multiple views in the outermost node
-            <View style={{ flex: 1, justifyContent: 'center'}}>
-                <Text>Life Log</Text>
+        /*there cant be multiple views in the outermost node*/
+        /* line 60 - this is the entire component, binds the text input to the register function*/
+        /*line62-binds the component on the submit function to the state*/
+        //line 71 -this is the entire component, binds the text input to the submit function
+        return (
+            <ImageBackground source={{uri: 'https://68.media.tumblr.com/964e6c463cdfb8bfa41711979181f413/tumblr_ow8yyywXPV1wb9q31o1_500.jpg'}} style={[styles.container]}>
+                <Icon name="bookmark-o" color="#fff" size={65} style={{textShadowColor: 'black',
+                    textShadowOffset: {width: 2, height: 2},
+                    textShadowRadius: 5}}/>
+                <Text style={ [styles.logo, styles.customFont] }>Life Log</Text>
                 <TextInput
-                    style={{height: 40}}
-                    autoCorrect="False"
+                    style={ styles.textInput }
                     placeholder="Email"
+                    placeholderTextColor="#000308"
                     onChangeText={(email) => this.setState({email: email})}
                     value={this.state.email}/>
+                <View style={styles.line}/>
                 <TextInput
-                    style={{height: 40}}
+                    style={styles.textInput}
                     placeholder="Password"
+                    placeholderTextColor="#000000"
                     secureTextEntry={true}
                     onChangeText={(password) => this.setState({password: password})}
                     value={this.state.password}/>
-                <Button
-                    onPress={this.register.bind(this)}  //this is the entire component, binds the text input to the register function
-                    title="Register"/>
-                <TouchableOpacity onPress={this.login.bind(this)}> //binds the component on the submit function to the state
-                    <Text>Login</Text>
+                <TouchableOpacity style={styles.clearBtn} onPress={this.register.bind(this)}>
+                    <Text style={[styles.text, styles.whiteText]}>Register</Text>
                 </TouchableOpacity>
-            </View>
+                <TouchableOpacity
+                    onPress={this.login.bind(this)}
+                    title="Login"/>
+                <TouchableOpacity onPress={this.register.bind(this)}>
+                    <Text style={styles.whiteText}>Login</Text>
+                </TouchableOpacity>
+            </ImageBackground>
         );
     }
 }

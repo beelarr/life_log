@@ -12,7 +12,6 @@ var styles = StyleSheet.create({
         height: null,
         width: null,
         backgroundColor: 'rgba(0,0,0,0)',
-        resizeMode: 'stretch',
     },
     homeContainer: {
         flex: 1,
@@ -143,6 +142,11 @@ var styles = StyleSheet.create({
         textAlign: 'center',
         fontFamily: 'GillSans-Light',
         color: '#fff'
+    },
+    mapBackButton: {
+        textAlign: 'center',
+        fontFamily: 'GillSans-Light',
+        backgroundColor: 'rgba(0,0,0,0)'
     }
 
 });
