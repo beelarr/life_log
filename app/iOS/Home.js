@@ -51,19 +51,19 @@ class Home extends Component {
         });
     };
 
-    render () {
+    render () {   // nested render object of our food so that the entries are injected. Notice only one outside view. Key is given to keep xcode from error*/
+
         return (
-            <View style={styles.container}>
-                <Header title="Life Log" left={this.left.bind(this)} leftText={'Post '}/>
+            <View style={styles.homeContainer}>
+                <Header title="Life Log" left={this.left.bind(this)} leftText={<Icon name="plus" color="#ADD3D3" size={18}/> }/>
                 <ScrollView>
-                    /*nested render object of our food so that the entries are injected. Notice only one outside view*/
                     {Object.keys(this.state.food).map((key) => {
                         return (
-                            <TouchableOpacity key={key} /* Key is given to keep xcode from error*/
+                            <TouchableOpacity key={key}
                                               onPress={this.map.bind({self: this, place: this.state.food[key]})}>
                                 <Image source={{uri: this.state.food[key].image}} style={{ width: deviceWidth, height: (deviceWidth*.5)}}/>
-                                <Text style={styles.text}>{this.state.food[key].place.name}</Text>
-                                <Text style={styles.text}>{this.state.food[key].place.address}</Text>
+                                <Text style={styles.textPost}>{this.state.food[key].place.name}</Text>
+                                <Text style={styles.textPost}>{this.state.food[key].place.address}</Text>
                             </TouchableOpacity>
                         )
                     })}

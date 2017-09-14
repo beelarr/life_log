@@ -14,6 +14,9 @@ var styles = StyleSheet.create({
         backgroundColor: 'rgba(0,0,0,0)',
         resizeMode: 'stretch',
     },
+    homeContainer: {
+        flex: 1,
+    },
     center: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -82,9 +85,9 @@ var styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         height: 65,
-        marginTop: 10,
+        marginTop: 0,
         flexDirection: 'row',
-        backgroundColor: '#CE2828'
+        backgroundColor: '#118183'
     },
     mapContainer: {      //styling requirements from Airbnb Maps
         position: 'absolute',
@@ -132,6 +135,15 @@ var styles = StyleSheet.create({
         fontFamily: "Cabin",
         fontWeight: 'bold'
     },
+    textPost: {
+        textAlign: 'center',
+        fontFamily: 'GillSans-Light',
+    },
+    textHeader: {
+        textAlign: 'center',
+        fontFamily: 'GillSans-Light',
+        color: '#fff'
+    }
 
 });
 

@@ -48,7 +48,7 @@ class Post extends Component {
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 const coords = position.coords.latitude + ',' + position.coords.longitude;
-                const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coords}&radius=500&type=restaurant&key=${gpKey}`;
+                const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coords}&radius=500&key=${gpKey}`;
                 fetch(url, {method: "GET"}) //react native's xmlhttp call
                     .then(response => response.json())
                     .then(responseData => {
@@ -64,7 +64,8 @@ class Post extends Component {
         window.Blob = Blob;
         ImagePicker.showImagePicker({}, (response) => {
             if (!response.didCancel) {
-                const source = {uri: response.uri.replace('file://', ''), isStatic: true}; //file:// is unique to iOS, will be different for Andriod
+                const source = {uri: response.uri.replace('file://', ''), isStatic: true}; //TODO: When click on toke photo creates an error
+                //file:// is unique to iOS, will be different for Andriod
                 ImageResizer.createResizedImage(source.uri, 500, 500, 'JPEG', 60)
                     .then((resizedImageURI) => {
                     uploadImage(resizedImageURI)//creates Blob
@@ -105,9 +106,9 @@ class Post extends Component {
                             };          // This return Updates the place for our post*/
                             return (
                                 <TouchableOpacity style={{padding: 10}} onPress={(place) => this.setState({place:test})}>
-                                    <Text style={styles.text}>{this.state.nearby[key].name}</Text>
-                                    <Text style={styles.text}>{this.state.nearby[key].vicinity}</Text>
-                                    <Text style={styles.text}>⭐{this.state.nearby[key].rating}</Text>
+                                    <Text style={styles.textPost}>{this.state.nearby[key].name}</Text>
+                                    <Text style={styles.textPost}>{this.state.nearby[key].vicinity}</Text>
+                                    <Text style={styles.textPost}>⭐{this.state.nearby[key].rating}</Text>
                                 </TouchableOpacity>
                             )
                         })}

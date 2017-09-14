@@ -44,7 +44,7 @@ class Login extends Component {
     render() {
         return ( //there cant be multiple views in the outermost node
             <Image source={{uri: 'https://68.media.tumblr.com/964e6c463cdfb8bfa41711979181f413/tumblr_ow8yyywXPV1wb9q31o1_500.jpg'}} style={[styles.container]}>
-                <Icon name="bookmark-o" color="#fff" size={50} style={{textShadowColor: 'black',
+                <Icon name="bookmark-o" color="#fff" size={65} style={{textShadowColor: 'black',
                     textShadowOffset: {width: 2, height: 2},
                     textShadowRadius: 5}}/>
                 <Text style={ [styles.logo, styles.customFont] }>Life Log</Text>
@@ -58,7 +58,7 @@ class Login extends Component {
                 <TextInput
                     style={styles.textInput}
                     placeholder="Password"
-                    placeholderTextColor="#000308"
+                    placeholderTextColor="#000000"
                     secureTextEntry={true}
                     onChangeText={(password) => this.setState({password: password})}
                     value={this.state.password}/>
