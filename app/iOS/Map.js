@@ -39,7 +39,7 @@ class Map extends Component {
                     />
                 </MapView>
                 <TouchableOpacity style={ styles.btn } onPress={this.onBack.bind(this)} >
-                    <Text style={styles.text}><Icon name="arrow-left" size={25}/>Back</Text>
+                    <Text style={styles.mapBackButton}>Back</Text>
                 </TouchableOpacity>
             </View>
         );

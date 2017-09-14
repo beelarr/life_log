@@ -143,6 +143,11 @@ var styles = StyleSheet.create({
         textAlign: 'center',
         fontFamily: 'GillSans-Light',
         color: '#fff'
+    },
+    mapBackButton: {
+        textAlign: 'center',
+        fontFamily: 'GillSans-Light',
+        backgroundColor: 'rgba(0,0,0,0)'
     }
 
 });
