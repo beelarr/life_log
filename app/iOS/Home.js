@@ -4,6 +4,7 @@ import Header from '../Components/Header';
 import styles from '../Theme/Theme';
 import post from './Post';
 import map from './Map';
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 import Dimensions from 'Dimensions';
 const deviceWidth = Dimensions.get('window').width;
@@ -53,7 +54,7 @@ class Home extends Component {
     render () {
         return (
             <View style={styles.container}>
-                <Header title="Life Log" left={this.left.bind(this)} leftText={'Post +'}/>
+                <Header title="Life Log" left={this.left.bind(this)} leftText={'Post '}/>
                 <ScrollView>
                     /*nested render object of our food so that the entries are injected. Notice only one outside view*/
                     {Object.keys(this.state.food).map((key) => {
