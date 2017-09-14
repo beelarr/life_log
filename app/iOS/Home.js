@@ -14,6 +14,7 @@ import {
     ScrollView,
     Image,
     TouchableOpacity,
+    Linking
 } from 'react-native';
 
 class Home extends Component {
@@ -44,15 +45,18 @@ class Home extends Component {
     //pushing post component which takes us to the post view/page
 
 
-    map() {
-        console.log('this', this);
-        console.log('this.props', this.props);
+    // openMaps () {
+    //     console.log('lat', this);
+    //
+    //     Linking.openURL(`https://www.google.com/maps/@?api=1&map_action=map&center=-${this.state.lat},${this.state.lng}&zoom=12&basemap=terrain`)
+    // }
 
-        this.self.props.navigator.push({  //not really sure what this does
-            component: map,
-            passProps: {place: this.place.place }  //TODO: There is a bug here. If i replace the map doesn't error but it doesnt load. Check this file and map.js. #11
-        });
-    };
+    // map() {
+    //     this.self.props.navigator.push({  //this is the component, self is set on line 67, props
+    //         component: map,
+    //         passProps: {place: this.place.place }
+    //     });
+    // };
 
     render () {   // nested return object of our food so that the entries are injected. Notice only one outside view. Key is given to keep xcode from error*/
 
@@ -64,7 +68,9 @@ class Home extends Component {
                     {Object.keys(this.state.food).map((key) => {
                         return (
                             <TouchableOpacity key={key}
-                                              onPress={this.map.bind({self: this, place: this.state.food[key]})}>
+                                              onPress={() => {Linking.openURL(
+                                                  `https://www.google.com/maps/dir/?api=1&destination=${this.state.food[key].place.lat},
+                                                  ${this.state.food[key].place.lng}&zoom=12&basemap=roadmap`)}}>
                                 <Image source={{uri: this.state.food[key].image}} style={{ width: deviceWidth, height: (deviceWidth*.5)}}/>
                                 <Text style={styles.textPost}>{this.state.food[key].place.name}</Text>
                                 <Text style={styles.textPost}>{this.state.food[key].place.address}</Text>
