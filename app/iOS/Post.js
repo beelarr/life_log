@@ -98,14 +98,15 @@ class Post extends Component {
                     <Text>{this.state.place.name}</Text>
                     <ScrollView style={{height: deviceHeight*.4}}>
                         {Object.keys(this.state.nearby).map((key) => {
-                            var test = {
+                            var placeObj = {
                                 address: this.state.nearby[key].vicinity,
                                 lat: this.state.nearby[key].geometry.location.lat,
                                 lng: this.state.nearby[key].geometry.location.lng,
                                 name: this.state.nearby[key].name
                             };          // This return Updates the place for our post*/
                             return (
-                                <TouchableOpacity style={{padding: 10}} onPress={(place) => this.setState({place:test})}>
+
+                                <TouchableOpacity style={{padding: 10}} onPress={(place) => this.setState({place:placeObj})}>
                                     <Text style={styles.textPost}>{this.state.nearby[key].name}</Text>
                                     <Text style={styles.textPost}>{this.state.nearby[key].vicinity}</Text>
                                     <Text style={styles.textPost}>⭐{this.state.nearby[key].rating}</Text>
