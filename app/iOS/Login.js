@@ -32,7 +32,7 @@ class Login extends Component {
             state.props.navigator.push({ component: home });
         },  (error) => {
             // An error happened
-            AlertIOS.alert(error.message)  //TODO Grab the Users UID and attach it to the post.
+            AlertIOS.alert(error.message)  //TODO Grab the Users UID and attach it to the post. Create a logout function.
         });
     };
 
