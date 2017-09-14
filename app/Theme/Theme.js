@@ -1,11 +1,20 @@
 const React = require('react-native');
-const {StyleSheet} = React;  //React requirement to bind Stylesheet
-var Dimensions = require('Dimensions');
-var deviceWidth = Dimensions.get('window').width;
-var deviceHeight = Dimensions.get('window').height;
+const {StyleSheet} = React;
+import Dimensions from 'Dimensions';
+const deviceWidth = Dimensions.get('window').width;
+
 
 var styles = StyleSheet.create({
     container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: null,
+        width: null,
+        backgroundColor: 'rgba(0,0,0,0)',
+        resizeMode: 'stretch',
+    },
+    homeContainer: {
         flex: 1,
     },
     center: {
@@ -15,11 +24,12 @@ var styles = StyleSheet.create({
     left: {
         justifyContent: 'flex-start',
         width: 75,
-        padding:15
+        padding: 15
     },
     right: {
         justifyContent: 'flex-end',
-        width: 75
+        width: 75,
+
     },
     btn: {
         borderWidth: 1,
@@ -30,46 +40,56 @@ var styles = StyleSheet.create({
     },
     clearBtn: {
         borderWidth: 1,
-        borderColor: '#fff',
+        borderColor: '#000',
         padding: 10,
         margin: 10,
         borderRadius: 3,
         width: 150,
+
     },
     text: {
         textAlign: 'center',
-        fontFamily: "GillSans-Light"
+        fontFamily: 'GillSans-Light',
+        textShadowColor: 'black',
+        textShadowOffset: {width: 2, height: 2},
+        textShadowRadius: 5
     },
     textInput: {
         height: 50,
-        width: 150,
         textAlign: 'center',
-        fontFamily: "GillSans-Light",
-        backgroundColor: '#fff',
-        margin: 15
+        fontFamily: 'GillSans-Light',
+        color: '#000',
+        backgroundColor: 'rgba(0,0,0,0)',
+        margin: 15,
+        width: 200,
+        borderColor: '#000',
+        borderWidth: .5
+
     },
     line: {
-        borderColor: '#dbdbdb',
-        borderWidth: 0.5,
+        borderColor: '#D4B3AF',
+        borderWidth: .5,
         height: 1,
         alignSelf: 'stretch',
     },
     logo:{
         textAlign: 'center',
-        fontSize: 22,
-        fontFamily: "GillSans",
+        fontSize: 38,
         color: '#fff',
-        fontWeight: '500'
+        fontWeight: '500',
+        textShadowColor: 'black',
+        textShadowOffset: {width: 1, height: 1},
+        textShadowRadius: 1
     },
     header: {
         alignItems: 'center',
         justifyContent: 'space-between',
         height: 65,
-        paddingTop: 10,
+        marginTop: 0,
         flexDirection: 'row',
-        backgroundColor: '#CE2828',
+        backgroundColor: '#118183'
     },
-    mapContainer: {
+    mapContainer: {      //styling requirements from Airbnb Maps
         position: 'absolute',
         top: 0,
         left: 0,
@@ -98,7 +118,10 @@ var styles = StyleSheet.create({
         color: '#fff',
         textAlign: 'center',
         fontFamily: "GillSans",
-        fontSize: 20
+        fontSize: 20,
+        textShadowColor: 'black',
+        textShadowOffset: {width: 2, height: 2},
+        textShadowRadius: 5
     },
     placeTitle: {
         textAlign: 'center',
@@ -106,8 +129,22 @@ var styles = StyleSheet.create({
         fontSize: 16,
     },
     red: {
-        backgroundColor: '#CE2828',
+        backgroundColor: '#128486',
+    },
+    customFont: {
+        fontFamily: "Cabin",
+        fontWeight: 'bold'
+    },
+    textPost: {
+        textAlign: 'center',
+        fontFamily: 'GillSans-Light',
+    },
+    textHeader: {
+        textAlign: 'center',
+        fontFamily: 'GillSans-Light',
+        color: '#fff'
     }
+
 });
 
 module.exports = styles;

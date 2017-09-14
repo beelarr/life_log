@@ -17,7 +17,7 @@ export default class life_log extends Component {
   render() {
     return (
       <NavigatorIOS
-        navigationBarHidden={false}
+        navigationBarHidden={true}
         initialRoute={{title: "Login", component: Login}} //required for NaviOS
         style = {{flex: 1}}
       />

@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
-import login from './Login';
+import React, { Component } from 'react';   // importing from node_modules
 import firebase from '../Config/Firebase';
-import styles from '../Theme/Theme';
+import login from './Login.js';
+import home from './Home.js'
+
 
 import {
     View,
@@ -13,52 +14,49 @@ import {
 } from 'react-native';
 
 class Register extends Component {
-    state = {
-        email: '',
-        password: ''
-    };
-
+    constructor(props){ //passing down props from navigator
+        super(props); // setting the properties
+        this.state = { //defining the initial state of the props
+            email: "",
+            password: ""
+        };
+    }
 
     register = () => {
         var state = this;
-        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-            .then(() => {
-            console.log('state in register', state);
-
-                state.props.navigator.push({ component: home});
-                },
-                (error) => {
-                    AlertIOS.alert(error.message)
-                });
-        console.log('state of login', this.state);
-    };
+        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(function () {
+            //Register successful
+            state.props.navigator.push({ component:home }); // If I used 'this' here it would be referring to Firebase. By capturing it before it refers to Register.
+        },  (error) => {
+            // An error happened
+            AlertIOS.alert(error.message)
+        });
+    }
 
     login = () => {
         this.props.navigator.push({component: login});
-    };
-
+    }
 
     render() {
-        return (
-            <View style={{flex:1, justifyContent: 'center'}}>
+        return ( //there cant be multiple views in the outermost node
+            <View style={{ flex: 1, justifyContent: 'center'}}>
                 <Text>Life Log</Text>
                 <TextInput
-                    style={{height:40}}
-                    autoCorrect = {false}
-                    placeHolder="you@gmail.com"
-                    onChangeText={email => this.setState({email: email})}
+                    style={{height: 40}}
+                    autoCorrect="False"
+                    placeholder="Email"
+                    onChangeText={(email) => this.setState({email: email})}
                     value={this.state.email}/>
                 <TextInput
-                    style={{height:40}}
-                    autoCorrect = {false}
-                    placeHolder="Password"
+                    style={{height: 40}}
+                    placeholder="Password"
                     secureTextEntry={true}
-                    onChangeText={password => this.setState({password: password})}
+                    onChangeText={(password) => this.setState({password: password})}
                     value={this.state.password}/>
                 <Button
-                    onPress={this.register.bind(this)} //binds the component on the submit function to the state
+                    onPress={this.register.bind(this)}  //this is the entire component, binds the text input to the register function
                     title="Register"/>
-                <TouchableOpacity onPress={this.login.bind(this)}>
+                <TouchableOpacity onPress={this.login.bind(this)}> //binds the component on the submit function to the state
                     <Text>Login</Text>
                 </TouchableOpacity>
             </View>

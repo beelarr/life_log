@@ -1,9 +1,9 @@
 import firebase from './Firebase';
 import RNFetchBlob from 'react-native-fetch-blob';
 const Blob = RNFetchBlob.polyfill.Blob;
-const fetch = RNFetchBlob.fs;
+const fs = RNFetchBlob.fs;
 
-// Another part of the Fetch Blob that I had help constructing.
+//this function uploads our image by encoding to the Blob's specs. Taken from the Reat Native fetch-blob github page.
 
 const uploadImage = (uri, mime = 'application/octet-stream') => {
     return new Promise((resolve, reject) => {
@@ -34,3 +34,5 @@ const uploadImage = (uri, mime = 'application/octet-stream') => {
 };
 
 module.exports = uploadImage;
+
+
