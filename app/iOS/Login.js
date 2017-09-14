@@ -12,7 +12,7 @@ import {
     TextInput,
     AlertIOS,
     TouchableOpacity,
-    Image
+    ImageBackground
 } from 'react-native';
 
 class Login extends Component {
@@ -20,16 +20,19 @@ class Login extends Component {
         super(props); // setting the properties
         this.state = { //defining the initial state of the props
             email: "",
-            password: ""
+            password: "",
+            uid: ""
         };
     }
 
     login = () => {
         var state = this;
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-            .then( () => {
+            .then( (data) => {
+                console.log('login getting uid', data.uid);
+                this.setState({uid: data.uid});
             //Login successful
-            state.props.navigator.push({ component: home });
+                state.props.navigator.push({ component: home });
         },  (error) => {
             // An error happened
             AlertIOS.alert(error.message)  //TODO Grab the Users UID and attach it to the post. Create a logout function.
@@ -43,7 +46,7 @@ class Login extends Component {
 
     render() {
         return ( //there cant be multiple views in the outermost node
-            <Image source={{uri: 'https://68.media.tumblr.com/964e6c463cdfb8bfa41711979181f413/tumblr_ow8yyywXPV1wb9q31o1_500.jpg'}} style={[styles.container]}>
+            <ImageBackground source={{uri: 'https://68.media.tumblr.com/964e6c463cdfb8bfa41711979181f413/tumblr_ow8yyywXPV1wb9q31o1_500.jpg'}} style={[styles.container]}>
                 <Icon name="bookmark-o" color="#fff" size={65} style={{textShadowColor: 'black',
                     textShadowOffset: {width: 2, height: 2},
                     textShadowRadius: 5}}/>
@@ -72,7 +75,7 @@ class Login extends Component {
                 <TouchableOpacity onPress={this.register.bind(this)}>
                     <Text style={styles.whiteText}>Register</Text>
                 </TouchableOpacity>
-            </Image>
+            </ImageBackground>
         );
     }
 }

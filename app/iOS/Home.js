@@ -26,10 +26,10 @@ class Home extends Component {
     }
 
     componentDidMount = () => {  //react native instance of what to do when someone is on a page
-        this.getFood()
+        this.getPosts()
     }
 
-    getFood()  {
+    getPosts()  {
         firebase.database().ref('food').on('value', (foodEntry) => {  //once allows the db to be on once when someone comes to the page - on keeps it current
             var items = [];
             foodEntry.forEach((child) => { //child = image and value in FB
@@ -45,18 +45,6 @@ class Home extends Component {
     //pushing post component which takes us to the post view/page
 
 
-    // openMaps () {
-    //     console.log('lat', this);
-    //
-    //     Linking.openURL(`https://www.google.com/maps/@?api=1&map_action=map&center=-${this.state.lat},${this.state.lng}&zoom=12&basemap=terrain`)
-    // }
-
-    // map() {
-    //     this.self.props.navigator.push({  //this is the component, self is set on line 67, props
-    //         component: map,
-    //         passProps: {place: this.place.place }
-    //     });
-    // };
 
     render () {   // nested return object of our food so that the entries are injected. Notice only one outside view. Key is given to keep xcode from error*/
 

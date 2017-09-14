@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../Config/Firebase';
 import Header from '../Components/Header';
+import login from "./Login"
 import styles from '../Theme/Theme';
 import Dimensions from 'Dimensions'; //Gets devices window dimensions
 import uploadImage from '../Config/UploadImage';
@@ -36,7 +37,8 @@ class Post extends Component {
             },
             lat: '',
             long: '',
-            nearby: []
+            nearby: [],
+            uid: ''
         };
     }
 
@@ -79,9 +81,24 @@ class Post extends Component {
     };
 
     post = () => {
-        firebase.database().ref('food').push({image: this.state.image, place: this.state.place});
+        console.log('the state in post', this.state);
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                let userId = user.uid;
+                console.log('userId', userId);
+                this.setState({ uid: userId });
+                firebase.database().ref('food').push({image: this.state.image, place: this.state.place, uid: this.state.uid });
+
+            }
+
+        });
+
+
         this.props.navigator.pop();
+
     };
+
+
 
     back = () => {
         this.props.navigator.pop();
@@ -106,7 +123,7 @@ class Post extends Component {
                             };          // This return Updates the place for our post*/
                             return (
 
-                                <TouchableOpacity style={{padding: 10}} onPress={(place) => this.setState({place:placeObj})}>
+                                <TouchableOpacity key={key} style={{padding: 10}} onPress={(place) => this.setState({place:placeObj})}>
                                     <Text style={styles.textPost}>{this.state.nearby[key].name}</Text>
                                     <Text style={styles.textPost}>{this.state.nearby[key].vicinity}</Text>
                                     <Text style={styles.textPost}>⭐{this.state.nearby[key].rating}</Text>
@@ -115,7 +132,7 @@ class Post extends Component {
                         })}
                     </ScrollView>
                     <TouchableOpacity style={styles.btn} onPress={this.post.bind(this)}>
-                        <Text style={styles.text}>Post</Text>
+                        <Text style={styles.textPost}>Post</Text>
                     </TouchableOpacity>
                 </View>
             </View>

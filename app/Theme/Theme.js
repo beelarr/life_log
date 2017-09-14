@@ -12,7 +12,6 @@ var styles = StyleSheet.create({
         height: null,
         width: null,
         backgroundColor: 'rgba(0,0,0,0)',
-        resizeMode: 'stretch',
     },
     homeContainer: {
         flex: 1,
