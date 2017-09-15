@@ -66,7 +66,7 @@ var styles = StyleSheet.create({
 
     },
     line: {
-        borderColor: '#D4B3AF',
+        borderColor: '#000',
         borderWidth: .5,
         height: 1,
         alignSelf: 'stretch',

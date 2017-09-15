@@ -69,7 +69,7 @@ class Post extends Component {
             if (!response.didCancel) {
                 const source = {uri: response.uri.replace('file://', ''), isStatic: true};
                 //file:// is unique to iOS, will be different for Andriod
-                ImageResizer.createResizedImage(source.uri, 500, 500, 'JPEG', 60)
+                ImageResizer.createResizedImage(source.uri, 500, 500, 'JPEG', 90)
                     .then((resizedImageURI) => {
                     uploadImage(resizedImageURI)//creates Blob
                         .then(url => state.setState({image: url})) //once our image is in firebase we setState to display it

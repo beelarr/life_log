@@ -13,6 +13,7 @@
 		"react-native-fetch-blob": "^0.10.8",
 		"react-native-image-picker": "^0.26.6",
 		"react-native-image-resizer": "^0.1.1",
+		"react-native-keyboard-spacer": "^0.3.1",
 		"react-native-maps": "^0.16.3",
 		"react-native-vector-icons": "^4.3.0"
 	},
@@ -25,7 +26,9 @@
 		"react-test-renderer": "16.0.0-alpha.12"
 	},
 	"rnpm": {
-		"assets": ["assets/fonts/Cabin"]
+		"assets": [
+			"assets/fonts/Cabin"
+		]
 	},
 	"jest": {
 		"preset": "react-native"

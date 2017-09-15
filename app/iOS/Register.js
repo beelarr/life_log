@@ -3,6 +3,8 @@ import firebase from '../Config/Firebase';
 import home from './Home.js';
 import styles from '../Theme/Theme';
 import Icon from 'react-native-vector-icons/FontAwesome'
+import KeyboardSpacer from 'react-native-keyboard-spacer';
+
 
 
 
@@ -68,6 +70,7 @@ class Register extends Component {
                     onChangeText={(password) => this.setState({password: password})}
                     value={this.state.password}/>
                 {/*<View style={styles.line}/>*/}
+                <KeyboardSpacer/>
                 <TouchableOpacity style={styles.clearBtn} onPress={this.register.bind(this)}>
                     <Text style={[styles.text, styles.whiteText]}>Register</Text>
                 </TouchableOpacity>

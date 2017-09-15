@@ -78,16 +78,22 @@ class Home extends Component {
                         leftText={<Icon name="add-circle-outline"
                         color="#fff"
                         size={22}/> }/>
+                        <Text style={{  fontFamily: 'cabin',
+                                        fontSize:20,
+                                        textAlign: 'center',
+                                        marginTop: 5,
+                                        marginBottom: 5}}>
+                        Posts</Text>
+                <View style={styles.line}/>
+
                 <ScrollView>
                     <View style={{marginTop: -20}}>
-                    {Object.keys(this.state.food).map((key) => {
+
+                        {Object.keys(this.state.food).map((key) => {
                         return (
                             <TouchableOpacity key={key}
                                               onPress={this.map.bind({self: this, place: this.state.food[key]})}>
-
-
-
-                                <Image source={{uri: this.state.food[key].image}} style={{ width: deviceWidth, height: (deviceWidth*.5)}}/>
+                                <Image source={{uri: this.state.food[key].image}} style={{ width: deviceWidth, height: (deviceWidth*.6),}}/>
                                 <Text style={styles.textPost}>{this.state.food[key].place.name}</Text>
                                 <Text style={styles.textPost}>{this.state.food[key].place.address}</Text>
                             </TouchableOpacity>

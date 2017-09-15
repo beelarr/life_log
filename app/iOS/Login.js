@@ -4,6 +4,8 @@ import home from './Home';
 import styles from '../Theme/Theme'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import register from './Register'
+import KeyboardSpacer from 'react-native-keyboard-spacer';
+
 
 
 import {
@@ -12,7 +14,8 @@ import {
     TextInput,
     AlertIOS,
     TouchableOpacity,
-    ImageBackground
+    ImageBackground,
+    ScrollView
 } from 'react-native';
 
 class Login extends Component {
@@ -55,6 +58,7 @@ class Login extends Component {
                 <TextInput
                     style={ styles.textInput }
                     placeholder="Email"
+                    keyboardType={'email-address'}
                     placeholderTextColor="#fff"
                     onChangeText={(email) => this.setState({email: email})}
                     value={this.state.email}/>
@@ -67,6 +71,7 @@ class Login extends Component {
                     onChangeText={(password) => this.setState({password: password})}
                     value={this.state.password}/>
                 {/*<View style={styles.line}/>*/}
+                <KeyboardSpacer/>
                 <TouchableOpacity style={styles.clearBtn} onPress={this.login.bind(this)}>
                     <Text style={[styles.text, styles.whiteText]}>Submit</Text>
                 </TouchableOpacity>
