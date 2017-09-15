@@ -5,6 +5,7 @@ import styles from '../Theme/Theme';
 import post from './Post';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import Icon1 from 'react-native-vector-icons/FontAwesome'
+import map from './Map'
 
 import Dimensions from 'Dimensions';
 const deviceWidth = Dimensions.get('window').width;
@@ -82,7 +83,7 @@ class Home extends Component {
                     {Object.keys(this.state.food).map((key) => {
                         return (
                             <TouchableOpacity key={key}
-                                              onPress={() => {this.map.bind({self: this, place: this.state.food[key]})}}>
+                                              onPress={this.map.bind({self: this, place: this.state.food[key]})}>
 
 
 
@@ -109,6 +110,5 @@ export default Home;
 
 
 
-//Google Maps link for line 85 {Linking.openURL(
-//`https://www.google.com/maps/dir/?api=1&destination=${this.state.food[key].place.lat},
-                                                //  ${this.state.food[key].place.lng}&zoom=12&basemap=roadmap`)}}
+//Google Maps link for line 85
+// {Linking.openURL(`https://www.google.com/maps/dir/?api=1&destination=${this.state.food[key].place.lat},${this.state.food[key].place.lng}&zoom=12&basemap=roadmap`)}}
