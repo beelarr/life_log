@@ -39,7 +39,7 @@ var styles = StyleSheet.create({
     },
     clearBtn: {
         borderWidth: 1,
-        borderColor: '#000',
+        borderColor: '#fff',
         padding: 10,
         margin: 10,
         borderRadius: 3,
@@ -57,11 +57,11 @@ var styles = StyleSheet.create({
         height: 50,
         textAlign: 'center',
         fontFamily: 'GillSans-Light',
-        color: '#000',
+        color: '#fff',
         backgroundColor: 'rgba(0,0,0,0)',
         margin: 15,
         width: 200,
-        borderColor: '#000',
+        borderColor: '#fff',
         borderWidth: .5
 
     },
@@ -78,7 +78,8 @@ var styles = StyleSheet.create({
         fontWeight: '500',
         textShadowColor: 'black',
         textShadowOffset: {width: 1, height: 1},
-        textShadowRadius: 1
+        textShadowRadius: 1,
+
     },
     header: {
         alignItems: 'center',
@@ -147,7 +148,15 @@ var styles = StyleSheet.create({
         textAlign: 'center',
         fontFamily: 'GillSans-Light',
         backgroundColor: 'rgba(0,0,0,0)'
-    }
+    },
+    // overlay: {
+    //     backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    //     position: 'absolute',
+    //     top: 0,
+    //     left: 0,
+    //     right: 0,
+    //     bottom: 0
+    // },
 
 });
 

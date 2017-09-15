@@ -4,6 +4,7 @@ import Header from '../Components/Header';
 import styles from '../Theme/Theme';
 import post from './Post';
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import Icon1 from 'react-native-vector-icons/FontAwesome'
 
 import Dimensions from 'Dimensions';
 const deviceWidth = Dimensions.get('window').width;
@@ -61,7 +62,11 @@ class Home extends Component {
 
         return (
             <View style={styles.homeContainer}>
-                <Header title="Life Log" left={this.left.bind(this)} leftText={<Icon name="add-circle-outline" color="#ADD3D3" size={22}/> }/>
+                <Header title={<Icon1 name="bookmark-o" color="#fff" size={20}/>}
+                        left={this.left.bind(this)}
+                        leftText={<Icon name="add-circle-outline"
+                        color="#fff"
+                        size={22}/> }/>
                 <ScrollView>
                     <View style={{marginTop: -20}}>
                     {Object.keys(this.state.food).map((key) => {

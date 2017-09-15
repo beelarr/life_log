@@ -3,6 +3,7 @@ import firebase from '../Config/Firebase';
 import home from './Home';
 import styles from '../Theme/Theme'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import register from './Register'
 
 
 import {
@@ -45,7 +46,8 @@ class Login extends Component {
 
     render() {
         return ( //there cant be multiple views in the outermost node
-            <ImageBackground source={{uri: 'https://68.media.tumblr.com/964e6c463cdfb8bfa41711979181f413/tumblr_ow8yyywXPV1wb9q31o1_500.jpg'}} style={[styles.container]}>
+
+            <ImageBackground source={{uri: 'https://68.media.tumblr.com/390905e2ecc974d9b9deba0c542a9b2f/tumblr_ow607iHMqJ1u8wonlo1_1280.jpg'}} style={[styles.container]}>
                 <Icon name="bookmark-o" color="#fff" size={65} style={{textShadowColor: 'black',
                     textShadowOffset: {width: 2, height: 2},
                     textShadowRadius: 5}}/>
@@ -53,18 +55,18 @@ class Login extends Component {
                 <TextInput
                     style={ styles.textInput }
                     placeholder="Email"
-                    placeholderTextColor="#000308"
+                    placeholderTextColor="#fff"
                     onChangeText={(email) => this.setState({email: email})}
                     value={this.state.email}/>
-                <View style={styles.line}/>
+                {/*<View style={styles.line}/>*/}
                 <TextInput
                     style={styles.textInput}
                     placeholder="Password"
-                    placeholderTextColor="#000000"
+                    placeholderTextColor="#fff"
                     secureTextEntry={true}
                     onChangeText={(password) => this.setState({password: password})}
                     value={this.state.password}/>
-                <View style={styles.line}/>
+                {/*<View style={styles.line}/>*/}
                 <TouchableOpacity style={styles.clearBtn} onPress={this.login.bind(this)}>
                     <Text style={[styles.text, styles.whiteText]}>Submit</Text>
                 </TouchableOpacity>
@@ -75,6 +77,7 @@ class Login extends Component {
                     <Text style={styles.whiteText}>Register</Text>
                 </TouchableOpacity>
             </ImageBackground>
+
         );
     }
 }

@@ -48,7 +48,7 @@ class Register extends Component {
         /*line62-binds the component on the submit function to the state*/
         //line 71 -this is the entire component, binds the text input to the submit function
         return (
-            <ImageBackground source={{uri: 'https://68.media.tumblr.com/964e6c463cdfb8bfa41711979181f413/tumblr_ow8yyywXPV1wb9q31o1_500.jpg'}} style={[styles.container]}>
+            <ImageBackground source={{uri: 'https://68.media.tumblr.com/390905e2ecc974d9b9deba0c542a9b2f/tumblr_ow607iHMqJ1u8wonlo1_1280.jpg'}} style={[styles.container]}>
                 <Icon name="bookmark-o" color="#fff" size={65} style={{textShadowColor: 'black',
                     textShadowOffset: {width: 2, height: 2},
                     textShadowRadius: 5}}/>
@@ -56,27 +56,30 @@ class Register extends Component {
                 <TextInput
                     style={ styles.textInput }
                     placeholder="Email"
-                    placeholderTextColor="#000308"
+                    placeholderTextColor="#fff"
                     onChangeText={(email) => this.setState({email: email})}
                     value={this.state.email}/>
-                <View style={styles.line}/>
+                {/*<View style={styles.line}/>*/}
                 <TextInput
                     style={styles.textInput}
                     placeholder="Password"
-                    placeholderTextColor="#000000"
+                    placeholderTextColor="#fff"
                     secureTextEntry={true}
                     onChangeText={(password) => this.setState({password: password})}
                     value={this.state.password}/>
+                {/*<View style={styles.line}/>*/}
                 <TouchableOpacity style={styles.clearBtn} onPress={this.register.bind(this)}>
                     <Text style={[styles.text, styles.whiteText]}>Register</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={this.login.bind(this)}
+                    onPress={this.login.bind(this)}  //this is the entire component, binds the text input to the submit function
                     title="Login"/>
                 <TouchableOpacity onPress={this.register.bind(this)}>
                     <Text style={styles.whiteText}>Login</Text>
                 </TouchableOpacity>
             </ImageBackground>
+
+
         );
     }
 }
