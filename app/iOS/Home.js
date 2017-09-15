@@ -52,6 +52,16 @@ class Home extends Component {
         })
     };
 
+    map() {
+        console.log('this', this);
+        console.log('this.props', this.props);
+
+        this.self.props.navigator.push({  //not really sure what this does
+            component: map,
+            passProps: {place: this.place.place }
+        });
+    };
+
 
     left() { this.props.navigator.push({ component: post })};
     //pushing post component which takes us to the post view/page
@@ -72,9 +82,10 @@ class Home extends Component {
                     {Object.keys(this.state.food).map((key) => {
                         return (
                             <TouchableOpacity key={key}
-                                              onPress={() => {Linking.openURL(
-                                                  `https://www.google.com/maps/dir/?api=1&destination=${this.state.food[key].place.lat},
-                                                  ${this.state.food[key].place.lng}&zoom=12&basemap=roadmap`)}}>
+                                              onPress={() => {this.map.bind({self: this, place: this.state.food[key]})}}>
+
+
+
                                 <Image source={{uri: this.state.food[key].image}} style={{ width: deviceWidth, height: (deviceWidth*.5)}}/>
                                 <Text style={styles.textPost}>{this.state.food[key].place.name}</Text>
                                 <Text style={styles.textPost}>{this.state.food[key].place.address}</Text>
@@ -89,4 +100,15 @@ class Home extends Component {
 }
 
 
+
 export default Home;
+
+
+
+
+
+
+
+//Google Maps link for line 85 {Linking.openURL(
+//`https://www.google.com/maps/dir/?api=1&destination=${this.state.food[key].place.lat},
+                                                //  ${this.state.food[key].place.lng}&zoom=12&basemap=roadmap`)}}
