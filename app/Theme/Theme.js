@@ -90,6 +90,7 @@ var styles = StyleSheet.create({
         backgroundColor: '#118183'
     },
     mapContainer: {      //styling requirements from Airbnb Maps
+
         position: 'absolute',
         top: 0,
         left: 0,

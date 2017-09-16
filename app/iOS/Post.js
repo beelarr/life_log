@@ -21,7 +21,8 @@ import {
     Text,
     TouchableOpacity,
     Image,
-    ScrollView
+    ScrollView,
+    TextInput
 } from 'react-native';
 
 
@@ -39,6 +40,7 @@ class Post extends Component {
             lat: '',
             long: '',
             nearby: [],
+            memory: '',
             uid: ''
         };
     }
@@ -88,7 +90,7 @@ class Post extends Component {
                 let userId = user.uid;
                 console.log('userId', userId);
                 this.setState({ uid: userId });
-                firebase.database().ref('food').push({image: this.state.image, place: this.state.place, uid: this.state.uid });
+                firebase.database().ref('food').push({image: this.state.image, place: this.state.place, uid: this.state.uid, memory: this.state.memory });
 
             }
 
@@ -114,6 +116,13 @@ class Post extends Component {
                         <Image source={{uri: this.state.image}} style={{width: deviceWidth, height: (deviceWidth * .5)}}/>
                     </TouchableOpacity>
                     <Text>{this.state.place.name}</Text>
+                    <TextInput
+                        style={styles.textPost}
+                        placeholder="Memory"
+                        autoCorrect={true}
+                        placeholderTextColor="#fff"
+                        onChangeText={(memory) => this.setState({memory: memory})}
+                        value={this.state.memory}/>
                     <ScrollView style={{height: deviceHeight*.4}}>
                         {Object.keys(this.state.nearby).map((key) => {
                             var placeObj = {
@@ -129,6 +138,7 @@ class Post extends Component {
                                     <Text style={styles.textPost}>{this.state.nearby[key].vicinity}</Text>
                                     <Text style={styles.textPost}>⭐{this.state.nearby[key].rating}</Text>
                                 </TouchableOpacity>
+
                             )
                         })}
                     </ScrollView>

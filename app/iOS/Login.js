@@ -58,6 +58,7 @@ class Login extends Component {
                 <TextInput
                     style={ styles.textInput }
                     placeholder="Email"
+                    autoCorrect={false}
                     keyboardType={'email-address'}
                     placeholderTextColor="#fff"
                     onChangeText={(email) => this.setState({email: email})}
@@ -73,7 +74,7 @@ class Login extends Component {
                 {/*<View style={styles.line}/>*/}
                 <KeyboardSpacer/>
                 <TouchableOpacity style={styles.clearBtn} onPress={this.login.bind(this)}>
-                    <Text style={[styles.text, styles.whiteText]}>Submit</Text>
+                    <Text style={[styles.text, styles.whiteText]}>Login</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={this.login.bind(this)}  //this is the entire component, binds the text input to the submit function
