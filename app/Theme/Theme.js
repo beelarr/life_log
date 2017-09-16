@@ -147,9 +147,8 @@ var styles = StyleSheet.create({
     mapBackButton: {
         textAlign: 'center',
         padding: 20,
-        borderWidth: 1,
         margin: 10,
-        borderRadius: 3,
+        backgroundColor: 'rgba(0,0,0,0)'
 
 
 

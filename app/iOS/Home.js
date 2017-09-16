@@ -3,7 +3,7 @@ import firebase from '../Config/Firebase';
 import Header from '../Components/Header';
 import styles from '../Theme/Theme';
 import post from './Post';
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import Icon from 'react-native-vector-icons/EvilIcons'
 import Icon1 from 'react-native-vector-icons/FontAwesome'
 import map from './Map'
 
@@ -73,11 +73,11 @@ class Home extends Component {
 
         return (
             <View style={styles.homeContainer}>
-                <Header title={<Icon1 name="bookmark-o" color="#fff" size={20}/>}
+                <Header title={<Icon1 name="bookmark-o" color="#fff" size={30}/>}
                         left={this.left.bind(this)}
-                        leftText={<Icon name="add-circle-outline"
+                        leftText={<Icon name="camera"
                         color="#fff"
-                        size={22}/> }/>
+                        size={30}/> }/>
                         <Text style={{  fontFamily: 'cabin',
                                         fontSize:20,
                                         textAlign: 'center',

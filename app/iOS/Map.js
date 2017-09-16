@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import MapView from 'react-native-maps';
 import Timestamp from 'react-timestamp';
+import Icon1 from 'react-native-vector-icons/EvilIcons'
 import {
     Card,
     Image,
@@ -27,7 +28,8 @@ class Map extends Component {
     };
 
     directions = () => {
-        Linking.openURL(`http://maps.apple.com/address=${this.props.place.address}`)
+        console.log('address', this.props.place.lat);
+        Linking.openURL(`https://www.google.com/maps/search/?api=1&query=${this.props.place.name},${this.props.place.address}`)
     }
 
     render() { //MapView tells map where to focus, MapView.Marker is for the pin.
@@ -64,8 +66,9 @@ class Map extends Component {
                             </Card>
                         </MapView.Callout>
                     </MapView.Marker>
-                        <TouchableOpacity style={styles.mapBackButton} onPress={this.onBack.bind(this)}>
-                            <Text style={styles.mapBackButton} >Back</Text>
+                        <TouchableOpacity onPress={this.onBack.bind(this)}>
+                            <Icon1 style={styles.mapBackButton} name="close" color="#000"
+                                  size={30}/>
                         </TouchableOpacity>
                 </MapView>
         );
