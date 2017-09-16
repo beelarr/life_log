@@ -59,7 +59,7 @@ class Home extends Component {
 
         this.self.props.navigator.push({  //not really sure what this does
             component: map,
-            passProps: {place: this.place.place }
+            passProps: {image: this.place.image, place: this.place.place }
         });
     };
 

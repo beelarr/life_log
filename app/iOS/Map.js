@@ -30,6 +30,7 @@ class Map extends Component {
                             latitude: this.props.place.lat,
                             longitude: this.props.place.lng
                         }}
+                        image={this.props.image}
                         title={this.props.place.name}
                         description={this.props.place.address}
                     />
