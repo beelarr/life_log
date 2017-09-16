@@ -23,7 +23,7 @@ class Map extends Component {
 
     render() { //MapView tells map where to focus, MapView.Marker is for the pin.
         return (
-                <MapView.Animated
+                <MapView
                     style={styles.mapContainer}
                     region={{
                         latitude: this.props.place.lat,
@@ -51,7 +51,7 @@ class Map extends Component {
                     <TouchableOpacity style={ styles.btn } onPress={this.onBack.bind(this)} >
                         <Text style={styles.mapBackButton}>Back</Text>
                     </TouchableOpacity>
-                </MapView.Animated>
+                </MapView>
         );
     }
 }

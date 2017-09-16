@@ -115,12 +115,12 @@ class Post extends Component {
                     <TouchableOpacity onPress={this.photo.bind(this)}>
                         <Image source={{uri: this.state.image}} style={{width: deviceWidth, height: (deviceWidth * .5)}}/>
                     </TouchableOpacity>
-                    <Text>{this.state.place.name}</Text>
+                    <Text style={styles.textLocation}>{this.state.place.name}</Text>
                     <TextInput
-                        style={styles.textPost}
-                        placeholder="Memory"
+                        style={styles.textPostInput}
+                        placeholder="Write a caption. . ."
                         autoCorrect={true}
-                        placeholderTextColor="#fff"
+                        placeholderTextColor="lightgrey"
                         onChangeText={(memory) => this.setState({memory: memory})}
                         value={this.state.memory}/>
                     <ScrollView style={{height: deviceHeight*.4}}>
