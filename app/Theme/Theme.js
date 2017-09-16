@@ -90,14 +90,13 @@ var styles = StyleSheet.create({
         backgroundColor: '#118183'
     },
     mapContainer: {      //styling requirements from Airbnb Maps
-
         position: 'absolute',
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
         justifyContent: 'flex-end',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     map: {
         position: 'absolute',
@@ -146,7 +145,13 @@ var styles = StyleSheet.create({
         color: '#fff'
     },
     mapBackButton: {
-        textAlign: 'center'
+        textAlign: 'center',
+        padding: 20,
+        borderWidth: 1,
+        margin: 10,
+        borderRadius: 3,
+
+
 
     },
     mapBtn: {

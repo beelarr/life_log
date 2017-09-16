@@ -6,7 +6,8 @@ import {
     View,
     Subtitle,
     Caption,
-    Text
+    Text,
+    Divider
 
 } from '@shoutem/ui'
 import styles from '../Theme/Theme';
@@ -42,15 +43,18 @@ class Map extends Component {
                                        source={{uri: this.props.image}}/>
                             <View styleName="content">
                                 <Subtitle>{this.props.place.name}</Subtitle>
+                                <Divider styleName="line" />
                                 <Text>"{this.props.memory}"</Text>
+                                <Divider styleName="line" />
+                                <Caption/>
                                 <Caption>{this.props.place.address}</Caption>
                             </View>
                             </Card>
                         </MapView.Callout>
                     </MapView.Marker>
-                    <TouchableOpacity style={ styles.btn } onPress={this.onBack.bind(this)} >
-                        <Text style={styles.mapBackButton}>Back</Text>
-                    </TouchableOpacity>
+                        <TouchableOpacity style={styles.mapBackButton} onPress={this.onBack.bind(this)}>
+                            <Text style={styles.mapBackButton} >Back</Text>
+                        </TouchableOpacity>
                 </MapView>
         );
     }
