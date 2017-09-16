@@ -66,7 +66,7 @@ var styles = StyleSheet.create({
 
     },
     line: {
-        borderColor: '#D4B3AF',
+        borderColor: '#000',
         borderWidth: .5,
         height: 1,
         alignSelf: 'stretch',
@@ -96,7 +96,7 @@ var styles = StyleSheet.create({
         right: 0,
         bottom: 0,
         justifyContent: 'flex-end',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     map: {
         position: 'absolute',
@@ -146,17 +146,44 @@ var styles = StyleSheet.create({
     },
     mapBackButton: {
         textAlign: 'center',
+        padding: 20,
+        borderWidth: 1,
+        margin: 10,
+        borderRadius: 3,
+
+
+
+    },
+    mapBtn: {
+        borderWidth: 1,
+        padding: 10,
+        margin: 10,
+        borderRadius: 3,
+        width: 150,
+        justifyContent: 'flex-end',
+        position: 'absolute',
         fontFamily: 'GillSans-Light',
         backgroundColor: 'rgba(0,0,0,0)'
+
     },
-    // overlay: {
-    //     backgroundColor: 'rgba(0, 0, 0, 0.1)',
-    //     position: 'absolute',
-    //     top: 0,
-    //     left: 0,
-    //     right: 0,
-    //     bottom: 0
-    // },
+    textPostInput: {
+        height: 50,
+        textAlign: 'center',
+        fontFamily: 'GillSans-Light',
+        color: '#262626',
+        backgroundColor: 'rgba(0,0,0,0)',
+        width: deviceWidth,
+        // borderColor: '#000',
+        // borderWidth: .5
+    },
+
+    textLocation:{
+        textAlign: 'center',
+        fontFamily: 'GillSans-Light',
+        fontWeight: '500',
+        fontSize: 15
+
+    }
 
 });
 

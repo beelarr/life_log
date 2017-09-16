@@ -21,7 +21,8 @@ import {
     Text,
     TouchableOpacity,
     Image,
-    ScrollView
+    ScrollView,
+    TextInput
 } from 'react-native';
 
 
@@ -39,6 +40,8 @@ class Post extends Component {
             lat: '',
             long: '',
             nearby: [],
+            memory: '',
+            createdAt: '',
             uid: ''
         };
     }
@@ -48,7 +51,7 @@ class Post extends Component {
     }
 
     getPlaces = () => {
-        navigator.geolocation.getCurrentPosition(
+        navigator.geolocation.watchPosition(
             (position) => {
                 const coords = position.coords.latitude + ',' + position.coords.longitude;
                 const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coords}&radius=500&key=${gpKey}`;
@@ -69,7 +72,7 @@ class Post extends Component {
             if (!response.didCancel) {
                 const source = {uri: response.uri.replace('file://', ''), isStatic: true};
                 //file:// is unique to iOS, will be different for Andriod
-                ImageResizer.createResizedImage(source.uri, 500, 500, 'JPEG', 60)
+                ImageResizer.createResizedImage(source.uri, 500, 500, 'JPEG', 90)
                     .then((resizedImageURI) => {
                     uploadImage(resizedImageURI)//creates Blob
                         .then(url => state.setState({image: url})) //once our image is in firebase we setState to display it
@@ -88,7 +91,7 @@ class Post extends Component {
                 let userId = user.uid;
                 console.log('userId', userId);
                 this.setState({ uid: userId });
-                firebase.database().ref('food').push({image: this.state.image, place: this.state.place, uid: this.state.uid });
+                firebase.database().ref('food').push({image: this.state.image, place: this.state.place, uid: this.state.uid, memory: this.state.memory, createdAt: this.state.createdAt });
 
             }
 
@@ -110,11 +113,19 @@ class Post extends Component {
             <View>
                 <Header title="Post" left={this.back.bind(this)} leftText={'Back'}/>
                 <View style={styles.center}>
+
                     <TouchableOpacity onPress={this.photo.bind(this)}>
                         <Image source={{uri: this.state.image}} style={{width: deviceWidth, height: (deviceWidth * .5)}}/>
                     </TouchableOpacity>
-                    <Text>{this.state.place.name}</Text>
-                    <ScrollView style={{height: deviceHeight*.4}}>
+                    <Text style={styles.textLocation}>{this.state.place.name}</Text>
+                    <TextInput
+                        style={styles.textPostInput}
+                        placeholder="Write a caption. . ."
+                        autoCorrect={true}
+                        placeholderTextColor="lightgrey"
+                        onChangeText={(memory) => this.setState({memory: memory})}
+                        value={this.state.memory}/>
+                    <ScrollView style={{height: deviceHeight*.35}}>
                         {Object.keys(this.state.nearby).map((key) => {
                             var placeObj = {
                                 address: this.state.nearby[key].vicinity,
@@ -129,6 +140,7 @@ class Post extends Component {
                                     <Text style={styles.textPost}>{this.state.nearby[key].vicinity}</Text>
                                     <Text style={styles.textPost}>⭐{this.state.nearby[key].rating}</Text>
                                 </TouchableOpacity>
+
                             )
                         })}
                     </ScrollView>
