@@ -16,7 +16,8 @@
 		"react-native-image-resizer": "^0.1.1",
 		"react-native-keyboard-spacer": "^0.3.1",
 		"react-native-maps": "^0.16.3",
-		"react-native-vector-icons": "^4.3.0"
+		"react-native-vector-icons": "^4.3.0",
+		"react-timestamp": "^4.2.1"
 	},
 	"devDependencies": {
 		"babel-jest": "21.0.2",

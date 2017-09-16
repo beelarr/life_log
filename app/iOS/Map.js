@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import MapView from 'react-native-maps';
+import Timestamp from 'react-timestamp';
 import {
     Card,
     Image,
@@ -7,19 +8,26 @@ import {
     Subtitle,
     Caption,
     Text,
-    Divider
+    Divider,
+    Button,
+    Icon
 
 } from '@shoutem/ui'
 import styles from '../Theme/Theme';
 
 import {
-
+    Linking,
     TouchableOpacity,
+
 } from 'react-native';
 
 class Map extends Component {
     onBack = () => {
         this.props.navigator.pop();
+    };
+
+    directions = () => {
+        Linking.openURL(`http://maps.apple.com/address=${this.props.place.address}`)
     }
 
     render() { //MapView tells map where to focus, MapView.Marker is for the pin.
@@ -46,6 +54,10 @@ class Map extends Component {
                                 <Divider styleName="line" />
                                 <Text>"{this.props.memory}"</Text>
                                 <Divider styleName="line" />
+                                <View styleName="horizontal v-center space-between">
+                                    <Timestamp time='text' component={Caption}/>
+                                    <Button styleName="tight clear"><Icon name="directions" onPress={this.directions.bind(this)}/></Button>
+                                </View>
                                 <Caption/>
                                 <Caption>{this.props.place.address}</Caption>
                             </View>

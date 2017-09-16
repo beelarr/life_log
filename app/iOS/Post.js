@@ -41,6 +41,7 @@ class Post extends Component {
             long: '',
             nearby: [],
             memory: '',
+            createdAt: '',
             uid: ''
         };
     }
@@ -90,7 +91,7 @@ class Post extends Component {
                 let userId = user.uid;
                 console.log('userId', userId);
                 this.setState({ uid: userId });
-                firebase.database().ref('food').push({image: this.state.image, place: this.state.place, uid: this.state.uid, memory: this.state.memory });
+                firebase.database().ref('food').push({image: this.state.image, place: this.state.place, uid: this.state.uid, memory: this.state.memory, createdAt: this.state.createdAt });
 
             }
 
@@ -112,6 +113,7 @@ class Post extends Component {
             <View>
                 <Header title="Post" left={this.back.bind(this)} leftText={'Back'}/>
                 <View style={styles.center}>
+
                     <TouchableOpacity onPress={this.photo.bind(this)}>
                         <Image source={{uri: this.state.image}} style={{width: deviceWidth, height: (deviceWidth * .5)}}/>
                     </TouchableOpacity>
@@ -123,7 +125,7 @@ class Post extends Component {
                         placeholderTextColor="lightgrey"
                         onChangeText={(memory) => this.setState({memory: memory})}
                         value={this.state.memory}/>
-                    <ScrollView style={{height: deviceHeight*.4}}>
+                    <ScrollView style={{height: deviceHeight*.35}}>
                         {Object.keys(this.state.nearby).map((key) => {
                             var placeObj = {
                                 address: this.state.nearby[key].vicinity,

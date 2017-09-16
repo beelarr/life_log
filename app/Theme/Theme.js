@@ -172,8 +172,7 @@ var styles = StyleSheet.create({
         fontFamily: 'GillSans-Light',
         color: '#262626',
         backgroundColor: 'rgba(0,0,0,0)',
-        margin: 10,
-        width: 200,
+        width: deviceWidth,
         // borderColor: '#000',
         // borderWidth: .5
     },
