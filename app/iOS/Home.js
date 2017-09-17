@@ -77,7 +77,7 @@ class Home extends Component {
                         left={this.left.bind(this)}
                         leftText={<Icon name="camera"
                         color="#fff"
-                        size={28}/> }/>
+                        size={30}/> }/>
                         <Text style={{  fontFamily: 'cabin',
                                         fontSize:20,
                                         textAlign: 'center',
