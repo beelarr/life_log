@@ -89,7 +89,9 @@ class Post extends Component {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 let userId = user.uid;
-                console.log('userId', userId);
+                let now = new Date();
+                console.log('now', now);
+                this.setState({createdAt: now});
                 this.setState({ uid: userId });
                 firebase.database().ref('food').push({image: this.state.image, place: this.state.place, uid: this.state.uid, memory: this.state.memory, createdAt: this.state.createdAt });
 
@@ -144,7 +146,7 @@ class Post extends Component {
                             )
                         })}
                     </ScrollView>
-                    <TouchableOpacity style={styles.btn} onPress={this.post.bind(this)}>
+                    <TouchableOpacity style={styles.btn} onPress={this.post.bind(this)} >
                         <Text style={styles.textPost}>Post</Text>
                     </TouchableOpacity>
                 </View>

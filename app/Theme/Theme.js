@@ -2,6 +2,7 @@ const React = require('react-native');
 const {StyleSheet} = React;
 import Dimensions from 'Dimensions';
 const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height
 
 
 var styles = StyleSheet.create({
@@ -182,7 +183,9 @@ var styles = StyleSheet.create({
         fontWeight: '500',
         fontSize: 15
 
-    }
+    },
+
+
 
 });
 
