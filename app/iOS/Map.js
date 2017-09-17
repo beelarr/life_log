@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import MapView from 'react-native-maps';
-import Timestamp from 'react-timestamp';
 import Icon1 from 'react-native-vector-icons/EvilIcons'
 import {
     Card,
@@ -22,15 +21,31 @@ import {
 
 } from 'react-native';
 
+var TimeAgo = require('react-native-timeago');
+var moment = require('moment');
+var timestamp = new Date();
+
+// firebase.ServerValue.TIMESTAMP
+
+
+
+
+
+
 class Map extends Component {
     onBack = () => {
         this.props.navigator.pop();
     };
 
+
+
+
     directions = () => {
         console.log('address', this.props.place.lat);
         Linking.openURL(`https://www.google.com/maps/search/?api=1&query=${this.props.place.name},${this.props.place.address}`)
-    }
+    };
+
+
 
     render() { //MapView tells map where to focus, MapView.Marker is for the pin.
         return (
@@ -56,13 +71,10 @@ class Map extends Component {
                                 <Divider styleName="line" />
                                 <Text>"{this.props.memory}"</Text>
                                 <Divider styleName="line" />
-                                <View styleName="horizontal v-center space-between">
-                                    <Timestamp time='text' component={Caption}/>
-                                    <Button styleName="tight clear"><Icon name="directions" onPress={this.directions.bind(this)}/></Button>
-                                </View>
-                                <Caption/>
-                                <Caption>{this.props.place.address}</Caption>
+                                <TimeAgo time={timestamp} />
+                                <Button styleName="tight clear" onPress={this.directions.bind(this)}><Text>{this.props.place.address}</Text></Button>
                             </View>
+                                <Caption/>
                             </Card>
                         </MapView.Callout>
                     </MapView.Marker>
