@@ -3,17 +3,17 @@ import firebase from '../Config/Firebase';
 import Header from '../Components/Header';
 import styles from '../Theme/Theme';
 import post from './Post';
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import Icon2 from 'react-native-vector-icons/EvilIcons'
 import Icon1 from 'react-native-vector-icons/FontAwesome'
 import map from './Map'
-
+import Swipeout from 'react-native-swipeout';
+import {Image, Tile, Title, Caption, View, Button, Icon} from '@shoutem/ui';
 import Dimensions from 'Dimensions';
 const deviceWidth = Dimensions.get('window').width;
 import {
-    View,
+
     Text,
     ScrollView,
-    Image,
     TouchableOpacity,
     Linking
 } from 'react-native';
@@ -27,17 +27,13 @@ class Home extends Component {
         }
     }
 
-    componentDidMount = () => {  //react native instance of what to do when someone is on a page
-        this.getPosts()
-    };
 
-    getPosts() {
 
-        console.log('the state in post', this.state);
+    getPosts = () => {
+
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 let userId = user.uid;
-                console.log('userId', userId);
                 this.setState({uid: userId});
                 firebase.database().ref('/food').orderByChild('uid').equalTo(userId).on('value', (userPost) => {
                     var items = [];
@@ -46,38 +42,46 @@ class Home extends Component {
                         items.push(item);
                     });
                     items = items.reverse(); //showing newest items
-                    this.setState({ food: items });
-                })
+                    this.setState({food: items});
 
+                });
             }
-        })
+        });
     };
-
-    map() {
-        console.log('this', this);
-        console.log('this.props', this.props);
-
-        this.self.props.navigator.push({  //not really sure what this does
+    map = (place) => {
+        this.props.navigator.push({
             component: map,
-            passProps: {image: this.place.image, place: this.place.place, memory: this.place.memory }
+            passProps: place
         });
     };
 
 
-    left() { this.props.navigator.push({ component: post })};
+
+   left = () => { this.props.navigator.push({ component: post })};
     //pushing post component which takes us to the post view/page
+
+    deletePost = (post) => {
+
+        firebase.database().child(post).remove();
+
+    };
+
+    componentDidMount() {
+        this.getPosts();
+    };
 
 
 
     render () {   // nested return object of our food so that the entries are injected. Notice only one outside view. Key is given to keep xcode from error*/
 
+
         return (
             <View style={styles.homeContainer}>
-                <Header title={<Icon1 name="bookmark-o" color="#fff" size={20}/>}
+                <Header title={<Icon1 name="bookmark-o" color="#fff" size={30}/>}
                         left={this.left.bind(this)}
-                        leftText={<Icon name="add-circle-outline"
+                        leftText={<Icon2 name="camera"
                         color="#fff"
-                        size={22}/> }/>
+                        size={30}/> }/>
                         <Text style={{  fontFamily: 'cabin',
                                         fontSize:20,
                                         textAlign: 'center',
@@ -87,16 +91,28 @@ class Home extends Component {
                 <View style={styles.line}/>
 
                 <ScrollView>
-                    <View style={{marginTop: -20}}>
+                    <View style={{flexDirection:'row', marginTop: 0, flexWrap: 'wrap', justifyContent:'space-around'}}>
 
                         {Object.keys(this.state.food).map((key) => {
                         return (
-                            <TouchableOpacity key={key}
-                                              onPress={this.map.bind({self: this, place: this.state.food[key]})}>
-                                <Image source={{uri: this.state.food[key].image}} style={{ width: deviceWidth, height: (deviceWidth*.6),}}/>
-                                <Text style={styles.textPost}>{this.state.food[key].place.name}</Text>
-                                <Text style={styles.textPost}>{this.state.food[key].place.address}</Text>
-                            </TouchableOpacity>
+
+                                <TouchableOpacity
+                                    key={key}
+                                    onPress={() => this.map(this.state.food[key])}>
+                                    <Image
+                                        style={{marginBottom: 10, width: deviceWidth/3.1}} styleName='medium-square rounded-corners'
+                                        source={{uri: this.state.food[key].image}}>
+                                        <Tile >
+                                            <View styleName="actions">
+                                                <Button
+                                                    onPress={() => this.deletePost(this.state.food[key])}
+                                                    styleName="tight clear">
+                                                        <Icon name="close" />
+                                                </Button>
+                                            </View>
+                                        </Tile>
+                                    </Image>
+                                </TouchableOpacity>
                         )
                     })}
                     </View>

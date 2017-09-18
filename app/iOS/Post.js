@@ -14,6 +14,9 @@ const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 const Blob = RNFetchBlob.polyfill.Blob;
 const fs = RNFetchBlob.fs;
+const TimeAgo = require('react-native-timeago');
+const timestamp = new Date();
+const moment = require('moment');
 
 
 import {
@@ -46,12 +49,16 @@ class Post extends Component {
         };
     }
 
+
+
     componentDidMount(){
         this.getPlaces();
     }
 
+
+
     getPlaces = () => {
-        navigator.geolocation.watchPosition(
+        navigator.geolocation.getCurrentPosition(
             (position) => {
                 const coords = position.coords.latitude + ',' + position.coords.longitude;
                 const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coords}&radius=500&key=${gpKey}`;
@@ -84,14 +91,14 @@ class Post extends Component {
         });
     };
 
+
     post = () => {
-        console.log('the state in post', this.state);
         firebase.auth().onAuthStateChanged((user) => {
+
             if (user) {
                 let userId = user.uid;
-                console.log('userId', userId);
-                this.setState({ uid: userId });
-                firebase.database().ref('food').push({image: this.state.image, place: this.state.place, uid: this.state.uid, memory: this.state.memory, createdAt: this.state.createdAt });
+                this.setState({ uid: userId, createdAt: Date.now()});
+                firebase.database().ref('food').push({image: this.state.image, place: this.state.place, uid: this.state.uid, memory: this.state.memory, createdAt: this.state.createdAt});
 
             }
 
@@ -107,6 +114,17 @@ class Post extends Component {
     back = () => {
         this.props.navigator.pop();
     };
+
+
+
+
+
+
+
+
+
+
+
 
     render () { // 2nd return This return Updates the place for our post*/
         return (
@@ -144,7 +162,7 @@ class Post extends Component {
                             )
                         })}
                     </ScrollView>
-                    <TouchableOpacity style={styles.btn} onPress={this.post.bind(this)}>
+                    <TouchableOpacity style={styles.btn} onPress={this.post.bind(this)} >
                         <Text style={styles.textPost}>Post</Text>
                     </TouchableOpacity>
                 </View>
