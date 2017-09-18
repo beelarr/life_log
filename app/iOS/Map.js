@@ -23,7 +23,6 @@ import {
 
 var TimeAgo = require('react-native-timeago');
 var moment = require('moment');
-var timestamp = new Date();
 
 // firebase.ServerValue.TIMESTAMP
 
@@ -36,6 +35,7 @@ class Map extends Component {
     onBack = () => {
         this.props.navigator.pop();
     };
+
 
 
 
@@ -71,8 +71,12 @@ class Map extends Component {
                                 <Divider styleName="line" />
                                 <Text>"{this.props.memory}"</Text>
                                 <Divider styleName="line" />
-                                <TimeAgo time={timestamp} />
-                                <Button styleName="tight clear" onPress={this.directions.bind(this)}><Text>{this.props.place.address}</Text></Button>
+                                <Caption/>
+                                <TimeAgo style={{fontSize: 10}} time={this.props.createdAt} />
+                                <Caption/>
+
+
+                                <Button styleName="tight clear" onPress={this.directions.bind(this)}><Text styleName="bright" >{this.props.place.address}</Text></Button>
                             </View>
                                 <Caption/>
                             </Card>

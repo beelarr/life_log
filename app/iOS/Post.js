@@ -49,6 +49,8 @@ class Post extends Component {
         };
     }
 
+
+
     componentDidMount(){
         this.getPlaces();
     }
@@ -90,13 +92,13 @@ class Post extends Component {
     };
 
 
-
     post = () => {
         firebase.auth().onAuthStateChanged((user) => {
+
             if (user) {
                 let userId = user.uid;
-                this.setState({ uid: userId});
-                firebase.database().ref('food').push({image: this.state.image, place: this.state.place, uid: this.state.uid, memory: this.state.memory, createdAt: this.state.createdAt });
+                this.setState({ uid: userId, createdAt: Date.now()});
+                firebase.database().ref('food').push({image: this.state.image, place: this.state.place, uid: this.state.uid, memory: this.state.memory, createdAt: this.state.createdAt});
 
             }
 

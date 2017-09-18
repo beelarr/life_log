@@ -55,19 +55,14 @@ class Home extends Component {
         });
     };
 
-    // map() {
-    //     this.self.props.navigator.push({  //not really sure what this does
-    //         component: map,
-    //         passProps: {image: this.place.image, place: this.place.place, memory: this.place.memory }
-    //     });
-    // };
 
 
    left = () => { this.props.navigator.push({ component: post })};
     //pushing post component which takes us to the post view/page
 
-    deletePost = () => {
-        firebase.self.remove();
+    deletePost = (post) => {
+
+        firebase.database().child(post).remove();
 
     };
 
@@ -78,6 +73,7 @@ class Home extends Component {
 
 
     render () {   // nested return object of our food so that the entries are injected. Notice only one outside view. Key is given to keep xcode from error*/
+
 
         return (
             <View style={styles.homeContainer}>
@@ -104,11 +100,18 @@ class Home extends Component {
                                     key={key}
                                     onPress={() => this.map(this.state.food[key])}>
                                     <Image
-                                        style={{marginBottom: 10}} styleName='medium-avatar'
+                                        style={{marginBottom: 10, width: deviceWidth/3.1}} styleName='medium-square rounded-corners'
                                         source={{uri: this.state.food[key].image}}>
-
+                                        <Tile >
+                                            <View styleName="actions">
+                                                <Button
+                                                    onPress={() => this.deletePost(this.state.food[key])}
+                                                    styleName="tight clear">
+                                                        <Icon name="close" />
+                                                </Button>
+                                            </View>
+                                        </Tile>
                                     </Image>
-
                                 </TouchableOpacity>
                         )
                     })}
