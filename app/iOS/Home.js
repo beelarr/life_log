@@ -6,7 +6,6 @@ import post from './Post';
 import Icon2 from 'react-native-vector-icons/EvilIcons'
 import Icon1 from 'react-native-vector-icons/FontAwesome'
 import map from './Map'
-import Swipeout from 'react-native-swipeout';
 import {Image, Tile, Title, Caption, View, Button, Icon} from '@shoutem/ui';
 import Dimensions from 'Dimensions';
 const deviceWidth = Dimensions.get('window').width;
@@ -20,9 +19,10 @@ import {
 } from 'react-native';
 
 class Home extends Component {
+
     static  childContextTypes = {
         navigator: React.PropTypes.object
-    }
+    };
 
     getChildContext () {
         return {
@@ -35,6 +35,7 @@ class Home extends Component {
         this.state = {
             uid: "",
             food: [],
+            entryId: ''
         }
     }
 
@@ -49,12 +50,14 @@ class Home extends Component {
                 firebase.database().ref('/food').orderByChild('uid').equalTo(userId).on('value', (userPost) => {
                     var items = [];
                     userPost.forEach((child) => { //child = image and value in FB
+                        this.setState({entryId: child.key});
+                        // console.log('child id', child.key);
+                        // console.log('child.val', child.val());
                         var item = child.val();
                         items.push(item);
                     });
                     items = items.reverse(); //showing newest items
                     this.setState({food: items});
-
                 });
             }
         });
@@ -72,15 +75,15 @@ class Home extends Component {
     //pushing post component which takes us to the post view/page
 
 
-    deletePost = (post) => {
-        console.log('post from delete post', post);
+    deletePost = (Id) => {
+        console.log('id', Id);
         Alert.alert(
             'Delete Post',
             'Are you sure??',
             [
 
-                {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'destructive' },
-                {text: 'Delete', onPress: () => firebase.database().ref(`food/-KuFxES3xpnqyWCvuiVS`).remove(), style: 'cancel'},
+                {text: 'Delete', onPress: () => firebase.database().ref(`food/Id`).remove(), style: 'destructive'},
+                {text: "I'll Keep It", onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
             ],
             { cancelable: false }
         );
@@ -131,12 +134,10 @@ class Home extends Component {
 
                         {Object.keys(this.state.food).map((key) => {
                             return (
-                                <Swipeout right={swipeBtns}>
-
-                                    <TouchableOpacity
+                                <TouchableOpacity
                                         key={key}
                                         onPress={() => this.map(this.state.food[key])}
-                                        onLongPress={() => this.deletePost(this.state.food[key])}>
+                                        onLongPress={() => this.deletePost(this.state.entryId)}>
                                         <Image
                                             style={{
                                                 marginBottom: deviceHeight/350,
@@ -146,7 +147,6 @@ class Home extends Component {
                                             styleName='medium-square clear'
                                             source={{uri: this.state.food[key].image}}/>
                                     </TouchableOpacity>
-                                </Swipeout>
                             )
                         })}
 
