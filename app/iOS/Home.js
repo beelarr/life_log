@@ -10,6 +10,7 @@ import Swipeout from 'react-native-swipeout';
 import {Image, Tile, Title, Caption, View, Button, Icon} from '@shoutem/ui';
 import Dimensions from 'Dimensions';
 const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
 import {
 
     Text,
@@ -75,8 +76,16 @@ class Home extends Component {
     render () {   // nested return object of our food so that the entries are injected. Notice only one outside view. Key is given to keep xcode from error*/
 
 
+        let swipeBtns = [{
+            text: '',
+            buttonWidth: 2000,
+            backgroundColor: 'red',
+            underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
+            onPress: () => {() => this.deletePost(this.state.food[key])}
+        }];
+
         return (
-            <View style={styles.homeContainer}>
+            <View style={styles.homeContainer} >
                 <Header title={<Icon1 name="bookmark-o" color="#fff" size={30}/>}
                         left={this.left.bind(this)}
                         leftText={<Icon2 name="camera"
@@ -91,30 +100,29 @@ class Home extends Component {
                 <View style={styles.line}/>
 
                 <ScrollView>
-                    <View style={{flexDirection:'row', marginTop: 0, flexWrap: 'wrap', justifyContent:'space-around'}}>
+                    <View styleName="clear" style={{flexDirection:'row', marginTop: 0, flexWrap: 'wrap', justifyContent:'space-around', backgroundColor: '#DBDDDE'}}>
 
                         {Object.keys(this.state.food).map((key) => {
-                        return (
+                            return (
+                                <Swipeout right={swipeBtns}>
 
-                                <TouchableOpacity
-                                    key={key}
-                                    onPress={() => this.map(this.state.food[key])}>
-                                    <Image
-                                        style={{marginBottom: 10, width: deviceWidth/3.1}} styleName='medium-square rounded-corners'
-                                        source={{uri: this.state.food[key].image}}>
-                                        <Tile >
-                                            <View styleName="actions">
-                                                <Button
-                                                    onPress={() => this.deletePost(this.state.food[key])}
-                                                    styleName="tight clear">
-                                                        <Icon name="close" />
-                                                </Button>
-                                            </View>
-                                        </Tile>
-                                    </Image>
-                                </TouchableOpacity>
-                        )
-                    })}
+                                    <TouchableOpacity
+                                        key={key}
+                                        onPress={() => this.map(this.state.food[key])}
+                                        onLongPress={() => this.deletePost(this.state.food[key])}>
+                                        <Image
+                                            style={{
+                                                marginBottom: deviceHeight/350,
+                                                width: deviceWidth/3.05,
+
+                                            }}
+                                            styleName='medium-square clear'
+                                            source={{uri: this.state.food[key].image}}/>
+                                    </TouchableOpacity>
+                                </Swipeout>
+                            )
+                        })}
+
                     </View>
                 </ScrollView>
             </View>

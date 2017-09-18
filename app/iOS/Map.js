@@ -24,7 +24,6 @@ import {
 var TimeAgo = require('react-native-timeago');
 var moment = require('moment');
 
-// firebase.ServerValue.TIMESTAMP
 
 
 
@@ -73,9 +72,6 @@ class Map extends Component {
                                 <Divider styleName="line" />
                                 <Caption/>
                                 <TimeAgo style={{fontSize: 10}} time={this.props.createdAt} />
-                                <Caption/>
-
-
                                 <Button styleName="tight clear" onPress={this.directions.bind(this)}><Text styleName="bright" >{this.props.place.address}</Text></Button>
                             </View>
                                 <Caption/>
@@ -83,8 +79,9 @@ class Map extends Component {
                         </MapView.Callout>
                     </MapView.Marker>
                         <TouchableOpacity onPress={this.onBack.bind(this)}>
+
                             <Icon1 style={styles.mapBackButton} name="close" color="#000"
-                                  size={30}/>
+                                  size={40}/>
                         </TouchableOpacity>
                 </MapView>
         );

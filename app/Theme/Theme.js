@@ -184,6 +184,12 @@ var styles = StyleSheet.create({
         fontSize: 15
 
     },
+    homeImages:{
+        marginBottom: 10,
+        width: deviceWidth/3.1,
+        backgroundColor: 'rgba(0,0,0,0)'
+    }
+
 
 
 
