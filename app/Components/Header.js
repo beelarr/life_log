@@ -1,12 +1,31 @@
 import React, { Component } from 'react';
 import styles from '../Theme/Theme';
+import firebase from '../Config/Firebase';
 import {
     View,
     Text,
     TouchableOpacity,
+    Navigator
 } from 'react-native';
 
+
 class Header extends Component {  //Header is in components dir because its reusable and no state is inv
+    static contextTypes = {
+        navigator: React.PropTypes.object,
+
+    }
+
+
+    logout = () => {
+        console.log('logout is working');
+        console.log('this.props', this.props);
+        firebase.auth().signOut();
+        this.context.navigator.popToTop();
+    };
+
+
+
+
     render() {
         return (
             <View>
@@ -15,8 +34,8 @@ class Header extends Component {  //Header is in components dir because its reus
                         <Text style={styles.textHeader}>{this.props.leftText}</Text>
                     </TouchableOpacity>
                     <Text style={styles.textHeader}>{this.props.title}</Text>
-                    <TouchableOpacity style={styles.right}>
-                        <Text style={styles.textHeader}/>
+                    <TouchableOpacity style={styles.right} onPress={this.logout}>
+                        <Text style={styles.textHeader}>LogOut</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.line}/>

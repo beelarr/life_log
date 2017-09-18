@@ -12,14 +12,24 @@ import Dimensions from 'Dimensions';
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 import {
-
     Text,
     ScrollView,
     TouchableOpacity,
-    Linking
+    Linking,
+    Alert
 } from 'react-native';
 
 class Home extends Component {
+    static  childContextTypes = {
+        navigator: React.PropTypes.object
+    }
+
+    getChildContext () {
+        return {
+            navigator: this.props.navigator,
+        }
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -61,9 +71,19 @@ class Home extends Component {
    left = () => { this.props.navigator.push({ component: post })};
     //pushing post component which takes us to the post view/page
 
-    deletePost = (post) => {
 
-        firebase.database().child(post).remove();
+    deletePost = (post) => {
+        console.log('post from delete post', post);
+        Alert.alert(
+            'Delete Post',
+            'Are you sure??',
+            [
+
+                {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'destructive' },
+                {text: 'Delete', onPress: () => firebase.database().ref(`food/-KuFxES3xpnqyWCvuiVS`).remove(), style: 'cancel'},
+            ],
+            { cancelable: false }
+        );
 
     };
 
@@ -86,7 +106,14 @@ class Home extends Component {
 
         return (
             <View style={styles.homeContainer} >
-                <Header title={<Icon1 name="bookmark-o" color="#fff" size={30}/>}
+                <Header
+                    onLogOut={() =>{
+                        console.log('logout is working');
+                        console.log('this.props', this.props);
+                        firebase.auth().signOut();
+                        this.props.navigator.popToTop();
+                    }}
+                    title={<Icon1 name="bookmark-o" color="#fff" size={30}/>}
                         left={this.left.bind(this)}
                         leftText={<Icon2 name="camera"
                         color="#fff"
