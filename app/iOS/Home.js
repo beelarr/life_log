@@ -48,19 +48,11 @@ class Home extends Component {
                 let userId = user.uid;
                 this.setState({uid: userId});
                 firebase.database().ref('/food').orderByChild('uid').equalTo(userId).on('value', (userPost) => {
-                    // console.log('userPost', userPost);
-                    // console.log('userPost.data', userPost.data); //undefined
                     var items = [];
-                    userPost.forEach((child) => { //child = image and value in FB
-                        // console.log('child.data', child.data); //undefinded
-                        // console.log('child', child);
-                        // console.log('child.key', child.key); //ugly id of entry
-                        // this.setState({entryId: child.key});
-                        // console.log('child.val', child.val());
+                    userPost.forEach((child) => {
                         var item = child.val();
                         item.key = child.key;
                         items.push(item);
-                        // console.log('items', items);
                     });
                     items = items.reverse(); //showing newest items
                     this.setState({food: items});
@@ -87,11 +79,9 @@ class Home extends Component {
             'Delete Post',
             'Are you sure??',
             [
-
                 {text: 'Delete', onPress: () => firebase.database().ref(`food/${key}`).remove(), style: 'destructive'},
                 {text: "I'll Keep It", onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
             ],
-            { cancelable: false }
         );
 
     };
