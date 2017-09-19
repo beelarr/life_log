@@ -4,6 +4,7 @@
  * @flow
  */
 import Login from './app/iOS/Login';
+import TouchId from './app/iOS/TouchId'
 
 
 import React, { Component } from 'react';
@@ -18,7 +19,7 @@ export default class life_log extends Component {
     return (
       <NavigatorIOS
         navigationBarHidden={true}
-        initialRoute={{title: "Login", component: Login}} //required for NaviOS
+        initialRoute={{title: "TouchID", component: TouchId}} //required for NaviOS
         style = {{flex: 1}}
       />
     );
