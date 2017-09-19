@@ -8,7 +8,7 @@ import ImagePicker from 'react-native-image-picker'; //allows access of camera
 import RNFetchBlob from 'react-native-fetch-blob'; //work-around that enables firebase to accept photos
 import ImageResizer from 'react-native-image-resizer'; //auto resizer that helps app performance and look consistency ex. line 40
 import gpKey from '../Values/Creds';
-
+import {Subtitle, Caption, Row, Image, Icon, Spinner} from '@shoutem/ui';
 
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
@@ -23,13 +23,23 @@ import {
     View,
     Text,
     TouchableOpacity,
-    Image,
     ScrollView,
     TextInput
 } from 'react-native';
 
 
 class Post extends Component {
+
+    static  childContextTypes = {
+        navigator: React.PropTypes.object
+    }
+
+    getChildContext () {
+        return {
+            navigator: this.props.navigator,
+        }
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -47,12 +57,6 @@ class Post extends Component {
             createdAt: '',
             uid: ''
         };
-    }
-
-
-
-    componentDidMount(){
-        this.getPlaces();
     }
 
 
@@ -119,23 +123,22 @@ class Post extends Component {
 
 
 
-
-
-
-
+    componentDidMount(){
+        this.getPlaces();
+    }
 
 
 
     render () { // 2nd return This return Updates the place for our post*/
+
         return (
             <View>
                 <Header title="Post" left={this.back.bind(this)} leftText={'Back'}/>
                 <View style={styles.center}>
-
                     <TouchableOpacity onPress={this.photo.bind(this)}>
                         <Image source={{uri: this.state.image}} style={{width: deviceWidth, height: (deviceWidth * .5)}}/>
                     </TouchableOpacity>
-                    <Text style={styles.textLocation}>{this.state.place.name}</Text>
+                    <Subtitle style={styles.textLocation}>{this.state.place.name}</Subtitle>
                     <TextInput
                         style={styles.textPostInput}
                         placeholder="Write a caption. . ."
@@ -143,6 +146,7 @@ class Post extends Component {
                         placeholderTextColor="lightgrey"
                         onChangeText={(memory) => this.setState({memory: memory})}
                         value={this.state.memory}/>
+                    <Subtitle>Add Location</Subtitle>
                     <ScrollView style={{height: deviceHeight*.35}}>
                         {Object.keys(this.state.nearby).map((key) => {
                             var placeObj = {
@@ -154,9 +158,13 @@ class Post extends Component {
                             return (
 
                                 <TouchableOpacity key={key} style={{padding: 10}} onPress={(place) => this.setState({place:placeObj})}>
-                                    <Text style={styles.textPost}>{this.state.nearby[key].name}</Text>
-                                    <Text style={styles.textPost}>{this.state.nearby[key].vicinity}</Text>
-                                    <Text style={styles.textPost}>⭐{this.state.nearby[key].rating}</Text>
+                                    <Row styleName="small">
+                                    <Icon name="pin" />
+                                        <View styleName="vertical">
+                                        <Subtitle style={styles.textPost}>{this.state.nearby[key].name}</Subtitle>
+                                        <Caption  style={styles.textPost}>{this.state.nearby[key].vicinity}</Caption>
+                                        </View>
+                                    </Row>
                                 </TouchableOpacity>
 
                             )

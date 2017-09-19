@@ -50,7 +50,7 @@ class Register extends Component {
         /*line62-binds the component on the submit function to the state*/
         //line 71 -this is the entire component, binds the text input to the submit function
         return (
-            <ImageBackground source={{uri: 'https://68.media.tumblr.com/390905e2ecc974d9b9deba0c542a9b2f/tumblr_ow607iHMqJ1u8wonlo1_1280.jpg'}} style={[styles.container]}>
+            <ImageBackground source={{uri: 'https://68.media.tumblr.com/0024999d4a54d3fa21cb4c4a81b9bc98/tumblr_ow6qt07IJr1u8wonlo1_1280.jpg'}} style={[styles.container]}>
                 <Icon name="bookmark-o" color="#fff" size={65} style={{textShadowColor: 'black',
                     textShadowOffset: {width: 2, height: 2},
                     textShadowRadius: 5}}/>
@@ -76,8 +76,7 @@ class Register extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={this.login.bind(this)}  //this is the entire component, binds the text input to the submit function
-                    title="Login"/>
-                <TouchableOpacity onPress={this.register.bind(this)}>
+                    title="Login">
                     <Text style={styles.whiteText}>Login</Text>
                 </TouchableOpacity>
             </ImageBackground>

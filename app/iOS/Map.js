@@ -31,6 +31,19 @@ var moment = require('moment');
 
 
 class Map extends Component {
+
+    static  childContextTypes = {
+        navigator: React.PropTypes.object
+    }
+
+    getChildContext () {
+        return {
+            navigator: this.props.navigator,
+        }
+    }
+
+
+
     onBack = () => {
         this.props.navigator.pop();
     };

@@ -2,7 +2,7 @@ const React = require('react-native');
 const {StyleSheet} = React;
 import Dimensions from 'Dimensions';
 const deviceWidth = Dimensions.get('window').width;
-const deviceHeight = Dimensions.get('window').height
+const deviceHeight = Dimensions.get('window').height;
 
 
 var styles = StyleSheet.create({
@@ -29,6 +29,7 @@ var styles = StyleSheet.create({
     right: {
         justifyContent: 'flex-end',
         width: 75,
+        padding: 15
 
     },
     btn: {
