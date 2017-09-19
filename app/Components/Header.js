@@ -21,7 +21,7 @@ class Header extends Component {  //Header is in components dir because its reus
         console.log('logout is working');
         console.log('this.props', this.props);
         firebase.auth().signOut();
-        this.context.navigator.push({ component: Login });
+        this.context.navigator.popToTop();
 
     };
 

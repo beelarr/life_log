@@ -98,7 +98,6 @@ class Post extends Component {
 
     post = () => {
         firebase.auth().onAuthStateChanged((user) => {
-            console.log('Post function');
             if (user) {
                 let userId = user.uid;
                 this.setState({ uid: userId, createdAt: Date.now()});
