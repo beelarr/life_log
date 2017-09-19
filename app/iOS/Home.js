@@ -6,7 +6,7 @@ import post from './Post';
 import Icon2 from 'react-native-vector-icons/EvilIcons'
 import Icon1 from 'react-native-vector-icons/FontAwesome'
 import map from './Map'
-import {Image, Tile, Title, Caption, View, Button, Icon} from '@shoutem/ui';
+import {Image, Tile, Title, Caption, View, Divider, Button, Icon} from '@shoutem/ui';
 import Dimensions from 'Dimensions';
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
@@ -48,13 +48,19 @@ class Home extends Component {
                 let userId = user.uid;
                 this.setState({uid: userId});
                 firebase.database().ref('/food').orderByChild('uid').equalTo(userId).on('value', (userPost) => {
+                    // console.log('userPost', userPost);
+                    // console.log('userPost.data', userPost.data); //undefined
                     var items = [];
                     userPost.forEach((child) => { //child = image and value in FB
-                        this.setState({entryId: child.key});
-                        // console.log('child id', child.key);
+                        // console.log('child.data', child.data); //undefinded
+                        // console.log('child', child);
+                        // console.log('child.key', child.key); //ugly id of entry
+                        // this.setState({entryId: child.key});
                         // console.log('child.val', child.val());
                         var item = child.val();
+                        item.key = child.key;
                         items.push(item);
+                        // console.log('items', items);
                     });
                     items = items.reverse(); //showing newest items
                     this.setState({food: items});
@@ -75,14 +81,14 @@ class Home extends Component {
     //pushing post component which takes us to the post view/page
 
 
-    deletePost = (Id) => {
-        console.log('id', Id);
+    deletePost = (key) => {
+        console.log('key in delete post', key);
         Alert.alert(
             'Delete Post',
             'Are you sure??',
             [
 
-                {text: 'Delete', onPress: () => firebase.database().ref(`food/Id`).remove(), style: 'destructive'},
+                {text: 'Delete', onPress: () => firebase.database().ref(`food/${key}`).remove(), style: 'destructive'},
                 {text: "I'll Keep It", onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
             ],
             { cancelable: false }
@@ -127,8 +133,7 @@ class Home extends Component {
                                         marginTop: 5,
                                         marginBottom: 5}}>
                         Posts</Text>
-                <View style={styles.line}/>
-
+                <Divider styleName="line" />
                 <ScrollView>
                     <View styleName="clear" style={{flexDirection:'row', marginTop: 0, flexWrap: 'wrap', justifyContent:'space-around', backgroundColor: '#DBDDDE'}}>
 
@@ -137,7 +142,7 @@ class Home extends Component {
                                 <TouchableOpacity
                                         key={key}
                                         onPress={() => this.map(this.state.food[key])}
-                                        onLongPress={() => this.deletePost(this.state.entryId)}>
+                                        onLongPress={() => this.deletePost(this.state.food[key].key)}>
                                         <Image
                                             style={{
                                                 marginBottom: deviceHeight/350,
