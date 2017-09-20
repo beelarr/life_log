@@ -24,7 +24,8 @@ var styles = StyleSheet.create({
     left: {
         justifyContent: 'flex-start',
         width: 75,
-        padding: 15
+        padding: 15,
+        marginTop: 4
     },
     right: {
         justifyContent: 'flex-end',
@@ -189,6 +190,19 @@ var styles = StyleSheet.create({
         marginBottom: 10,
         width: deviceWidth/3.1,
         backgroundColor: 'rgba(0,0,0,0)'
+    },
+    logOut:{
+        textAlign: 'center',
+        fontFamily: 'GillSans-Light',
+        color: '#fff',
+        fontSize: 13
+    },
+    textCenterHeader:{
+        textAlign: 'center',
+        fontFamily: 'GillSans-Light',
+        color: '#fff',
+        fontSize: 22
+
     }
 
 
