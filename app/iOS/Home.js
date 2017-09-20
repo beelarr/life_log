@@ -135,7 +135,9 @@ class Home extends Component {
                                         onLongPress={() => this.deletePost(this.state.food[key].key)}>
                                         <Image
                                             style={{
-                                                marginBottom: deviceHeight/360,
+
+                                                marginBottom: deviceHeight/350,
+
                                                 // width: deviceWidth/3.05,
 
                                             }}

@@ -1,3 +1,5 @@
+console.disableYellowBox = true;
+
 import React, { Component } from 'react';   // importing from node_modules
 import firebase from '../Config/Firebase';
 import home from './Home';
@@ -5,7 +7,6 @@ import styles from '../Theme/Theme'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import register from './Register'
 import KeyboardSpacer from 'react-native-keyboard-spacer';
-
 
 
 import {
@@ -47,7 +48,10 @@ class Login extends Component {
     };
 
 
+
+
     render() {
+
         return ( //there cant be multiple views in the outermost node
 
             <ImageBackground source={{uri: 'https://68.media.tumblr.com/390905e2ecc974d9b9deba0c542a9b2f/tumblr_ow607iHMqJ1u8wonlo1_1280.jpg'}} style={[styles.container]}>

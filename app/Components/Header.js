@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from '../Theme/Theme';
 import firebase from '../Config/Firebase';
+import Login from '../iOS/Login';
 import {
     View,
     Text,
@@ -21,6 +22,7 @@ class Header extends Component {  //Header is in components dir because its reus
         console.log('this.props', this.props);
         firebase.auth().signOut();
         this.context.navigator.popToTop();
+
     };
 
 
