@@ -10,7 +10,7 @@ import {
     Text,
     Divider,
     Button,
-    Icon
+    Icon,
 
 } from '@shoutem/ui'
 import styles from '../Theme/Theme';
@@ -18,6 +18,7 @@ import styles from '../Theme/Theme';
 import {
     Linking,
     TouchableOpacity,
+    Share,
 
 } from 'react-native';
 
@@ -49,7 +50,14 @@ class Map extends Component {
     };
 
 
+    sharing = () => {
+        Share.share({
+            message: this.props.memory,
+            title: "I'm traveling",
+            url: this.props.image
+        })
 
+    };
 
 
     directions = () => {
@@ -75,6 +83,7 @@ class Map extends Component {
                             longitude: this.props.place.lng
                         }}>
                         <MapView.Callout>
+                            <TouchableOpacity onPress={this.sharing.bind(this)}>
                             <Card>
                                 <Image styleName="medium-wide"
                                        source={{uri: this.props.image}}/>
@@ -89,6 +98,7 @@ class Map extends Component {
                             </View>
                                 <Caption/>
                             </Card>
+                            </TouchableOpacity>
                         </MapView.Callout>
                     </MapView.Marker>
                         <TouchableOpacity onPress={this.onBack.bind(this)}>
