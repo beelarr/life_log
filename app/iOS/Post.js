@@ -8,17 +8,13 @@ import ImagePicker from 'react-native-image-picker'; //allows access of camera
 import RNFetchBlob from 'react-native-fetch-blob'; //work-around that enables firebase to accept photos
 import ImageResizer from 'react-native-image-resizer'; //auto resizer that helps app performance and look consistency ex. line 40
 import gpKey from '../Values/Creds';
-import {Subtitle, Caption, Row, Image, Icon, Spinner} from '@shoutem/ui';
-
-const deviceWidth = Dimensions.get('window').width;
-const deviceHeight = Dimensions.get('window').height;
-const Blob = RNFetchBlob.polyfill.Blob;
-const fs = RNFetchBlob.fs;
-const TimeAgo = require('react-native-timeago');
-const timestamp = new Date();
-const moment = require('moment');
-
-
+import {
+    Subtitle,
+    Caption,
+    Row,
+    Image,
+    Icon
+        } from '@shoutem/ui';
 import {
     View,
     Text,
@@ -27,12 +23,19 @@ import {
     TextInput
 } from 'react-native';
 
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
+const Blob = RNFetchBlob.polyfill.Blob;
+const moment = require('moment');
+
+
+
 
 class Post extends Component {
 
     static  childContextTypes = {
         navigator: React.PropTypes.object
-    }
+    };
 
     getChildContext () {
         return {
@@ -60,7 +63,6 @@ class Post extends Component {
     }
 
 
-
     getPlaces = () => {
         navigator.geolocation.getCurrentPosition(
             (position) => {
@@ -81,16 +83,18 @@ class Post extends Component {
         window.Blob = Blob;
         ImagePicker.showImagePicker({}, (response) => {
             if (!response.didCancel) {
-                const source = {uri: response.uri.replace('file://', ''), isStatic: true};
+                const source = {
+                    uri: response.uri.replace('file://', ''),
+                    isStatic: true};
                 //file:// is unique to iOS, will be different for Andriod
                 ImageResizer.createResizedImage(source.uri, 500, 500, 'JPEG', 90)
                     .then((resizedImageURI) => {
-                    uploadImage(resizedImageURI)//creates Blob
+                        uploadImage(resizedImageURI)//creates Blob
                         .then(url => state.setState({image: url})) //once our image is in firebase we setState to display it
-                        .catch((error) => {
-                            console.log('error', error);
-                        });
-                });
+                            .catch((error) => {
+                                console.log('error', error);
+                            });
+                    });
             }
         });
     };
@@ -102,23 +106,15 @@ class Post extends Component {
                 let userId = user.uid;
                 this.setState({ uid: userId, createdAt: Date.now()});
                 firebase.database().ref('food').push({image: this.state.image, place: this.state.place, uid: this.state.uid, memory: this.state.memory, createdAt: this.state.createdAt});
-
             }
-
         });
-
-
         this.props.navigator.pop();
-
     };
-
 
 
     back = () => {
         this.props.navigator.pop();
     };
-
-
 
 
 
@@ -129,13 +125,19 @@ class Post extends Component {
 
 
     render () { // 2nd return This return Updates the place for our post*/
-
         return (
             <View>
-                <Header title="Post" left={this.back.bind(this)} leftText={'Back'}/>
+                <Header
+                    title="Post"
+                    left={this.back.bind(this)}
+                    leftText={'Back'}/>
                 <View style={styles.center}>
                     <TouchableOpacity onPress={this.photo.bind(this)}>
-                        <Image source={{uri: this.state.image}} style={{width: deviceWidth, height: (deviceWidth * .5)}}/>
+                        <Image
+                            source={{uri: this.state.image}}
+                            style={{
+                                width: deviceWidth,
+                                height: (deviceWidth * .5)}}/>
                     </TouchableOpacity>
                     <Subtitle style={styles.textLocation}>{this.state.place.name}</Subtitle>
                     <TextInput
@@ -155,8 +157,10 @@ class Post extends Component {
                                 name: this.state.nearby[key].name
                             };
                             return (
-
-                                <TouchableOpacity key={key} style={{padding: 10}} onPress={(place) => this.setState({place:placeObj})}>
+                                <TouchableOpacity
+                                    key={key}
+                                    style={{padding: 10}}
+                                    onPress={(place) => this.setState({place:placeObj})}>
                                     <Row styleName="small">
                                     <Icon name="pin" />
                                         <View styleName="vertical">
@@ -165,7 +169,6 @@ class Post extends Component {
                                         </View>
                                     </Row>
                                 </TouchableOpacity>
-
                             )
                         })}
                     </ScrollView>

@@ -14,11 +14,11 @@ const uploadImage = (uri, mime = 'application/octet-stream') => {
 
         fs.readFile(uploadUri, 'base64')
             .then((data) => {
-                return Blob.build(data, { type: `${mime};BASE64` })
+                return Blob.build(data, {type: `${mime};BASE64`})
             })
             .then((blob) => {
                 uploadBlob = blob;
-                return imageRef.put(blob, { contentType: mime })
+                return imageRef.put(blob, {contentType: mime})
             })
             .then(() => {
                 uploadBlob.close();

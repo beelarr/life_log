@@ -11,10 +11,10 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   NavigatorIOS,
-
 } from 'react-native';
 
 export default class life_log extends Component {
+
   render() {
     return (
       <NavigatorIOS
