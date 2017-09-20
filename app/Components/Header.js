@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import styles from '../Theme/Theme';
 import firebase from '../Config/Firebase';
-import Login from '../iOS/Login';
 import {
     View,
     Text,
     TouchableOpacity,
-    Navigator
 } from 'react-native';
 
 
@@ -14,7 +12,7 @@ class Header extends Component {  //Header is in components dir because its reus
     static contextTypes = {
         navigator: React.PropTypes.object,
 
-    }
+    };
 
 
     logout = () => {

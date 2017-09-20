@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import firebase from '../Config/Firebase';
 import Header from '../Components/Header';
+import Map from './Map';
 import styles from '../Theme/Theme';
 import post from './Post';
-import Icon2 from 'react-native-vector-icons/EvilIcons'
-import Icon1 from 'react-native-vector-icons/FontAwesome'
-import map from './Map'
+import Icon2 from 'react-native-vector-icons/EvilIcons';
+import Icon1 from 'react-native-vector-icons/FontAwesome';
 import {Image, Tile, Title, Caption, View, Divider, Button, Icon} from '@shoutem/ui';
 import Dimensions from 'Dimensions';
 const deviceWidth = Dimensions.get('window').width;
@@ -14,7 +14,6 @@ import {
     Text,
     ScrollView,
     TouchableOpacity,
-    Linking,
     Alert
 } from 'react-native';
 
@@ -42,7 +41,6 @@ class Home extends Component {
 
 
     getPosts = () => {
-
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 let userId = user.uid;
@@ -60,9 +58,11 @@ class Home extends Component {
             }
         });
     };
+
+
     map = (place) => {
         this.props.navigator.push({
-            component: map,
+            component: Map,
             passProps: place
         });
     };
@@ -117,17 +117,25 @@ class Home extends Component {
                         leftText={<Icon2 name="camera"
                         color="#fff"
                         size={30}/> }/>
-                        <Text style={{  fontFamily: 'cabin',
-                                        fontSize:20,
-                                        textAlign: 'center',
-                                        marginTop: 4,
-                                        marginBottom: 5}}>
-                        Posts</Text>
+                        <Text
+                            style={{
+                                fontFamily: 'cabin',
+                                fontSize:20,
+                                textAlign: 'center',
+                                marginTop: 4,
+                                marginBottom: 5}}>
+                            Posts
+                        </Text>
                 <Divider styleName="line" />
                 <ScrollView>
-
-                    <View styleName="clear" style={{flexDirection:'row', marginBottom: 95, flexWrap: 'wrap', justifyContent:'space-around', backgroundColor: '#DBDDDE'}}>
-
+                    <View
+                        styleName="clear"
+                        style={{
+                            flexDirection:'row',
+                            marginBottom: 95,
+                            flexWrap: 'wrap',
+                            justifyContent:'space-around',
+                            backgroundColor: '#DBDDDE'}}>
                         {Object.keys(this.state.food).map((key) => {
                             return (
                                 <TouchableOpacity
@@ -136,18 +144,14 @@ class Home extends Component {
                                         onLongPress={() => this.deletePost(this.state.food[key].key)}>
                                         <Image
                                             style={{
-
                                                 marginBottom: deviceHeight/350,
-
                                                 // width: deviceWidth/3.05,
-
                                             }}
                                             styleName='large-square clear'
                                             source={{uri: this.state.food[key].image}}/>
                                     </TouchableOpacity>
                             )
                         })}
-
                     </View>
                 </ScrollView>
             </View>
@@ -164,6 +168,3 @@ export default Home;
 
 
 
-
-//Google Maps link for line 85
-// {Linking.openURL(`https://www.google.com/maps/dir/?api=1&destination=${this.state.food[key].place.lat},${this.state.food[key].place.lng}&zoom=12&basemap=roadmap`)}}

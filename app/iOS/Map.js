@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import MapView from 'react-native-maps';
 import Icon1 from 'react-native-vector-icons/EvilIcons'
+import styles from '../Theme/Theme';
 import {
     Card,
     Image,
@@ -10,10 +11,8 @@ import {
     Text,
     Divider,
     Button,
-    Icon,
 
 } from '@shoutem/ui'
-import styles from '../Theme/Theme';
 
 import {
     Linking,
@@ -28,21 +27,17 @@ var moment = require('moment');
 
 
 
-
-
-
 class Map extends Component {
 
     static  childContextTypes = {
         navigator: React.PropTypes.object
-    }
+    };
 
     getChildContext () {
         return {
             navigator: this.props.navigator,
         }
     }
-
 
 
     onBack = () => {
@@ -56,7 +51,6 @@ class Map extends Component {
             title: "I'm traveling",
             url: this.props.image
         })
-
     };
 
 
@@ -75,40 +69,46 @@ class Map extends Component {
                         latitude: this.props.place.lat,
                         longitude: this.props.place.lng,
                         latitudeDelta: 0.0922,
-                        longitudeDelta: 0.0421,
-                    }}>
+                        longitudeDelta: 0.0421,}}>
                     <MapView.Marker
                         coordinate={{
                             latitude: this.props.place.lat,
-                            longitude: this.props.place.lng
-                        }}>
+                            longitude: this.props.place.lng}}>
                         <MapView.Callout>
                             <TouchableOpacity onPress={this.sharing.bind(this)}>
-                            <Card>
-                                <Image styleName="medium-wide"
-                                       source={{uri: this.props.image}}/>
-                            <View styleName="content">
-                                <Subtitle>{this.props.place.name}</Subtitle>
-                                <Divider styleName="line" />
-                                <Text>"{this.props.memory}"</Text>
-                                <Divider styleName="line" />
-                                <Caption/>
-                                <TimeAgo style={{fontSize: 10}} time={this.props.createdAt} />
-                                <Button styleName="tight clear" onPress={this.directions.bind(this)}><Text styleName="bright" >{this.props.place.address}</Text></Button>
-                            </View>
-                                <Caption/>
-                            </Card>
+                                <Card>
+                                    <Image
+                                        styleName="medium-wide"
+                                        source={{uri: this.props.image}}/>
+                                    <View styleName="content">
+                                        <Subtitle>{this.props.place.name}</Subtitle>
+                                        <Divider styleName="line" />
+                                        <Text>"{this.props.memory}"</Text>
+                                        <Divider styleName="line" />
+                                        <Caption/>
+                                        <TimeAgo
+                                            style={{fontSize: 10}}
+                                            time={this.props.createdAt} />
+                                        <Button
+                                            styleName="tight clear"
+                                            onPress={this.directions.bind(this)}>
+                                            <Text styleName="bright">{this.props.place.address}</Text>
+                                        </Button>
+                                    </View>
+                                    <Caption/>
+                                </Card>
                             </TouchableOpacity>
                         </MapView.Callout>
                     </MapView.Marker>
-                        <TouchableOpacity onPress={this.onBack.bind(this)}>
-
-                            <Icon1 style={styles.mapBackButton} name="close" color="#000"
-                                  size={40}/>
-                        </TouchableOpacity>
+                    <TouchableOpacity onPress={this.onBack.bind(this)}>
+                        <Icon1
+                            style={styles.mapBackButton}
+                            name="close"
+                            color="#000"
+                            size={40}/>
+                    </TouchableOpacity>
                 </MapView>
         );
     }
 }
 
-export default Map;
