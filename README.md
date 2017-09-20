@@ -109,8 +109,8 @@ react-native run-ios
 
 * [React-Native](https://facebook.github.io/react-native/) - Build native mobile apps using JavaScript and React
 * [Firebase](firebase.google.com) - Realtime Databases and Authentication
-* [Shoutem UI](https://shoutem.github.io/ui/) - Open source UI toolkit for React Native
-
+* [Shoutem UI](https://shoutem.github.io/ui/) - Open source UI toolkit for React Native 
+* [Google Places API](https://developers.google.com/places/)
 
 
 ## Authors
@@ -127,7 +127,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * NSS Faculty
 * Matt Hamil
 * David Zukowski
-* [Stephen Grider's](https://www.udemy.com/the-complete-react-native-and-redux-course/learn/v4/overview) "The Complete React Native and Redux course"
+* [Stephen Grider's](https://www.udemy.com/the-complete-react-native-and-redux-course/learn/v4/overview) "The Complete React Native and Redux Course"
 
 
 
