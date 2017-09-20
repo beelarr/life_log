@@ -35,9 +35,9 @@ class Header extends Component {  //Header is in components dir because its reus
                     <TouchableOpacity onPress={this.props.left} style={styles.left} >
                         <Text style={styles.textHeader}>{this.props.leftText}</Text>
                     </TouchableOpacity>
-                    <Text style={styles.textHeader}>{this.props.title}</Text>
+                    <Text style={styles.textCenterHeader}>{this.props.title}</Text>
                     <TouchableOpacity style={styles.right} onPress={this.logout}>
-                        <Text style={styles.textHeader}>LogOut</Text>
+                        <Text style={styles.logOut}>LogOut</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.line}/>
