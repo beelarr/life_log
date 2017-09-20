@@ -3,7 +3,8 @@ console.disableYellowBox = true;
 import React, { Component } from 'react';   // importing from node_modules
 import firebase from '../Config/Firebase';
 import home from './Home';
-import styles from '../Theme/Theme'
+import styles from '../Theme/Theme';
+import Register from './Register';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 
@@ -29,7 +30,6 @@ class Login extends Component {
         var state = this; //captures this from outside firebase call to use inside firebase
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then( (data) => {
-                console.log('login getting uid', data.uid);
                 this.setState({uid: data.uid});
                 state.props.navigator.push({ component: home });
         },  (error) => {
@@ -38,7 +38,7 @@ class Login extends Component {
     };
 
     register = () => {
-        this.props.navigator.push({ component: register });
+        this.props.navigator.push({ component: Register });
     };
 
 
