@@ -120,12 +120,12 @@ class Home extends Component {
                         <Text style={{  fontFamily: 'cabin',
                                         fontSize:20,
                                         textAlign: 'center',
-                                        marginTop: 5,
+                                        marginTop: 4,
                                         marginBottom: 5}}>
                         Posts</Text>
                 <Divider styleName="line" />
                 <ScrollView>
-                    <View styleName="clear" style={{flexDirection:'row', marginTop: 0, flexWrap: 'wrap', justifyContent:'space-around', backgroundColor: '#DBDDDE'}}>
+                    <View styleName="clear" style={{flexDirection:'row', marginBottom: 95, flexWrap: 'wrap', justifyContent:'space-around', backgroundColor: '#DBDDDE'}}>
 
                         {Object.keys(this.state.food).map((key) => {
                             return (
@@ -135,11 +135,11 @@ class Home extends Component {
                                         onLongPress={() => this.deletePost(this.state.food[key].key)}>
                                         <Image
                                             style={{
-                                                marginBottom: deviceHeight/350,
-                                                width: deviceWidth/3.05,
+                                                marginBottom: deviceHeight/360,
+                                                // width: deviceWidth/3.05,
 
                                             }}
-                                            styleName='medium-square clear'
+                                            styleName='large-square clear'
                                             source={{uri: this.state.food[key].image}}/>
                                     </TouchableOpacity>
                             )
