@@ -26,13 +26,11 @@
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		15A0209DF76B4079BEA65B85 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B638C72A7924F7A9D558D80 /* libBVLinearGradient.a */; };
-		16D2670BD34549FE877C8563 /* libRCTTouchId.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7767A90EAAE44005A4F4FA5E /* libRCTTouchId.a */; };
 		182CF952AB244FB7BA602427 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DBCFF1B3BC7A4FCDA482C84A /* MaterialCommunityIcons.ttf */; };
 		1882C09A1D6E40A495D0DAEA /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE2B5672086945228E926C26 /* Octicons.ttf */; };
 		1D5A7643E9CD4E669A0195DF /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4692DAEC4FD148BFB1C77C07 /* SimpleLineIcons.ttf */; };
 		1DE36C4A7C234608A26D6E4A /* Rubik-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B53A3C540D564FA4B67AD8C6 /* Rubik-BlackItalic.ttf */; };
 		1ECB4B1F96F64664AA312B1D /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42EAE489A8A1431181F8CF70 /* FontAwesome.ttf */; };
-		27C878DA139049D5A494FC22 /* libTouchID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB52BEBB31394F138F9F3FB9 /* libTouchID.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -57,6 +55,7 @@
 		59EE1471F4924DEFA15747D3 /* Cabin-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 647841C9AB7749129BC83F18 /* Cabin-BoldItalic.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		5ED67B5C4C684E60AA733EC7 /* libRNShare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70ADF8A927E8482995D68A14 /* libRNShare.a */; };
+		7238D2021F7313250035B8BF /* libRCTTouchId.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 728533681F717E56009C589A /* libRCTTouchId.a */; };
 		7D1142FA0E824DC297BBB013 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55E340FB664448F1A0F36F85 /* Rubik-Light.ttf */; };
 		7F928E981EE3412DA2B9AD9A /* Rubik-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99502D13C2BD4D0280072CB3 /* Rubik-Black.ttf */; };
 		82E33DAEFD544290B6392230 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE10267F84AA446D9E66455E /* libRNImagePicker.a */; };
@@ -462,6 +461,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7238D2021F7313250035B8BF /* libRCTTouchId.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -482,8 +482,6 @@
 				CECEFC79AFEB40A29CC35884 /* libRNVectorIcons.a in Frameworks */,
 				15A0209DF76B4079BEA65B85 /* libBVLinearGradient.a in Frameworks */,
 				5ED67B5C4C684E60AA733EC7 /* libRNShare.a in Frameworks */,
-				27C878DA139049D5A494FC22 /* libTouchID.a in Frameworks */,
-				16D2670BD34549FE877C8563 /* libRCTTouchId.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,6 +721,29 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		7238D1311F7309900035B8BF /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				A40FEB75C35C401C8F24C246 /* libRNFetchBlob.a */,
+				DE10267F84AA446D9E66455E /* libRNImagePicker.a */,
+				6DF858F10D024A06BC661E2D /* libRCTImageResizer.a */,
+				298C9F1F049C4DE9A77DCC59 /* libAirMaps.a */,
+				5700A9A045C94804B137DD4C /* libRNVectorIcons.a */,
+				9B638C72A7924F7A9D558D80 /* libBVLinearGradient.a */,
+				70ADF8A927E8482995D68A14 /* libRNShare.a */,
+				DB52BEBB31394F138F9F3FB9 /* libTouchID.a */,
+				7767A90EAAE44005A4F4FA5E /* libRCTTouchId.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		7238D2001F7313250035B8BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		728532D61F715FDF009C589A /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -793,6 +814,8 @@
 				00E356EF1AD99517003FC87E /* life_logTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				07D4E09015314F8BABCF5804 /* Resources */,
+				7238D1311F7309900035B8BF /* Recovered References */,
+				7238D2001F7313250035B8BF /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -1576,6 +1599,7 @@
 					"$(SRCROOT)/../node_modules/react-native-smart-touch-id/ios/RCTTouchId/RCTTouchId",
 				);
 				INFOPLIST_FILE = life_log/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1607,6 +1631,7 @@
 					"$(SRCROOT)/../node_modules/react-native-smart-touch-id/ios/RCTTouchId/RCTTouchId",
 				);
 				INFOPLIST_FILE = life_log/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
