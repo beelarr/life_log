@@ -125,6 +125,7 @@ class Home extends Component {
                         Posts</Text>
                 <Divider styleName="line" />
                 <ScrollView>
+
                     <View styleName="clear" style={{flexDirection:'row', marginBottom: 95, flexWrap: 'wrap', justifyContent:'space-around', backgroundColor: '#DBDDDE'}}>
 
                         {Object.keys(this.state.food).map((key) => {
