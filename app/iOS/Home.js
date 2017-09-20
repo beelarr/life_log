@@ -136,10 +136,10 @@ class Home extends Component {
                                         <Image
                                             style={{
                                                 marginBottom: deviceHeight/350,
-                                                width: deviceWidth/3.05,
+                                                // width: deviceWidth/3.05,
 
                                             }}
-                                            styleName='medium-square clear'
+                                            styleName='large-square clear'
                                             source={{uri: this.state.food[key].image}}/>
                                     </TouchableOpacity>
                             )
