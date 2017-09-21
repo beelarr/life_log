@@ -19,7 +19,7 @@ export default class life_log extends Component {
     return (
       <NavigatorIOS
         navigationBarHidden={true}
-        initialRoute={{title: "TouchId", component: TouchId}} //required for NaviOS
+        initialRoute={{title: "Log In", component: Login}} //required for NaviOS
         style = {{flex: 1}}
       />
     );
