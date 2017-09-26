@@ -10,6 +10,7 @@ import ImageResizer from 'react-native-image-resizer'; //auto resizer that helps
 import gpKey from '../Values/Creds';
 import {
     Subtitle,
+    Title,
     Caption,
     Row,
     Image,
@@ -139,7 +140,7 @@ class Post extends Component {
                                 width: deviceWidth,
                                 height: (deviceWidth * .5)}}/>
                     </TouchableOpacity>
-                    <Subtitle style={styles.textLocation}>{this.state.place.name}</Subtitle>
+                    <Subtitle styleName='bold' style={styles.textLocation}>{this.state.place.name}</Subtitle>
                     <TextInput
                         style={styles.textPostInput}
                         placeholder="Write a caption. . ."
