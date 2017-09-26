@@ -99,6 +99,7 @@ var styles = StyleSheet.create({
     },
     logoText:{
         height: deviceHeight/8.5,
+        width: deviceWidth/2
 
     },
     logOut:{
