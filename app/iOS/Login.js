@@ -14,6 +14,7 @@ import {
     AlertIOS,
     TouchableOpacity,
     ImageBackground,
+    View,
 } from 'react-native';
 
 class Login extends Component {
@@ -47,44 +48,44 @@ class Login extends Component {
         return ( //there cant be multiple views in the outermost node
 
             <ImageBackground
-                source={{uri: 'https://68.media.tumblr.com/390905e2ecc974d9b9deba0c542a9b2f/tumblr_ow607iHMqJ1u8wonlo1_1280.jpg'}}
+                source={{uri: 'https://78.media.tumblr.com/b4d46d426eae880dbc7a64b79450eee0/tumblr_oww0sw5ImI1wb9q31o1_500.gif'}}
                 style={[styles.container]}>
-                <Icon
-                    name="bookmark-o"
-                    color="#fff"
-                    size={65}
-                    style={{
-                        textShadowColor: 'black',
-                        textShadowOffset: {width: 2, height: 2},
-                        textShadowRadius: 5}}/>
-                <Text style={[styles.logo, styles.customFont]}>Life Log</Text>
-                <TextInput
-                    style={ styles.textInput }
-                    placeholder="Email"
-                    autoCorrect={false}
-                    keyboardType={'email-address'}
-                    placeholderTextColor="#fff"
-                    onChangeText={(email) => this.setState({email: email})}
-                    value={this.state.email}/>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder="Password"
-                    placeholderTextColor="#fff"
-                    secureTextEntry={true}
-                    onChangeText={(password) => this.setState({password: password})}
-                    value={this.state.password}/>
-                <KeyboardSpacer/>
-                <TouchableOpacity
-                    style={styles.clearBtn}
-                    onPress={this.login.bind(this)}>
-                    <Text style={[styles.text, styles.whiteText]}>Login</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={this.login.bind(this)}  //this is the entire component, binds the text input to the submit function
-                    title="Login"/>
-                <TouchableOpacity onPress={this.register.bind(this)}>
-                    <Text style={styles.whiteText}>Register</Text>
-                </TouchableOpacity>
+                <View
+                    style={styles.login}>
+                    <Icon
+                        name="bookmark-o"
+                        color="#fff"
+                        size={65}
+                        />
+                    <Text style={[styles.logo, styles.customFont]}>Life Log</Text>
+                    <TextInput
+                        style={ styles.textInput }
+                        placeholder="Email"
+                        autoCorrect={false}
+                        keyboardType={'email-address'}
+                        placeholderTextColor="#fff"
+                        onChangeText={(email) => this.setState({email: email})}
+                        value={this.state.email}/>
+                    <TextInput
+                        style={styles.textInput}
+                        placeholder="Password"
+                        placeholderTextColor="#fff"
+                        secureTextEntry={true}
+                        onChangeText={(password) => this.setState({password: password})}
+                        value={this.state.password}/>
+                    <KeyboardSpacer/>
+                    <TouchableOpacity
+                        style={styles.clearBtn}
+                        onPress={this.login.bind(this)}>
+                        <Text style={[styles.text, styles.whiteText]}>Login</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={this.login.bind(this)}  //this is the entire component, binds the text input to the submit function
+                        title="Login"/>
+                    <TouchableOpacity onPress={this.register.bind(this)}>
+                        <Text style={styles.whiteText}>Register</Text>
+                    </TouchableOpacity>
+                </View>
             </ImageBackground>
 
         );

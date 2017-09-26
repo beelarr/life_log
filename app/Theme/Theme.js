@@ -27,7 +27,7 @@ var styles = StyleSheet.create({
     },
     container: {
         alignItems: 'center',
-        backgroundColor: 'rgba(0,0,0,0)',
+        backgroundColor: 'rgba(0,0,0,0.2)',
         flex: 1,
         height: null,
         justifyContent: 'center',
@@ -65,14 +65,19 @@ var styles = StyleSheet.create({
         borderWidth: .5,
         height: 1,
     },
+    login:{
+        flex: 1,
+        alignItems: 'center',
+        paddingTop: deviceHeight/5,
+    },
     logo:{
         color: '#fff',
         fontSize: 38,
         fontWeight: '500',
         textAlign: 'center',
-        textShadowColor: 'black',
-        textShadowOffset: {width: 1, height: 1},
-        textShadowRadius: 1,
+        // textShadowColor: 'black',
+        // textShadowOffset: {width: 1, height: 1},
+        // textShadowRadius: 1,
 
     },
     logOut:{
@@ -139,9 +144,15 @@ var styles = StyleSheet.create({
     text: {
         fontFamily: 'GillSans-Light',
         textAlign: 'center',
-        textShadowColor: 'black',
-        textShadowOffset: {width: 2, height: 2},
-        textShadowRadius: 5,
+        // textShadowColor: 'black',
+        // textShadowOffset: {width: 2, height: 2},
+        // textShadowRadius: 5,
+    },
+    textCenterHeader:{
+        color: '#fff',
+        fontFamily: 'GillSans-Light',
+        fontSize: 22,
+        textAlign: 'center',
     },
     textInput: {
         backgroundColor: 'rgba(0,0,0,0)',
@@ -183,16 +194,10 @@ var styles = StyleSheet.create({
         fontFamily: "GillSans",
         fontSize: 20,
         textAlign: 'center',
-        textShadowColor: 'black',
-        textShadowOffset: {width: 2, height: 2},
-        textShadowRadius: 5,
+        // textShadowColor: 'black',
+        // textShadowOffset: {width: 2, height: 2},
+        // textShadowRadius: 5,
     },
-    textCenterHeader:{
-        color: '#fff',
-        fontFamily: 'GillSans-Light',
-        fontSize: 22,
-        textAlign: 'center',
-    }
 });
 
 module.exports = styles;
