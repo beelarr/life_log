@@ -7,7 +7,6 @@ import styles from '../Theme/Theme';
 import Register from './Register';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import KeyboardSpacer from 'react-native-keyboard-spacer';
-
 import {
     Text,
     TextInput,
@@ -56,20 +55,24 @@ class Login extends Component {
                         name="bookmark-o"
                         color="#fff"
                         size={65}
+                        style={styles.iconLogo}
                         />
-                    <Text style={[styles.logo, styles.customFont]}>Life Log</Text>
+                    <Text style={styles.logoText}>
+                        <Text style={[styles.logoLife, styles.customFont]}>Life</Text>
+                        <Text style={[styles.logoLog, styles.customFont]}> Log</Text>
+                    </Text>
                     <TextInput
-                        style={ styles.textInput }
+                        style={styles.textInputEmail}
                         placeholder="Email"
                         autoCorrect={false}
                         keyboardType={'email-address'}
-                        placeholderTextColor="#fff"
+                        placeholderTextColor="darkgrey"
                         onChangeText={(email) => this.setState({email: email})}
                         value={this.state.email}/>
                     <TextInput
-                        style={styles.textInput}
+                        style={styles.textInputPassword}
                         placeholder="Password"
-                        placeholderTextColor="#fff"
+                        placeholderTextColor="darkgrey"
                         secureTextEntry={true}
                         onChangeText={(password) => this.setState({password: password})}
                         value={this.state.password}/>

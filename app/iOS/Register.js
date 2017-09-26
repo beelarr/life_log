@@ -10,7 +10,8 @@ import {
     TextInput,
     ImageBackground,
     AlertIOS,
-    TouchableOpacity
+    TouchableOpacity,
+    View
 } from 'react-native';
 
 class Register extends Component {
@@ -45,41 +46,47 @@ class Register extends Component {
         //line 71 -this is the entire component, binds the text input to the submit function
         return (
             <ImageBackground
-                source={{uri: 'https://68.media.tumblr.com/0024999d4a54d3fa21cb4c4a81b9bc98/tumblr_ow6qt07IJr1u8wonlo1_1280.jpg'}}
+                source={{uri: 'https://78.media.tumblr.com/c652ff47f1f27525b0acc9c6df1ef8ca/tumblr_owwg5jg0zU1wb9q31o1_500.gif'}}
                 style={[styles.container]}>
-                <Icon
-                    name="bookmark-o"
-                    color="#fff"
-                    size={65}
-                    style={{
-                        textShadowColor: 'black',
-                        textShadowOffset: {width: 2, height: 2},
-                        textShadowRadius: 5}}/>
-                <Text style={[styles.logo, styles.customFont]}>Life Log</Text>
-                <TextInput
-                    style={ styles.textInput }
-                    placeholder="Email"
-                    placeholderTextColor="#fff"
-                    onChangeText={(email) => this.setState({email: email})}
-                    value={this.state.email}/>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder="Password"
-                    placeholderTextColor="#fff"
-                    secureTextEntry={true}
-                    onChangeText={(password) => this.setState({password: password})}
-                    value={this.state.password}/>
-                <KeyboardSpacer/>
-                <TouchableOpacity
+                <View
+                    style={styles.login}>
+                    <Icon
+                        name="bookmark-o"
+                        color="#fff"
+                        size={65}
+                        style={styles.iconLogo}
+                    />
+                    <Text style={styles.logoText}>
+                        <Text style={[styles.logoLife, styles.customFont]}>Life</Text>
+                        <Text style={[styles.logoLog, styles.customFont]}> Log</Text>
+                    </Text>
+                    <TextInput
+                        style={styles.textInputEmail}
+                        placeholder="Email"
+                        autoCorrect={false}
+                        keyboardType={'email-address'}
+                        placeholderTextColor="darkgrey"
+                        onChangeText={(email) => this.setState({email: email})}
+                        value={this.state.email}/>
+                    <TextInput
+                        style={styles.textInputPassword}
+                        placeholder="Password"
+                        placeholderTextColor="darkgrey"
+                        secureTextEntry={true}
+                        onChangeText={(password) => this.setState({password: password})}
+                        value={this.state.password}/>
+                    <KeyboardSpacer/>
+                    <TouchableOpacity
                     style={styles.clearBtn}
                     onPress={this.register.bind(this)}>
-                    <Text style={[styles.text, styles.whiteText]}>Register</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
+                        <Text style={[styles.text, styles.whiteText]}>Register</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
                     onPress={this.login.bind(this)}  //this is the entire component, binds the text input to the submit function
                     title="Login">
-                    <Text style={styles.whiteText}>Login</Text>
-                </TouchableOpacity>
+                        <Text style={styles.whiteText}>Login</Text>
+                    </TouchableOpacity>
+                </View>
             </ImageBackground>
         );
     }

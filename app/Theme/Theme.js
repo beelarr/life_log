@@ -34,8 +34,8 @@ var styles = StyleSheet.create({
         width: null,
     },
     customFont: {
-        fontFamily: "Cabin",
-        fontWeight: 'bold',
+        fontFamily: "Lobster",
+        fontSize: 50,
     },
     header: {
         alignItems: 'center',
@@ -53,6 +53,12 @@ var styles = StyleSheet.create({
         marginBottom: 10,
         width: deviceWidth/3.1,
     },
+    iconLogo:{
+        shadowColor: 'black',
+        shadowOffset: {width: 1, height: 1},
+        shadowOpacity: .1,
+        shadowRadius: 2
+    },
     left: {
         justifyContent: 'flex-start',
         marginTop: 4,
@@ -68,16 +74,31 @@ var styles = StyleSheet.create({
     login:{
         flex: 1,
         alignItems: 'center',
-        paddingTop: deviceHeight/5,
+        paddingTop: deviceHeight/10.5,
     },
-    logo:{
+    logoLife:{
         color: '#fff',
         fontSize: 38,
         fontWeight: '500',
+        letterSpacing: 3,
+        margin: 5,
         textAlign: 'center',
-        // textShadowColor: 'black',
-        // textShadowOffset: {width: 1, height: 1},
-        // textShadowRadius: 1,
+        textShadowColor: 'darkgrey',
+        textShadowOffset: {width: 3, height: 1},
+        textShadowRadius: 2,
+    },
+    logoLog:{
+        color: '#fff',
+        fontSize: 38,
+        fontWeight: '500',
+        padding: 5,
+        textAlign: 'center',
+        textShadowColor: 'darkgrey',
+        textShadowOffset: {width: 3, height: 1},
+        textShadowRadius: 2,
+    },
+    logoText:{
+        height: deviceHeight/8.5,
 
     },
     logOut:{
@@ -144,9 +165,6 @@ var styles = StyleSheet.create({
     text: {
         fontFamily: 'GillSans-Light',
         textAlign: 'center',
-        // textShadowColor: 'black',
-        // textShadowOffset: {width: 2, height: 2},
-        // textShadowRadius: 5,
     },
     textCenterHeader:{
         color: '#fff',
@@ -154,17 +172,27 @@ var styles = StyleSheet.create({
         fontSize: 22,
         textAlign: 'center',
     },
-    textInput: {
+    textInputEmail: {
         backgroundColor: 'rgba(0,0,0,0)',
         borderColor: '#fff',
         borderWidth: .5,
-        color: '#fff',
+        color: '#000',
         fontFamily: 'GillSans-Light',
-        height: 50,
-        margin: 15,
+        height: deviceHeight/12,
+        margin: deviceHeight/35,
         textAlign: 'center',
         width: 200,
-
+    },
+    textInputPassword: {
+        backgroundColor: 'rgba(0,0,0,0)',
+        borderColor: '#fff',
+        borderWidth: .5,
+        color: '#000',
+        fontFamily: 'GillSans-Light',
+        height: deviceHeight/12,
+        marginBottom: deviceHeight/35,
+        textAlign: 'center',
+        width: 200,
     },
     textHeader: {
         color: '#fff',
@@ -193,10 +221,8 @@ var styles = StyleSheet.create({
         color: '#fff',
         fontFamily: "GillSans",
         fontSize: 20,
+        fontWeight: '400',
         textAlign: 'center',
-        // textShadowColor: 'black',
-        // textShadowOffset: {width: 2, height: 2},
-        // textShadowRadius: 5,
     },
 });
 
