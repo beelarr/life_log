@@ -140,7 +140,8 @@ class Post extends Component {
                                 width: deviceWidth,
                                 height: (deviceWidth * .5)}}/>
                     </TouchableOpacity>
-                    <Subtitle styleName='bold' style={styles.textLocation}>{this.state.place.name}</Subtitle>
+                    <Title style={styles.textLocation}>{this.state.place.name}</Title>
+
                     <TextInput
                         style={styles.textPostInput}
                         placeholder="Write a caption. . ."

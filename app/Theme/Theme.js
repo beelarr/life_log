@@ -99,7 +99,7 @@ var styles = StyleSheet.create({
     },
     logoText:{
         height: deviceHeight/8.5,
-        width: deviceWidth/2
+        // width: deviceWidth/2
 
     },
     logOut:{
@@ -201,7 +201,7 @@ var styles = StyleSheet.create({
         textAlign: 'center',
     },
     textLocation:{
-        fontFamily: 'GillSans-Light',
+        fontFamily: 'GillSans',
         fontWeight: '500',
         fontSize: 15,
         textAlign: 'center',

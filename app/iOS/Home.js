@@ -14,7 +14,8 @@ import {
     Text,
     ScrollView,
     TouchableOpacity,
-    Alert
+    Alert,
+    ActivityIndicator
 } from 'react-native';
 
 class Home extends Component {
@@ -33,8 +34,8 @@ class Home extends Component {
         super(props);
         this.state = {
             uid: "",
-            food: [{image: 'https://firebasestorage.googleapis.com/v0/b/findr-3ffd0.appspot.com/o/placeholder.png?alt=media&token=778cf414-8fc7-4288-bd50-1580366ab56a' }],
-            entryId: '',
+            food: [],
+            entryId: "",
         }
     }
 
@@ -93,7 +94,23 @@ class Home extends Component {
 
 
     render () {   // nested return object of our food so that the entries are injected. Notice only one outside view. Key is given to keep xcode from error*/
-
+        if (!this.state.food.length) {
+            return(
+                <ActivityIndicator
+                    style={{
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0,
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}
+                    size="large"
+                    color="black"
+                />
+            )
+        }
 
         return (
             <View style={styles.homeContainer} >
@@ -107,6 +124,7 @@ class Home extends Component {
                         leftText={<Icon2 name="camera"
                         color="#fff"
                         size={30}/> }/>
+
                         <Text
                             style={{
                                 fontFamily: 'cabin',
@@ -126,11 +144,7 @@ class Home extends Component {
                             flexWrap: 'wrap',
                             justifyContent:'space-around',
                             backgroundColor: '#DBDDDE'}}>
-                        <Image
-                            style={{flex:1}}
-                            source={{uri: this.state.food.image}}
-                            styleName='large-square clear'
-                        />
+
                         {Object.keys(this.state.food).map((key) => {
                             return (
                                 <TouchableOpacity
