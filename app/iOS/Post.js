@@ -14,7 +14,8 @@ import {
     Caption,
     Row,
     Image,
-    Icon
+    Icon,
+    Spinner
         } from '@shoutem/ui';
 import {
     View,
@@ -59,7 +60,8 @@ class Post extends Component {
             nearby: [],
             memory: '',
             createdAt: '',
-            uid: ''
+            uid: '',
+            loading: false
         };
     }
 
@@ -79,6 +81,7 @@ class Post extends Component {
     };
 
     photo = () => {
+                        this.setState({loading: true});
         var state = this;
         window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
         window.Blob = Blob;
@@ -91,7 +94,7 @@ class Post extends Component {
                 ImageResizer.createResizedImage(source.uri, 500, 500, 'JPEG', 90)
                     .then((resizedImageURI) => {
                         uploadImage(resizedImageURI)//creates Blob
-                        .then(url => state.setState({image: url})) //once our image is in firebase we setState to display it
+                        .then(url => state.setState({image: url, loading: false})) //once our image is in firebase we setState to display it
                             .catch((error) => {
                                 console.log('error', error);
                             });
@@ -102,6 +105,7 @@ class Post extends Component {
 
 
     post = () => {
+        console.log('Post in Post is firing');
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 let userId = user.uid;
@@ -126,6 +130,24 @@ class Post extends Component {
 
 
     render () { // 2nd return This return Updates the place for our post*/
+        if (this.state.loading) {
+            return(
+                <Spinner
+                    style={{
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0,
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}
+                    size="large"
+                    color="black"
+                />
+            )
+        }
+
         return (
             <View>
                 <Header

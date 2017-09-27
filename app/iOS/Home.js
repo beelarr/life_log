@@ -49,6 +49,7 @@ class Home extends Component {
                     var items = [];
                     userPost.forEach((child) => {
                         var item = child.val();
+                        console.log('item in getPosts', item);
                         item.key = child.key;
                         items.push(item);
                     });
