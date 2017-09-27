@@ -6,7 +6,7 @@ import styles from '../Theme/Theme';
 import post from './Post';
 import Icon2 from 'react-native-vector-icons/EvilIcons';
 import Icon1 from 'react-native-vector-icons/FontAwesome';
-import {Image, Tile, Title, Caption, View, Divider, Button, Icon} from '@shoutem/ui';
+import {Image, Tile, Title, Caption, View, Divider, Button, Icon, Heading} from '@shoutem/ui';
 import Dimensions from 'Dimensions';
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
@@ -33,8 +33,8 @@ class Home extends Component {
         super(props);
         this.state = {
             uid: "",
-            food: [],
-            entryId: ''
+            food: [{image: 'https://firebasestorage.googleapis.com/v0/b/findr-3ffd0.appspot.com/o/placeholder.png?alt=media&token=778cf414-8fc7-4288-bd50-1580366ab56a' }],
+            entryId: '',
         }
     }
 
@@ -95,20 +95,10 @@ class Home extends Component {
     render () {   // nested return object of our food so that the entries are injected. Notice only one outside view. Key is given to keep xcode from error*/
 
 
-        let swipeBtns = [{
-            text: '',
-            buttonWidth: 2000,
-            backgroundColor: 'red',
-            underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-            onPress: () => {() => this.deletePost(this.state.food[key])}
-        }];
-
         return (
             <View style={styles.homeContainer} >
                 <Header
                     onLogOut={() =>{
-                        console.log('logout is working');
-                        console.log('this.props', this.props);
                         firebase.auth().signOut();
                         this.props.navigator.popToTop();
                     }}
@@ -136,6 +126,11 @@ class Home extends Component {
                             flexWrap: 'wrap',
                             justifyContent:'space-around',
                             backgroundColor: '#DBDDDE'}}>
+                        <Image
+                            style={{flex:1}}
+                            source={{uri: this.state.food.image}}
+                            styleName='large-square clear'
+                        />
                         {Object.keys(this.state.food).map((key) => {
                             return (
                                 <TouchableOpacity
@@ -145,7 +140,6 @@ class Home extends Component {
                                         <Image
                                             style={{
                                                 marginBottom: deviceHeight/350,
-                                                // width: deviceWidth/3.05,
                                             }}
                                             styleName='large-square clear'
                                             source={{uri: this.state.food[key].image}}/>

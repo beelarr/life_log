@@ -22,7 +22,8 @@ class Login extends Component {
         this.state = { //defining the initial state of the props
             email: "",
             password: "",
-            uid: ""
+            uid: "",
+            loading: true
         };
     }
 
