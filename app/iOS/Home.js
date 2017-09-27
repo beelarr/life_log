@@ -6,7 +6,7 @@ import styles from '../Theme/Theme';
 import post from './Post';
 import Icon2 from 'react-native-vector-icons/EvilIcons';
 import Icon1 from 'react-native-vector-icons/FontAwesome';
-import {Image, Tile, Title, Caption, View, Divider, Button, Icon, Heading} from '@shoutem/ui';
+import {Image, Tile, Title, Caption, View, Divider, Button, Icon, Heading, Spinner} from '@shoutem/ui';
 import Dimensions from 'Dimensions';
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
@@ -36,10 +36,9 @@ class Home extends Component {
             uid: "",
             food: [],
             entryId: "",
+            loading: true,
         }
     }
-
-
 
     getPosts = () => {
         firebase.auth().onAuthStateChanged((user) => {
@@ -54,7 +53,8 @@ class Home extends Component {
                         items.push(item);
                     });
                     items = items.reverse(); //showing newest items
-                    this.setState({food: items});
+                    this.setState({food: items, loading: false});
+
                 });
             }
         });
@@ -94,9 +94,9 @@ class Home extends Component {
 
 
     render () {   // nested return object of our food so that the entries are injected. Notice only one outside view. Key is given to keep xcode from error*/
-        if (!this.state.food.length) {
+        if (this.state.loading) {
             return(
-                <ActivityIndicator
+                <Spinner
                     style={{
                         position: 'absolute',
                         left: 0,
@@ -146,19 +146,19 @@ class Home extends Component {
                             backgroundColor: '#DBDDDE'}}>
 
                         {Object.keys(this.state.food).map((key) => {
-                            return (
-                                <TouchableOpacity
+                                return (
+                                    <TouchableOpacity
                                         key={key}
                                         onPress={() => this.map(this.state.food[key])}
                                         onLongPress={() => this.deletePost(this.state.food[key].key)}>
                                         <Image
                                             style={{
-                                                marginBottom: deviceHeight/350,
+                                                marginBottom: deviceHeight / 350,
                                             }}
                                             styleName='large-square clear'
                                             source={{uri: this.state.food[key].image}}/>
                                     </TouchableOpacity>
-                            )
+                                )
                         })}
                     </View>
                 </ScrollView>

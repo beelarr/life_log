@@ -7,6 +7,7 @@ import styles from '../Theme/Theme';
 import Register from './Register';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import KeyboardSpacer from 'react-native-keyboard-spacer';
+import {Spinner} from '@shoutem/ui';
 import {
     Text,
     TextInput,
@@ -14,6 +15,7 @@ import {
     TouchableOpacity,
     ImageBackground,
     View,
+    ActivityIndicator
 } from 'react-native';
 
 class Login extends Component {
@@ -23,15 +25,16 @@ class Login extends Component {
             email: "",
             password: "",
             uid: "",
-            loading: true
+            loading: false
         };
     }
 
     login = () => {
+        this.setState({loading: true});
         var state = this; //captures this from outside firebase call to use inside firebase
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then( (data) => {
-                this.setState({uid: data.uid});
+                this.setState({uid: data.uid, loading: false});
                 state.props.navigator.push({ component: home });
         },  (error) => {
                 AlertIOS.alert(error.message)
@@ -44,6 +47,23 @@ class Login extends Component {
 
 
     render() {
+        if (this.state.loading) {
+            return(
+                <Spinner
+                    style={{
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0,
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}
+                    size="large"
+                    color="black"
+                />
+            )
+        }
 
         return ( //there cant be multiple views in the outermost node
 

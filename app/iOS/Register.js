@@ -4,6 +4,7 @@ import home from './Home.js';
 import styles from '../Theme/Theme';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import KeyboardSpacer from 'react-native-keyboard-spacer';
+import {Spinner} from '@shoutem/ui';
 
 import {
     Text,
@@ -20,15 +21,17 @@ class Register extends Component {
         this.state = { //defining the initial state of the props
             email: "",
             password: "",
-            uid: ""
+            uid: "",
+            loading: false,
         };
     }
 
     register = () => {
+        this.setState({loading: true});
         var state = this;
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then((data) => {
-                this.setState({uid: data.uid});
+                this.setState({uid: data.uid, loading: false});
                 state.props.navigator.push({ component:home }); // If I used 'this' here it would be referring to Firebase. By capturing it before it refers to Register.
             },  (error) => {
                     AlertIOS.alert(error.message)
@@ -40,6 +43,24 @@ class Register extends Component {
     };
 
     render() {
+        if (this.state.loading) {
+            return(
+                <Spinner
+                    style={{
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0,
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}
+                    size="large"
+                    color="black"
+                />
+            )
+        }
+
         /*there cant be multiple views in the outermost node*/
         /* line 60 - this is the entire component, binds the text input to the register function*/
         /*line62-binds the component on the submit function to the state*/
