@@ -81,10 +81,10 @@ class Post extends Component {
     };
 
     photo = () => {
-                        this.setState({loading: true});
         var state = this;
         window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
         window.Blob = Blob;
+        this.setState({loading: true});
         ImagePicker.showImagePicker({}, (response) => {
             if (!response.didCancel) {
                 const source = {
