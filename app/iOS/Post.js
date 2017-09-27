@@ -105,7 +105,6 @@ class Post extends Component {
 
 
     post = () => {
-        console.log('Post in Post is firing');
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 let userId = user.uid;
@@ -153,14 +152,14 @@ class Post extends Component {
                 <Header
                     title="Post"
                     left={this.back.bind(this)}
-                    leftText={'Back'}/>
+                    leftText={'Back'} />
                 <View style={styles.center}>
                     <TouchableOpacity onPress={this.photo.bind(this)}>
                         <Image
                             source={{uri: this.state.image}}
                             style={{
                                 width: deviceWidth,
-                                height: (deviceWidth * .5)}}/>
+                                height: (deviceWidth * .5)}} />
                     </TouchableOpacity>
                     <Title style={styles.textLocation}>{this.state.place.name}</Title>
 
@@ -170,7 +169,7 @@ class Post extends Component {
                         autoCorrect={true}
                         placeholderTextColor="lightgrey"
                         onChangeText={(memory) => this.setState({memory: memory})}
-                        value={this.state.memory}/>
+                        value={this.state.memory} />
                     <Subtitle>Add Location</Subtitle>
                     <ScrollView style={{height: deviceHeight*.35}}>
                         {Object.keys(this.state.nearby).map((key) => {
@@ -196,7 +195,7 @@ class Post extends Component {
                             )
                         })}
                     </ScrollView>
-                    <TouchableOpacity style={styles.btn} onPress={this.post.bind(this)} >
+                    <TouchableOpacity style={styles.btn} onPress={this.post.bind(this)}>
                         <Text style={styles.textPost}>Post</Text>
                     </TouchableOpacity>
                 </View>

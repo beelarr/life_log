@@ -1,6 +1,6 @@
 import React, { Component } from 'react';   // importing from node_modules
 import firebase from '../Config/Firebase';
-import home from './Home.js';
+import Home from './Home.js';
 import styles from '../Theme/Theme';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import KeyboardSpacer from 'react-native-keyboard-spacer';
@@ -32,7 +32,7 @@ class Register extends Component {
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then((data) => {
                 this.setState({uid: data.uid, loading: false});
-                state.props.navigator.push({ component:home }); // If I used 'this' here it would be referring to Firebase. By capturing it before it refers to Register.
+                state.props.navigator.push({ component: Home }); // If I used 'this' here it would be referring to Firebase. By capturing it before it refers to Register.
             },  (error) => {
                     AlertIOS.alert(error.message)
         });
@@ -96,7 +96,7 @@ class Register extends Component {
                         secureTextEntry={true}
                         onChangeText={(password) => this.setState({password: password})}
                         value={this.state.password}/>
-                    <KeyboardSpacer/>
+                    <KeyboardSpacer />
                     <TouchableOpacity
                     style={styles.clearBtn}
                     onPress={this.register.bind(this)}>

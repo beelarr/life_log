@@ -2,7 +2,7 @@ console.disableYellowBox = true;
 
 import React, { Component } from 'react';   // importing from node_modules
 import firebase from '../Config/Firebase';
-import home from './Home';
+import Home from './Home';
 import styles from '../Theme/Theme';
 import Register from './Register';
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -35,7 +35,7 @@ class Login extends Component {
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then( (data) => {
                 this.setState({uid: data.uid, loading: false});
-                state.props.navigator.push({ component: home });
+                state.props.navigator.push({ component: Home });
         },  (error) => {
                 AlertIOS.alert(error.message)
             });
@@ -97,7 +97,7 @@ class Login extends Component {
                         secureTextEntry={true}
                         onChangeText={(password) => this.setState({password: password})}
                         value={this.state.password}/>
-                    <KeyboardSpacer/>
+                    <KeyboardSpacer />
                     <TouchableOpacity
                         style={styles.clearBtn}
                         onPress={this.login.bind(this)}>

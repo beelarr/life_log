@@ -3,7 +3,7 @@ import firebase from '../Config/Firebase';
 import Header from '../Components/Header';
 import Map from './Map';
 import styles from '../Theme/Theme';
-import post from './Post';
+import Post from './Post';
 import Icon2 from 'react-native-vector-icons/EvilIcons';
 import Icon1 from 'react-native-vector-icons/FontAwesome';
 import {Image, Tile, Title, Caption, View, Divider, Button, Icon, Heading, Spinner} from '@shoutem/ui';
@@ -70,12 +70,11 @@ class Home extends Component {
 
 
 
-   left = () => { this.props.navigator.push({ component: post })};
+   left = () => { this.props.navigator.push({ component: Post })};
     //pushing post component which takes us to the post view/page
 
 
     deletePost = (key) => {
-        console.log('key in delete post', key);
         Alert.alert(
             'Delete Post',
             'Are you sure??',
@@ -119,11 +118,18 @@ class Home extends Component {
                         firebase.auth().signOut();
                         this.props.navigator.popToTop();
                     }}
-                    title={<Icon1 name="bookmark-o" color="#fff" size={30}/>}
+                    title={<Icon1
+                            name="bookmark-o"
+                            color="#fff"
+                            size={30}
+                        />}
                         left={this.left.bind(this)}
-                        leftText={<Icon2 name="camera"
-                        color="#fff"
-                        size={30}/> }/>
+                        leftText={
+                            <Icon2
+                                name="camera"
+                                color="#fff"
+                                size={30} />
+                        } />
 
                         <Text
                             style={{
@@ -156,7 +162,7 @@ class Home extends Component {
                                                 marginBottom: deviceHeight / 350,
                                             }}
                                             styleName='large-square clear'
-                                            source={{uri: this.state.food[key].image}}/>
+                                            source={{uri: this.state.food[key].image}} />
                                     </TouchableOpacity>
                                 )
                         })}
