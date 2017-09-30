@@ -1,7 +1,9 @@
 
 # Life Log
 
-Life Log is a real time travel [POI](https://en.wikipedia.org/wiki/Point_of_interest) tool.  Users can create photo posts with an attached location, a caption, directions and shareing features.
+Life Log is a real time travel [POI](https://en.wikipedia.org/wiki/Point_of_interest) tool.  Users can create photo posts with an attached location, a caption, directions and sharing features. 
+
+If you would like to see comments on the code run ```git fetch origin code-with-comments```.
 ## Getting Started
 
 Files you will need to create
@@ -127,6 +129,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * NSS Faculty
 * Matt Hamil
 * David Zukowski
+* Juan Rodríguez
 * [Stephen Grider's](https://www.udemy.com/the-complete-react-native-and-redux-course/learn/v4/overview) "The Complete React Native and Redux Course"
 
 
