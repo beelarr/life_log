@@ -82,21 +82,22 @@ class Post extends Component {
 
     // captures image, resizes it, and converts it to a blob
     photo = () => {
-        var state = this;
-        window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
-        window.Blob = Blob;
-        this.setState({loading: true});
+        var state = this; // capturing this to uses inside of ImageResizer on line 98. The only solution I could find, but it's hacky.
+        window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest; // taken from React Native Fetch Blob docs. I think it is making a request on the photo to the blob
+        window.Blob = Blob; // taken from React Native Fetch Blob docs.
+        this.setState({loading: true}); //starts spinner
         ImagePicker.showImagePicker({}, (response) => {
             if (!response.didCancel) {
                 const source = {
-                    uri: response.uri.replace('file://', ''),
+                    uri: response.uri.replace('file://', ''), // unique to ios. it is how the files are labeled
                     isStatic: true};
                 //file:// is unique to iOS, will be different for Andriod
-                ImageResizer.createResizedImage(source.uri, 500, 500, 'JPEG', 90)
+                ImageResizer.createResizedImage(source.uri, 500, 500, 'JPEG', 90) //image resizing specs
                     .then((resizedImageURI) => {
                         uploadImage(resizedImageURI)//creates Blob
-                        .then(url => state.setState({image: url, loading: false})) //once our image is in firebase we setState to display it
+                            .then(url => state.setState({image: url, loading: false})) //once our image is in firebase we setState to display it
                             .catch((error) => {
+                                this.setState({loading: false});
                                 console.log('error', error);
                             });
                     });
