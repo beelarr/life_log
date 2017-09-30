@@ -82,7 +82,7 @@ var styles = StyleSheet.create({
         fontSize: 38,
         fontWeight: '500',
         letterSpacing: 2.7,
-        marginRight: 5,
+        margin: 5,
         textAlign: 'center',
         textShadowColor: 'darkgrey',
         textShadowOffset: {width: 3, height: 1},
@@ -92,7 +92,6 @@ var styles = StyleSheet.create({
         color: '#fff',
         fontSize: 38,
         fontWeight: '500',
-        margin: 5,
         padding: 5,
         textAlign: 'center',
         textShadowColor: 'darkgrey',
@@ -101,7 +100,7 @@ var styles = StyleSheet.create({
     },
     logoText:{
         height: deviceHeight/8.5,
-        // width: deviceWidth/2
+        paddingRight: 5
 
     },
     logOut:{
