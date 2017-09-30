@@ -70,7 +70,7 @@ class Post extends Component {
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 const coords = position.coords.latitude + ',' + position.coords.longitude;
-                const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coords}&radius=500&key=${gpKey}`;
+                const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coords}&rankby=distance&key=${gpKey}`;
                 fetch(url, {method: "GET"}) //react native's xmlhttp call
                     .then(response => response.json())
                     .then(responseData => {
