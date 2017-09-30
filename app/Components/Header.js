@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 
-class Header extends Component {  //Header is in components dir because its reusable and no state is inv
+class Header extends Component {
     static contextTypes = {
         navigator: React.PropTypes.object,
 
@@ -41,6 +41,5 @@ class Header extends Component {  //Header is in components dir because its reus
         );
     }
 }
-// props.left or right enables changes on the header depending on the view
 
 module.exports = Header;

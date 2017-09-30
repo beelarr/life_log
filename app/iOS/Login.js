@@ -1,6 +1,6 @@
 console.disableYellowBox = true;
 
-import React, { Component } from 'react';   // importing from node_modules
+import React, { Component } from 'react';
 import firebase from '../Config/Firebase';
 import Home from './Home';
 import styles from '../Theme/Theme';
@@ -18,9 +18,9 @@ import {
 } from 'react-native';
 
 class Login extends Component {
-    constructor(props){ //passing down props from navigator
-        super(props); // setting the properties
-        this.state = { //defining the initial state of the props
+    constructor(props){
+        super(props);
+        this.state = {
             email: "",
             password: "",
             uid: "",
@@ -30,7 +30,7 @@ class Login extends Component {
 
     login = () => {
         this.setState({loading: true});
-        var state = this; //captures this from outside firebase call to use inside firebase
+        var state = this;
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then((data) => {
                 this.setState({uid: data.uid, loading: false});
@@ -66,7 +66,7 @@ class Login extends Component {
             )
         }
 
-        return ( //there cant be multiple views in the outermost node
+        return (
 
             <ImageBackground
                 source={{uri: 'https://78.media.tumblr.com/b4d46d426eae880dbc7a64b79450eee0/tumblr_oww0sw5ImI1wb9q31o1_500.gif'}}
@@ -105,7 +105,7 @@ class Login extends Component {
                         <Text style={[styles.text, styles.whiteText]}>Login</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={this.login.bind(this)}  //this is the entire component, binds the text input to the submit function
+                        onPress={this.login.bind(this)}
                         title="Login"/>
                     <TouchableOpacity onPress={this.register.bind(this)}>
                         <Text style={styles.whiteText}>Register</Text>

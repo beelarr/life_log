@@ -1,6 +1,6 @@
 console.disableYellowBox = true;
 
-import React, { Component } from 'react';   // importing from node_modules
+import React, { Component } from 'react';
 import styles from '../Theme/Theme';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Login from './Login';
@@ -27,7 +27,7 @@ class TouchId extends Component {
 
     async componentDidMount() {
         let description = 'Welcome, please verify your identity.';
-        let title = "Verify Password";   //fallback button title will be 'Verify Password'(unlocalized)
+        let title = "Verify Password";
         try {
             await TouchID.verify({
                 description,
@@ -48,7 +48,7 @@ class TouchId extends Component {
 
     render() {
 
-        return ( //there cant be multiple views in the outermost node
+        return (
             <ImageBackground
                 source={{uri: 'https://78.media.tumblr.com/c652ff47f1f27525b0acc9c6df1ef8ca/tumblr_owwg5jg0zU1wb9q31o1_500.gif'}}
                 style={[styles.container]}>

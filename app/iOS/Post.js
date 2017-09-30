@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import firebase from '../Config/Firebase';
 import Header from '../Components/Header';
 import styles from '../Theme/Theme';
-import Dimensions from 'Dimensions'; //Gets devices window dimensions
+import Dimensions from 'Dimensions';
 import uploadImage from '../Config/UploadImage';
-import ImagePicker from 'react-native-image-picker'; //allows access of camera
-import RNFetchBlob from 'react-native-fetch-blob'; //work-around that enables firebase to accept photos
-import ImageResizer from 'react-native-image-resizer'; //auto resizer that helps app performance and look consistency ex. line 40
+import ImagePicker from 'react-native-image-picker';
+import RNFetchBlob from 'react-native-fetch-blob';
+import ImageResizer from 'react-native-image-resizer';
 import gpKey from '../Values/Creds';
 import {
     Subtitle,
@@ -74,7 +74,7 @@ class Post extends Component {
                 fetch(url, {method: "GET"}) //react native's xmlhttp call
                     .then(response => response.json())
                     .then(responseData => {
-                        this.setState({ nearby: responseData.results});  //sets the state of nearby, the array from line 40, this is iterated through at line 103
+                        this.setState({ nearby: responseData.results});
                     })
             }
         )
@@ -90,11 +90,10 @@ class Post extends Component {
                 const source = {
                     uri: response.uri.replace('file://', ''),
                     isStatic: true};
-                //file:// is unique to iOS, will be different for Andriod
                 ImageResizer.createResizedImage(source.uri, 500, 500, 'JPEG', 90)
                     .then((resizedImageURI) => {
                         uploadImage(resizedImageURI)//creates Blob
-                        .then(url => state.setState({image: url, loading: false})) //once our image is in firebase we setState to display it
+                        .then(url => state.setState({image: url, loading: false}))
                             .catch((error) => {
                                 this.setState({loading: false});
                                 console.log('error', error);
@@ -129,7 +128,7 @@ class Post extends Component {
 
 
 
-    render () { // 2nd return This return Updates the place for our post*/
+    render () {
         if (this.state.loading) {
             return(
                 <Spinner

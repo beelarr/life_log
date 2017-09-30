@@ -60,7 +60,7 @@ class Map extends Component {
 
 
 
-    render() { //MapView tells map where to focus, MapView.Marker is for the pin.
+    render() {
         return (
                 <MapView
                     style={styles.mapContainer}

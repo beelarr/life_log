@@ -1,8 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
 import Login from './app/iOS/Login';
 import TouchId from './app/iOS/TouchId'
 
@@ -19,7 +14,7 @@ export default class life_log extends Component {
     return (
       <NavigatorIOS
         navigationBarHidden={true}
-        initialRoute={{title: "Log In", component: Login}} //required for NaviOS
+        initialRoute={{title: "Log In", component: Login}}
         style = {{flex: 1}}
       />
     );

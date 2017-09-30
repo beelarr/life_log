@@ -3,7 +3,6 @@ import RNFetchBlob from 'react-native-fetch-blob';
 const Blob = RNFetchBlob.polyfill.Blob;
 const fs = RNFetchBlob.fs;
 
-//this function uploads our image by encoding to the Blob's specs. Taken from the Reat Native fetch-blob github page.
 
 const uploadImage = (uri, mime = 'application/octet-stream') => {
     return new Promise((resolve, reject) => {

@@ -15,7 +15,6 @@ import {
     ScrollView,
     TouchableOpacity,
     Alert,
-    ActivityIndicator
 } from 'react-native';
 
 class Home extends Component {
@@ -52,7 +51,7 @@ class Home extends Component {
                         item.key = child.key;
                         items.push(item);
                     });
-                    items = items.reverse(); //showing newest items
+                    items = items.reverse();
                     this.setState({food: items, loading: false});
 
                 });
@@ -71,7 +70,6 @@ class Home extends Component {
 
 
    left = () => { this.props.navigator.push({ component: Post })};
-    //pushing post component which takes us to the post view/page
 
 
     deletePost = (key) => {
@@ -92,7 +90,7 @@ class Home extends Component {
 
 
 
-    render () {   // nested return object of our food so that the entries are injected. Notice only one outside view. Key is given to keep xcode from error*/
+    render () {
         if (this.state.loading) {
             return(
                 <Spinner
