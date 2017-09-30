@@ -1,4 +1,6 @@
-console.disableYellowBox = true;
+console.disableYellowBox = true; //disables warnings in debugger
+
+//Ultimately this libary made my app very unstable. After talking with a couple React developers non-RN libaries should be avoided due to the very frequent updates to the RN.
 
 import React, { Component } from 'react';   // importing from node_modules
 import styles from '../Theme/Theme';

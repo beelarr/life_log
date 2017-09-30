@@ -26,6 +26,7 @@ class Register extends Component {
         };
     }
 
+    //registers a new user via firebase
     register = () => {
         this.setState({loading: true});
         var state = this;
@@ -38,10 +39,16 @@ class Register extends Component {
             AlertIOS.alert(error.message)
         });
     };
-
+    //link to switch back to login
     login = () => {
         this.props.navigator.pop();
     };
+
+    /*there cant be multiple views in the outermost node*/
+    /* line 60 - this is the entire component, binds the text input to the register function*/
+    /*line62-binds the component on the submit function to the state*/
+    //line 71 -this is the entire component, binds the text input to the submit function
+    //line 54-78 is my spinner
 
     render() {
         if (this.state.loading) {
@@ -62,10 +69,6 @@ class Register extends Component {
             )
         }
 
-        /*there cant be multiple views in the outermost node*/
-        /* line 60 - this is the entire component, binds the text input to the register function*/
-        /*line62-binds the component on the submit function to the state*/
-        //line 71 -this is the entire component, binds the text input to the submit function
         return (
             <ImageBackground
                 source={{uri: 'https://78.media.tumblr.com/c652ff47f1f27525b0acc9c6df1ef8ca/tumblr_owwg5jg0zU1wb9q31o1_500.gif'}}

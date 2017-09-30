@@ -5,6 +5,8 @@ const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 
 
+//the main stylesheet for my app.
+
 var styles = StyleSheet.create({
     btn: {
         borderRadius: 3,
