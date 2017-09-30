@@ -96,6 +96,7 @@ class Post extends Component {
                         uploadImage(resizedImageURI)//creates Blob
                         .then(url => state.setState({image: url, loading: false})) //once our image is in firebase we setState to display it
                             .catch((error) => {
+                                this.setState({loading: false});
                                 console.log('error', error);
                             });
                     });
