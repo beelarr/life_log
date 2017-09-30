@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import firebase from '../Config/Firebase';
-import Header from '../Components/Header';
-import Map from './Map';
+import Header from '../Components/Header'; //imports the header component that I created
+import Map from './Map'; // imports the Map Component
 import styles from '../Theme/Theme';
-import Post from './Post';
-import Icon2 from 'react-native-vector-icons/EvilIcons';
-import Icon1 from 'react-native-vector-icons/FontAwesome';
-import {Image, Tile, Title, Caption, View, Divider, Button, Icon, Heading, Spinner} from '@shoutem/ui';
-import Dimensions from 'Dimensions';
-const deviceWidth = Dimensions.get('window').width;
-const deviceHeight = Dimensions.get('window').height;
+import Post from './Post'; //imports the Post Comonent
+import Icon2 from 'react-native-vector-icons/EvilIcons';  // imports Icon that I will use
+import Icon1 from 'react-native-vector-icons/FontAwesome'; // imports Icon that I will use
+import {Image, Tile, Title, Caption, View, Divider, Button, Icon, Heading, Spinner} from '@shoutem/ui'; //Shoutem UI components that I am using. A bootsrap-type of styling components
+import Dimensions from 'Dimensions'; //Captures the dimensions of the device
+const deviceWidth = Dimensions.get('window').width; //Captures the dimensions of the device width
+const deviceHeight = Dimensions.get('window').height; //Captures the dimensions of the device height
 import {
     Text,
     ScrollView,
@@ -18,6 +18,7 @@ import {
     ActivityIndicator
 } from 'react-native';
 
+// This is the "Home Page" of my app
 class Home extends Component {
 
     static  childContextTypes = {
@@ -30,9 +31,9 @@ class Home extends Component {
         }
     }
 
-    constructor(props) {
+    constructor(props) { //Properties that Home is given
         super(props);
-        this.state = {
+        this.state = { //Sets the initial state of the properties
             uid: "",
             food: [],
             entryId: "",
@@ -40,20 +41,20 @@ class Home extends Component {
         }
     }
 
-    getPosts = () => {
+    getPosts = () => {  //Retrieves any saved posts
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 let userId = user.uid;
-                this.setState({uid: userId});
-                firebase.database().ref('/food').orderByChild('uid').equalTo(userId).on('value', (userPost) => {
+                this.setState({uid: userId}); //Sets user id
+                firebase.database().ref('/food').orderByChild('uid').equalTo(userId).on('value', (userPost) => { //Gets all posts from that particular user
                     var items = [];
-                    userPost.forEach((child) => {
+                    userPost.forEach((child) => { //Puts the post's objects into an array with the key attached and reverses their order from newest to oldest
                         var item = child.val();
                         item.key = child.key;
                         items.push(item);
                     });
                     items = items.reverse(); //showing newest items
-                    this.setState({food: items, loading: false});
+                    this.setState({food: items, loading: false}); //Sets state of loading to remove the spinner
 
                 });
             }
@@ -62,7 +63,7 @@ class Home extends Component {
 
 
     map = (place) => {
-        this.props.navigator.push({
+        this.props.navigator.push({  // takes the user to the map and passes the property of place
             component: Map,
             passProps: place
         });
@@ -70,11 +71,11 @@ class Home extends Component {
 
 
 
-   left = () => { this.props.navigator.push({ component: Post })};
+   left = () => { this.props.navigator.push({ component: Post })}; // left link of nav bar
     //pushing post component which takes us to the post view/page
 
 
-    deletePost = (key) => {
+    deletePost = (key) => { //deletes a post but alerts user before doing so
         Alert.alert(
             'Delete Post',
             'Are you sure??',
@@ -86,7 +87,7 @@ class Home extends Component {
 
     };
 
-    componentDidMount() {
+    componentDidMount() { // gets the posts as soon as the component mounts
         this.getPosts();
     };
 

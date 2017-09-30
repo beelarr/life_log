@@ -39,12 +39,12 @@ class Map extends Component {
         }
     }
 
-
+    //link for the back navigation
     onBack = () => {
-        this.props.navigator.pop();
+        this.props.navigator.pop(); //pops off the current view to the previous
     };
 
-
+    //uses ios sharing features to share a post
     sharing = () => {
         Share.share({
             message: this.props.memory,
@@ -53,7 +53,7 @@ class Map extends Component {
         })
     };
 
-
+    //opens google maps bases on the name and address of a place
     directions = () => {
         Linking.openURL(`https://www.google.com/maps/search/?api=1&query=${this.props.place.name},${this.props.place.address}`)
     };

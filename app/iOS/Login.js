@@ -1,4 +1,4 @@
-console.disableYellowBox = true;
+console.disableYellowBox = true;  //turns off yellow box warnings while testing
 
 import React, { Component } from 'react';   // importing from node_modules
 import firebase from '../Config/Firebase';
@@ -6,7 +6,7 @@ import Home from './Home';
 import styles from '../Theme/Theme';
 import Register from './Register';
 import Icon from 'react-native-vector-icons/FontAwesome'
-import KeyboardSpacer from 'react-native-keyboard-spacer';
+import KeyboardSpacer from 'react-native-keyboard-spacer';  //pushes the inputs above the keyboard when the user is logging in
 import {Spinner} from '@shoutem/ui';
 import {
     Text,
@@ -28,20 +28,22 @@ class Login extends Component {
         };
     }
 
+    //logs the user in via firebase
     login = () => {
         this.setState({loading: true});
         var state = this; //captures this from outside firebase call to use inside firebase
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then((data) => {
-                this.setState({uid: data.uid, loading: false});
+                this.setState({uid: data.uid, loading: false}); //stops the spinner and sets the uid to the user
                 state.props.navigator.push({ component: Home });
         }) .catch ((error) => {
-                this.setState({loading: false});
+                this.setState({loading: false});  //also stops the spinner if there is an error with the credentials entered
                 AlertIOS.alert(error.message);
 
             });
     };
 
+    // Tale the user to the register page
     register = () => {
         this.props.navigator.push({ component: Register });
     };

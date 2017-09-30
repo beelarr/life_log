@@ -1,7 +1,9 @@
+//this file was taken from the React Native Fetch Blob git hub page
+
 import firebase from './Firebase';
-import RNFetchBlob from 'react-native-fetch-blob';
-const Blob = RNFetchBlob.polyfill.Blob;
-const fs = RNFetchBlob.fs;
+import RNFetchBlob from 'react-native-fetch-blob';  //react native object tha converts images from ios to a blob that firebase requires
+const Blob = RNFetchBlob.polyfill.Blob;  //creates the blob
+const fs = RNFetchBlob.fs; //file system the blob uses
 
 //this function uploads our image by encoding to the Blob's specs. Taken from the Reat Native fetch-blob github page.
 

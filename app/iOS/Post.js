@@ -3,7 +3,7 @@ import firebase from '../Config/Firebase';
 import Header from '../Components/Header';
 import styles from '../Theme/Theme';
 import Dimensions from 'Dimensions'; //Gets devices window dimensions
-import uploadImage from '../Config/UploadImage';
+import uploadImage from '../Config/UploadImage';// blob conversion of photo
 import ImagePicker from 'react-native-image-picker'; //allows access of camera
 import RNFetchBlob from 'react-native-fetch-blob'; //work-around that enables firebase to accept photos
 import ImageResizer from 'react-native-image-resizer'; //auto resizer that helps app performance and look consistency ex. line 40
@@ -27,8 +27,8 @@ import {
 
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
-const Blob = RNFetchBlob.polyfill.Blob;
-const moment = require('moment');
+const Blob = RNFetchBlob.polyfill.Blob;  //makes blob
+const moment = require('moment'); //required to set time on post
 
 
 
@@ -48,7 +48,7 @@ class Post extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            image: 'https://firebasestorage.googleapis.com/v0/b/findr-3ffd0.appspot.com/o/placeholder.png?alt=media&token=778cf414-8fc7-4288-bd50-1580366ab56a',
+            image: 'https://firebasestorage.googleapis.com/v0/b/findr-3ffd0.appspot.com/o/placeholder.png?alt=media&token=778cf414-8fc7-4288-bd50-1580366ab56a', //placeholder image
             place: {
                 name: '',
                 lat: '',
@@ -65,7 +65,7 @@ class Post extends Component {
         };
     }
 
-
+    //captures the geolocation of the device and sends that to a fetch on the google places api
     getPlaces = () => {
         navigator.geolocation.getCurrentPosition(
             (position) => {
@@ -80,6 +80,7 @@ class Post extends Component {
         )
     };
 
+    // captures image, resizes it, and converts it to a blob
     photo = () => {
         var state = this;
         window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
@@ -103,7 +104,7 @@ class Post extends Component {
         });
     };
 
-
+    //sends completed post to firebase
     post = () => {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
@@ -115,13 +116,13 @@ class Post extends Component {
         this.props.navigator.pop();
     };
 
-
+    //link for back navigation
     back = () => {
         this.props.navigator.pop();
     };
 
 
-
+    //gets the nearby places as soon as the compnent mounts
     componentDidMount(){
         this.getPlaces();
     }
