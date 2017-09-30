@@ -76,12 +76,13 @@ var styles = StyleSheet.create({
         alignItems: 'center',
         paddingTop: deviceHeight/10.5,
     },
+
     logoLife:{
         color: '#fff',
         fontSize: 38,
         fontWeight: '500',
-        letterSpacing: 3,
-        margin: 5,
+        letterSpacing: 2.7,
+        marginRight: 5,
         textAlign: 'center',
         textShadowColor: 'darkgrey',
         textShadowOffset: {width: 3, height: 1},
@@ -91,6 +92,7 @@ var styles = StyleSheet.create({
         color: '#fff',
         fontSize: 38,
         fontWeight: '500',
+        margin: 5,
         padding: 5,
         textAlign: 'center',
         textShadowColor: 'darkgrey',

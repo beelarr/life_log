@@ -33,8 +33,9 @@ class Register extends Component {
             .then((data) => {
                 this.setState({uid: data.uid, loading: false});
                 state.props.navigator.push({ component: Home }); // If I used 'this' here it would be referring to Firebase. By capturing it before it refers to Register.
-            },  (error) => {
-                    AlertIOS.alert(error.message)
+            }) .catch((error) => {
+            this.setState({loading: false});
+            AlertIOS.alert(error.message)
         });
     };
 

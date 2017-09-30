@@ -15,7 +15,6 @@ import {
     TouchableOpacity,
     ImageBackground,
     View,
-    ActivityIndicator
 } from 'react-native';
 
 class Login extends Component {
@@ -25,7 +24,7 @@ class Login extends Component {
             email: "",
             password: "",
             uid: "",
-            loading: false
+            loading: false,
         };
     }
 
@@ -33,11 +32,13 @@ class Login extends Component {
         this.setState({loading: true});
         var state = this; //captures this from outside firebase call to use inside firebase
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-            .then( (data) => {
+            .then((data) => {
                 this.setState({uid: data.uid, loading: false});
                 state.props.navigator.push({ component: Home });
-        },  (error) => {
-                AlertIOS.alert(error.message)
+        }) .catch ((error) => {
+                this.setState({loading: false});
+                AlertIOS.alert(error.message);
+
             });
     };
 
