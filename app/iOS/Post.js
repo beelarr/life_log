@@ -71,7 +71,7 @@ class Post extends Component {
             (position) => {
                 const coords = position.coords.latitude + ',' + position.coords.longitude;
                 const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coords}&radius=1750&key=${gpKey}`;
-                fetch(url, {method: "GET"}) //react native's xmlhttp call
+                fetch(url, {method: "GET"})
                     .then(response => response.json())
                     .then(responseData => {
                         this.setState({ nearby: responseData.results});
