@@ -31,7 +31,9 @@
 	},
 	"rnpm": {
 		"assets": [
-			"assets/fonts/Cabin"
+			"assets/fonts/Lobster",
+			"assets/fonts/Cabin",
+			"assets/fonts/Gorditas"
 		]
 	},
 	"jest": {

@@ -76,6 +76,9 @@
 		<string>Rubik-MediumItalic.ttf</string>
 		<string>Rubik-Regular.ttf</string>
 		<string>rubicon-icon-font.ttf</string>
+		<string>Lobster-Regular.ttf</string>
+		<string>Gorditas-Bold.ttf</string>
+		<string>Gorditas-Regular.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

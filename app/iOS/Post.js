@@ -10,10 +10,12 @@ import ImageResizer from 'react-native-image-resizer'; //auto resizer that helps
 import gpKey from '../Values/Creds';
 import {
     Subtitle,
+    Title,
     Caption,
     Row,
     Image,
-    Icon
+    Icon,
+    Spinner
         } from '@shoutem/ui';
 import {
     View,
@@ -58,7 +60,8 @@ class Post extends Component {
             nearby: [],
             memory: '',
             createdAt: '',
-            uid: ''
+            uid: '',
+            loading: false
         };
     }
 
@@ -81,6 +84,7 @@ class Post extends Component {
         var state = this;
         window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
         window.Blob = Blob;
+        this.setState({loading: true});
         ImagePicker.showImagePicker({}, (response) => {
             if (!response.didCancel) {
                 const source = {
@@ -90,7 +94,7 @@ class Post extends Component {
                 ImageResizer.createResizedImage(source.uri, 500, 500, 'JPEG', 90)
                     .then((resizedImageURI) => {
                         uploadImage(resizedImageURI)//creates Blob
-                        .then(url => state.setState({image: url})) //once our image is in firebase we setState to display it
+                        .then(url => state.setState({image: url, loading: false})) //once our image is in firebase we setState to display it
                             .catch((error) => {
                                 console.log('error', error);
                             });
@@ -125,28 +129,47 @@ class Post extends Component {
 
 
     render () { // 2nd return This return Updates the place for our post*/
+        if (this.state.loading) {
+            return(
+                <Spinner
+                    style={{
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0,
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}
+                    size="large"
+                    color="black"
+                />
+            )
+        }
+
         return (
             <View>
                 <Header
                     title="Post"
                     left={this.back.bind(this)}
-                    leftText={'Back'}/>
+                    leftText={'Back'} />
                 <View style={styles.center}>
                     <TouchableOpacity onPress={this.photo.bind(this)}>
                         <Image
                             source={{uri: this.state.image}}
                             style={{
                                 width: deviceWidth,
-                                height: (deviceWidth * .5)}}/>
+                                height: (deviceWidth * .5)}} />
                     </TouchableOpacity>
-                    <Subtitle style={styles.textLocation}>{this.state.place.name}</Subtitle>
+                    <Title style={styles.textLocation}>{this.state.place.name}</Title>
+
                     <TextInput
                         style={styles.textPostInput}
                         placeholder="Write a caption. . ."
                         autoCorrect={true}
                         placeholderTextColor="lightgrey"
                         onChangeText={(memory) => this.setState({memory: memory})}
-                        value={this.state.memory}/>
+                        value={this.state.memory} />
                     <Subtitle>Add Location</Subtitle>
                     <ScrollView style={{height: deviceHeight*.35}}>
                         {Object.keys(this.state.nearby).map((key) => {
@@ -172,7 +195,7 @@ class Post extends Component {
                             )
                         })}
                     </ScrollView>
-                    <TouchableOpacity style={styles.btn} onPress={this.post.bind(this)} >
+                    <TouchableOpacity style={styles.btn} onPress={this.post.bind(this)}>
                         <Text style={styles.textPost}>Post</Text>
                     </TouchableOpacity>
                 </View>

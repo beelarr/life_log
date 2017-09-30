@@ -55,7 +55,6 @@ class Map extends Component {
 
 
     directions = () => {
-        console.log('address', this.props.place.lat);
         Linking.openURL(`https://www.google.com/maps/search/?api=1&query=${this.props.place.name},${this.props.place.address}`)
     };
 
@@ -79,7 +78,7 @@ class Map extends Component {
                                 <Card>
                                     <Image
                                         styleName="medium-wide"
-                                        source={{uri: this.props.image}}/>
+                                        source={{uri: this.props.image}} />
                                     <View styleName="content">
                                         <Subtitle>{this.props.place.name}</Subtitle>
                                         <Divider styleName="line" />
@@ -95,7 +94,7 @@ class Map extends Component {
                                             <Text styleName="bright">{this.props.place.address}</Text>
                                         </Button>
                                     </View>
-                                    <Caption/>
+                                    <Caption />
                                 </Card>
                             </TouchableOpacity>
                         </MapView.Callout>

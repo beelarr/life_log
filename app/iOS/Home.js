@@ -3,10 +3,10 @@ import firebase from '../Config/Firebase';
 import Header from '../Components/Header';
 import Map from './Map';
 import styles from '../Theme/Theme';
-import post from './Post';
+import Post from './Post';
 import Icon2 from 'react-native-vector-icons/EvilIcons';
 import Icon1 from 'react-native-vector-icons/FontAwesome';
-import {Image, Tile, Title, Caption, View, Divider, Button, Icon} from '@shoutem/ui';
+import {Image, Tile, Title, Caption, View, Divider, Button, Icon, Heading, Spinner} from '@shoutem/ui';
 import Dimensions from 'Dimensions';
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
@@ -14,7 +14,8 @@ import {
     Text,
     ScrollView,
     TouchableOpacity,
-    Alert
+    Alert,
+    ActivityIndicator
 } from 'react-native';
 
 class Home extends Component {
@@ -34,11 +35,10 @@ class Home extends Component {
         this.state = {
             uid: "",
             food: [],
-            entryId: ''
+            entryId: "",
+            loading: true,
         }
     }
-
-
 
     getPosts = () => {
         firebase.auth().onAuthStateChanged((user) => {
@@ -53,7 +53,8 @@ class Home extends Component {
                         items.push(item);
                     });
                     items = items.reverse(); //showing newest items
-                    this.setState({food: items});
+                    this.setState({food: items, loading: false});
+
                 });
             }
         });
@@ -69,12 +70,11 @@ class Home extends Component {
 
 
 
-   left = () => { this.props.navigator.push({ component: post })};
+   left = () => { this.props.navigator.push({ component: Post })};
     //pushing post component which takes us to the post view/page
 
 
     deletePost = (key) => {
-        console.log('key in delete post', key);
         Alert.alert(
             'Delete Post',
             'Are you sure??',
@@ -93,30 +93,44 @@ class Home extends Component {
 
 
     render () {   // nested return object of our food so that the entries are injected. Notice only one outside view. Key is given to keep xcode from error*/
-
-
-        let swipeBtns = [{
-            text: '',
-            buttonWidth: 2000,
-            backgroundColor: 'red',
-            underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-            onPress: () => {() => this.deletePost(this.state.food[key])}
-        }];
+        if (this.state.loading) {
+            return(
+                <Spinner
+                    style={{
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0,
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}
+                    size="large"
+                    color="black"
+                />
+            )
+        }
 
         return (
             <View style={styles.homeContainer} >
                 <Header
                     onLogOut={() =>{
-                        console.log('logout is working');
-                        console.log('this.props', this.props);
                         firebase.auth().signOut();
                         this.props.navigator.popToTop();
                     }}
-                    title={<Icon1 name="bookmark-o" color="#fff" size={30}/>}
+                    title={<Icon1
+                            name="bookmark-o"
+                            color="#fff"
+                            size={30}
+                        />}
                         left={this.left.bind(this)}
-                        leftText={<Icon2 name="camera"
-                        color="#fff"
-                        size={30}/> }/>
+                        leftText={
+                            <Icon2
+                                name="camera"
+                                color="#fff"
+                                size={30} />
+                        } />
+
                         <Text
                             style={{
                                 fontFamily: 'cabin',
@@ -136,21 +150,21 @@ class Home extends Component {
                             flexWrap: 'wrap',
                             justifyContent:'space-around',
                             backgroundColor: '#DBDDDE'}}>
+
                         {Object.keys(this.state.food).map((key) => {
-                            return (
-                                <TouchableOpacity
+                                return (
+                                    <TouchableOpacity
                                         key={key}
                                         onPress={() => this.map(this.state.food[key])}
                                         onLongPress={() => this.deletePost(this.state.food[key].key)}>
                                         <Image
                                             style={{
-                                                marginBottom: deviceHeight/350,
-                                                // width: deviceWidth/3.05,
+                                                marginBottom: deviceHeight / 350,
                                             }}
                                             styleName='large-square clear'
-                                            source={{uri: this.state.food[key].image}}/>
+                                            source={{uri: this.state.food[key].image}} />
                                     </TouchableOpacity>
-                            )
+                                )
                         })}
                     </View>
                 </ScrollView>
