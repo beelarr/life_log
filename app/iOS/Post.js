@@ -88,6 +88,7 @@ class Post extends Component {
         this.setState({loading: true});
         ImagePicker.showImagePicker({}, (response) => {
             if (!response.didCancel) {
+                this.getPlaces();
                 const source = {
                     uri: response.uri.replace('file://', ''),
                     isStatic: true};
@@ -126,6 +127,8 @@ class Post extends Component {
     componentDidMount(){
         this.getPlaces();
     }
+
+
 
 
 
