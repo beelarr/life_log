@@ -57,7 +57,7 @@ class Register extends Component {
                         justifyContent: 'center'
                     }}
                     size="large"
-                    color="black"
+                    color="#118183"
                 />
             )
         }
