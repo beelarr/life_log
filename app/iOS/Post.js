@@ -106,16 +106,21 @@ class Post extends Component {
     };
 
 
-    post = () => {
-        firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-                let userId = user.uid;
-                this.setState({ uid: userId, createdAt: Date.now()});
-                firebase.database().ref('food').push({image: this.state.image, place: this.state.place, uid: this.state.uid, memory: this.state.memory, createdAt: this.state.createdAt});
-            }
-        });
-        this.props.navigator.pop();
-    };
+   async post() {
+        let user = firebase.auth().currentUser;
+        try {
+            await this.setState({
+                        uid: user.uid,
+                        createdAt: Date.now()
+                    });
+            firebase.database().ref('food').push({image: this.state.image, place: this.state.place, uid: this.state.uid, memory: this.state.memory, createdAt: this.state.createdAt});
+
+            this.props.navigator.pop();
+        }
+        catch(e) {
+        return e.message
+       }
+    }
 
 
     back = () => {
