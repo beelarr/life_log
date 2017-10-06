@@ -1,10 +1,23 @@
 
 # Life Log
+<p align="center">
+  <img src="https://media.giphy.com/media/3o7aCToHXpiX70aSeQ/giphy.gif"/>
+</p>
+<p align="center">
+  <img src="https://78.media.tumblr.com/a2a452530cf580b23da9b595934d7dea/tumblr_oxevw9ltis1wb9q31o4_1280.png" height="379" width="213"/>
+  <img src="https://78.media.tumblr.com/865df5ac4b8c72809dea9cd2167c4202/tumblr_oxevw9ltis1wb9q31o3_1280.png" height="379" width="213"/>
+  <img src="https://78.media.tumblr.com/ef4c5ec5ddeabfe74552bf69df827569/tumblr_oxew03uFGM1wb9q31o1_1280.png" height="379" width="213"/>
+  
 
-Life Log is a real time travel [POI](https://en.wikipedia.org/wiki/Point_of_interest) tool.  Users can create photo posts with an attached location, a caption, directions and shareing features.
+</p>
+
+
+Life Log is a real time travel [POI](https://en.wikipedia.org/wiki/Point_of_interest) tool.  Users can create photo posts with an attached location, a caption, directions and sharing features. 
+
+If you would like to see comments on the code run ```git fetch origin code-with-comments```.
 ## Getting Started
 
-Files you will need to create
+Fork and/or clone this repo to your local machine.  Then create the following files:
 
     ├── app
         └── Config
@@ -66,23 +79,21 @@ Run the following command in a Terminal:
 ```
 npm install -g react-native-cli
 ```
-If you get an error like Cannot find module 'npmlog', try installing 
+If you get an error like Cannot find module 'npmlog', try installing npm directly:
 ```
-npm directly: curl -0 -L https://npmjs.org/install.sh | sudo sh.
+curl -0 -L https://npmjs.org/install.sh | sudo sh.
 ```
 Xcode 
 The easiest way to install Xcode is via the Mac App Store. Installing Xcode will also install the iOS Simulator and all the necessary tools to build your iOS app.
 
 If you have already installed Xcode on your system, make sure it is version 8 or higher.
 
-Command Line Tools 
+### Command Line Tools 
 
 You will also need to install the Xcode Command Line Tools. Open Xcode, then choose "Preferences..." from the Xcode menu. Go to the Locations panel and install the tools by selecting the most recent version in the Command Line Tools dropdown.
 
 
-down vote
-accepted
-Try this markdown:
+
 
 ![alt text](https://facebook.github.io/react-native/img/XcodeCommandLineTools.png)
 
@@ -127,6 +138,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * NSS Faculty
 * Matt Hamil
 * David Zukowski
+* Juan Rodríguez
 * [Stephen Grider's](https://www.udemy.com/the-complete-react-native-and-redux-course/learn/v4/overview) "The Complete React Native and Redux Course"
 
 
