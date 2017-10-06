@@ -102,11 +102,12 @@ class Post extends Component {
                             });
                     });
             }
+                this.setState(loading:false);
         });
     };
 
-    //sends completed post to firebase
-    async post() {
+
+    async post() {  // makes post to firebase
         let user = firebase.auth().currentUser;
         try {
             await this.setState({
