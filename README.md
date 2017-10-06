@@ -1,6 +1,8 @@
 
 # Life Log
 
+![alt text](https://media.giphy.com/media/3o7aCToHXpiX70aSeQ/giphy.gif)
+
 Life Log is a real time travel [POI](https://en.wikipedia.org/wiki/Point_of_interest) tool.  Users can create photo posts with an attached location, a caption, directions and sharing features. 
 
 If you would like to see comments on the code run ```git fetch origin code-with-comments```.
