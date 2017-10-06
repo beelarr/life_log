@@ -1,7 +1,9 @@
 
 # Life Log
+<p align="center">
+  <img source="https://media.giphy.com/media/3o7aCToHXpiX70aSeQ/giphy.gif"/>
+</p>
 
-![alt text](https://media.giphy.com/media/3o7aCToHXpiX70aSeQ/giphy.gif)
 
 Life Log is a real time travel [POI](https://en.wikipedia.org/wiki/Point_of_interest) tool.  Users can create photo posts with an attached location, a caption, directions and sharing features. 
 
