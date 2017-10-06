@@ -1,7 +1,7 @@
 
 # Life Log
 <p align="center">
-  <img source="https://media.giphy.com/media/3o7aCToHXpiX70aSeQ/giphy.gif"/>
+  <img src="https://media.giphy.com/media/3o7aCToHXpiX70aSeQ/giphy.gif"/>
 </p>
 
 
