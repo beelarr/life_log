@@ -17,7 +17,7 @@ Life Log is a real time travel [POI](https://en.wikipedia.org/wiki/Point_of_inte
 If you would like to see comments on the code run ```git fetch origin code-with-comments```.
 ## Getting Started
 
-Files you will need to create
+Fork and/or clone this repo to your local machine.  Then create the following files:
 
     ├── app
         └── Config
