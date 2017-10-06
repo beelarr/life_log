@@ -4,9 +4,9 @@
   <img src="https://media.giphy.com/media/3o7aCToHXpiX70aSeQ/giphy.gif"/>
 </p>
 <p align="center">
-  <img src="https://78.media.tumblr.com/a2a452530cf580b23da9b595934d7dea/tumblr_oxevw9ltis1wb9q31o4_1280.png"/>
-  <img src="https://78.media.tumblr.com/865df5ac4b8c72809dea9cd2167c4202/tumblr_oxevw9ltis1wb9q31o3_1280.png"/>
-  <img src="https://78.media.tumblr.com/ef4c5ec5ddeabfe74552bf69df827569/tumblr_oxew03uFGM1wb9q31o1_1280.png"/>
+  <img src="https://78.media.tumblr.com/a2a452530cf580b23da9b595934d7dea/tumblr_oxevw9ltis1wb9q31o4_1280.png" height="1136" width="640"/>
+  <img src="https://78.media.tumblr.com/865df5ac4b8c72809dea9cd2167c4202/tumblr_oxevw9ltis1wb9q31o3_1280.png" height="1136" width="640"/>
+  <img src="https://78.media.tumblr.com/ef4c5ec5ddeabfe74552bf69df827569/tumblr_oxew03uFGM1wb9q31o1_1280.png" height="1136" width="640"/>
   
 
 </p>
