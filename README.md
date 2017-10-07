@@ -114,6 +114,8 @@ cd AwesomeProject
 react-native run-ios
 ```
 
+## Bugs 
+Report bugs and issues [here](https://github.com/beelarr/life_log/issues)
 
 
 ## Built With
