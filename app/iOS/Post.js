@@ -82,7 +82,6 @@ class Post extends Component {
     };
 
     photo = () => {
-        console.log('this early', this);
         window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
         window.Blob = Blob;
         this.setState({loading: true});
