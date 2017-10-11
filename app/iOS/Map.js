@@ -74,7 +74,7 @@ class Map extends Component {
                             latitude: this.props.place.lat,
                             longitude: this.props.place.lng}}>
                         <MapView.Callout>
-                            <TouchableOpacity onPress={this.sharing.bind(this)}>
+                            <TouchableOpacity onPress={this.sharing}>
                                 <Card>
                                     <Image
                                         styleName="medium-wide"
@@ -90,7 +90,7 @@ class Map extends Component {
                                             time={this.props.createdAt} />
                                         <Button
                                             styleName="tight clear"
-                                            onPress={this.directions.bind(this)}>
+                                            onPress={this.directions}>
                                             <Text styleName="bright">{this.props.place.address}</Text>
                                         </Button>
                                     </View>
@@ -99,7 +99,7 @@ class Map extends Component {
                             </TouchableOpacity>
                         </MapView.Callout>
                     </MapView.Marker>
-                    <TouchableOpacity onPress={this.onBack.bind(this)}>
+                    <TouchableOpacity onPress={this.onBack}>
                         <Icon1
                             style={styles.mapBackButton}
                             name="close"

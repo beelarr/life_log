@@ -101,13 +101,13 @@ class Login extends Component {
                     <KeyboardSpacer />
                     <TouchableOpacity
                         style={styles.clearBtn}
-                        onPress={this.login.bind(this)}>
+                        onPress={this.login}>
                         <Text style={[styles.text, styles.whiteText]}>Login</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={this.login.bind(this)}
+                        onPress={this.login}
                         title="Login"/>
-                    <TouchableOpacity onPress={this.register.bind(this)}>
+                    <TouchableOpacity onPress={this.register}>
                         <Text style={styles.whiteText}>Register</Text>
                     </TouchableOpacity>
                 </View>

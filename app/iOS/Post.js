@@ -82,7 +82,6 @@ class Post extends Component {
     };
 
     photo = () => {
-        var state = this;
         window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
         window.Blob = Blob;
         this.setState({loading: true});
@@ -94,12 +93,12 @@ class Post extends Component {
                     isStatic: true};
                 ImageResizer.createResizedImage(source.uri, 500, 500, 'JPEG', 90)
                     .then((resizedImageURI) => {
-                        uploadImage(resizedImageURI)//creates Blob
-                        .then(url => state.setState({image: url, loading: false}))
-                            .catch((error) => {
-                                this.setState({loading: false});
-                                console.log('error', error);
-                            });
+                        return uploadImage(resizedImageURI)//creates Blob
+                            .then(url => {this.setState({image: url, loading: false})})
+                                .catch((error) => {
+                                    this.setState({loading: false});
+                                    console.log('error', error);
+                                });
                     });
             }
         });
@@ -160,10 +159,10 @@ class Post extends Component {
             <View>
                 <Header
                     title="Post"
-                    left={this.back.bind(this)}
+                    left={this.back}
                     leftText={'Back'} />
                 <View style={styles.center}>
-                    <TouchableOpacity onPress={this.photo.bind(this)}>
+                    <TouchableOpacity onPress={this.photo}>
                         <Image
                             source={{uri: this.state.image}}
                             style={{

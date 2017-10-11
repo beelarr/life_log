@@ -121,7 +121,7 @@ class Home extends Component {
                             color="#fff"
                             size={30}
                         />}
-                        left={this.left.bind(this)}
+                        left={this.left}
                         leftText={
                             <Icon2
                                 name="camera"

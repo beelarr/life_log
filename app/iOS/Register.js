@@ -97,11 +97,11 @@ class Register extends Component {
                     <KeyboardSpacer />
                     <TouchableOpacity
                     style={styles.clearBtn}
-                    onPress={this.register.bind(this)}>
+                    onPress={this.register}>
                         <Text style={[styles.text, styles.whiteText]}>Register</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                    onPress={this.login.bind(this)}
+                    onPress={this.login}
                     title="Login">
                         <Text style={styles.whiteText}>Login</Text>
                     </TouchableOpacity>
