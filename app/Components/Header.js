@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styles from '../Theme/Theme';
 import firebase from '../Config/Firebase';
 import {

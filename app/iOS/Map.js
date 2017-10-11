@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import MapView from 'react-native-maps';
 import Icon1 from 'react-native-vector-icons/EvilIcons'
 import styles from '../Theme/Theme';
