@@ -143,7 +143,9 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Juan Rodríguez
 * [Stephen Grider's](https://www.udemy.com/the-complete-react-native-and-redux-course/learn/v4/overview) "The Complete React Native and Redux Course"
 
+##
 
+What is ["boyscouting?"](http://programmer.97things.oreilly.com/wiki/index.php/The_Boy_Scout_Rule)
 
 
 
