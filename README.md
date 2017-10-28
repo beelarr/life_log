@@ -21,8 +21,12 @@ If you would like to see comments on the code run ```git fetch origin code-with-
 
 * Fork then clone project
 * Run 
-    - ```chmod 777 quick_setup.sh```
-    - ```./quick_setup.sh```
+     
+     ```
+     chmod 777 quick_setup.sh
+     ./quick_setup.sh
+     ```
+      
     - Firebase.js
       
       ```
