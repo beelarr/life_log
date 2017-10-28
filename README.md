@@ -17,6 +17,41 @@ Life Log is a real time travel [POI](https://en.wikipedia.org/wiki/Point_of_inte
 If you would like to see comments on the code run ```git fetch origin code-with-comments```.
 ## Getting Started
 
+### The quick way
+
+* Fork then clone project
+* Run 
+    - ```chmod 777 quick_setup.sh```
+    - ```./quick_setup.sh```
+    - Firebase.js
+      
+      ```
+      import * as firebase from 'firebase';
+                          
+      const firebaseConfig = {
+          apiKey: "<Your Info>",
+          authDomain: "<Your Info>",
+          databaseURL: "<Your Info>",
+          projectId: "<Your Info>",
+          storageBucket: "<Your Info>",
+          messagingSenderId: "<Your Info>"
+      };
+                          
+      const firebaseApp = firebase.initializeApp(firebaseConfig);
+                          
+                          
+      module.exports = firebaseApp;
+      ```
+    - Creds.js - (contains google places api key)
+                      
+                      
+      
+          const googlePlacesKey = "<Your Info>";
+          module.exports = googlePlacesKey;
+         
+<p align="center"> That's it! </p>
+
+## Detailed Setup
 Fork and/or clone this repo to your local machine.  Then create the following files:
 
     ├── app
@@ -128,7 +163,7 @@ Report bugs and issues [here](https://github.com/beelarr/life_log/issues)
 
 ## Authors
 
-* **Bryon Larrance** - *NSS Cohort 21* - [NSS](https://github.com/beelarr)
+##### [**Bryon Larrance**](mailto:bryonl@me.com)
 
 
 ## License
