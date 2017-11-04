@@ -7,6 +7,7 @@ import styles from '../Theme/Theme';
 import Register from './Register';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import KeyboardSpacer from 'react-native-keyboard-spacer';
+import pic from '../../assets/img/login.gif'
 import {Spinner} from '@shoutem/ui';
 import {
     Text,
@@ -69,7 +70,7 @@ class Login extends Component {
         return (
 
             <ImageBackground
-                source={{uri: 'https://78.media.tumblr.com/b4d46d426eae880dbc7a64b79450eee0/tumblr_oww0sw5ImI1wb9q31o1_500.gif'}}
+                source={pic}
                 style={[styles.container]}>
                 <View
                     style={styles.login}>

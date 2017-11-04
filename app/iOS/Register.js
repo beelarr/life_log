@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import firebase from '../Config/Firebase';
 import Home from './Home.js';
 import styles from '../Theme/Theme';
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/FontAwesome';
+import pic from '../../assets/img/register.gif';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import {Spinner} from '@shoutem/ui';
 
@@ -62,10 +63,9 @@ class Register extends Component {
             )
         }
 
-
         return (
             <ImageBackground
-                source={{uri: 'https://78.media.tumblr.com/c652ff47f1f27525b0acc9c6df1ef8ca/tumblr_owwg5jg0zU1wb9q31o1_500.gif'}}
+                source={pic}
                 style={[styles.container]}>
                 <View
                     style={styles.login}>
