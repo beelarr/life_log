@@ -6,7 +6,6 @@
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  */
-
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
@@ -14,7 +13,7 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:  (NSDictionary *)launchOptions
 {
   NSURL *jsCodeLocation;
 

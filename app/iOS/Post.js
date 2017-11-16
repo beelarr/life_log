@@ -101,6 +101,9 @@ class Post extends Component {
                                 });
                     });
             }
+            else {
+                this.props.navigator.pop()
+            }
         });
     };
 
