@@ -14,7 +14,9 @@ import {
     Text,
     ScrollView,
     TouchableOpacity,
+    ActivityIndicator,
     Alert,
+
 } from 'react-native';
 
 class Home extends Component {
@@ -29,15 +31,14 @@ class Home extends Component {
         }
     }
 
-    constructor(props) {
-        super(props);
-        this.state = {
+
+        state = {
             uid: "",
             food: [],
             entryId: "",
             loading: true,
-        }
-    }
+        };
+
 
     getPosts = () => {
         firebase.auth().onAuthStateChanged((user) => {
@@ -93,7 +94,7 @@ class Home extends Component {
     render () {
         if (this.state.loading) {
             return(
-                <Spinner
+                <ActivityIndicator
                     style={{
                         position: 'absolute',
                         left: 0,

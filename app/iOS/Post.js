@@ -182,7 +182,7 @@ class Post extends Component {
                         onChangeText={(memory) => this.setState({memory: memory})}
                         value={this.state.memory} />
                     <Subtitle>Add Location</Subtitle>
-                    <ScrollView style={{height: deviceHeight*.35}}>
+                    <ScrollView style={{height: deviceHeight*.35, width: deviceWidth}}>
                         {Object.keys(this.state.nearby).map((key) => {
                             var placeObj = {
                                 address: this.state.nearby[key].vicinity,

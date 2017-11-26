@@ -31,11 +31,10 @@ class Login extends Component {
 
     login = () => {
         this.setState({loading: true});
-        var state = this;
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then((data) => {
                 this.setState({uid: data.uid, loading: false});
-                state.props.navigator.push({ component: Home });
+                this.props.navigator.push({ component: Home });
         }) .catch ((error) => {
                 this.setState({loading: false});
                 AlertIOS.alert(error.message);
