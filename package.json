@@ -4,7 +4,8 @@
 	"private": true,
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "jest"
+		"test": "jest",
+		"debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=19001'"
 	},
 	"dependencies": {
 		"@shoutem/ui": "^0.21.3",

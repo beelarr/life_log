@@ -1,8 +1,5 @@
-import Login from './app/iOS/Login';
-import TouchId from './app/iOS/TouchId'
-
-
 import React, { Component } from 'react';
+import Login from './app/iOS/Login';
 import {
   AppRegistry,
   NavigatorIOS,
@@ -24,3 +21,5 @@ export default class life_log extends Component {
 
 
 AppRegistry.registerComponent('life_log', () => life_log);
+
+
