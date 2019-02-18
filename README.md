@@ -184,7 +184,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ##
 
-What is ["boyscouting?"](http://programmer.97things.oreilly.com/wiki/index.php/The_Boy_Scout_Rule)
+What is ["boyscouting?"](https://medium.com/@biratkirat/step-8-the-boy-scout-rule-robert-c-martin-uncle-bob-9ac839778385)
 
 
 
